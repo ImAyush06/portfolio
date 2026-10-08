@@ -132,7 +132,7 @@ export function Hero() {
               {/* Spec Footer with Quick Links */}
               <div className="hero-spec-footer">
                 <a
-                  href={site.social.github}
+                  href={site.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-spec-link"
@@ -141,7 +141,7 @@ export function Hero() {
                   <ArrowUpRight className="w-3 h-3" />
                 </a>
                 <a
-                  href={site.social.linkedin}
+                  href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-spec-link"

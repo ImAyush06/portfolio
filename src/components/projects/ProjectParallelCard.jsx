@@ -238,11 +238,11 @@ export function ProjectParallelCard({
 
         /* Body */
         .project-card-body {
-          padding: 14px 16px;
+          padding: 13px 14px;
           display: flex;
           flex-direction: column;
           flex: 1;
-          gap: 10px;
+          gap: 9px;
         }
 
         .project-card-title-group {
@@ -253,66 +253,84 @@ export function ProjectParallelCard({
 
         .project-card-title {
           font-family: var(--font-display);
-          font-size: clamp(1.15rem, 1.3vw, 1.25rem);
-          font-weight: 800;
+          font-size: clamp(1.05rem, 1.15vw, 1.18rem);
+          font-weight: 700;
           color: var(--text-primary);
           line-height: 1.25;
           margin: 0;
           letter-spacing: -0.015em;
+          min-height: 42px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .project-card-subtitle {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10.5px;
           color: var(--accent-secondary);
           margin: 0;
           font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .project-card-desc {
           font-family: var(--font-body);
-          font-size: 13.5px;
-          line-height: 1.55;
+          font-size: 12.5px;
+          line-height: 1.5;
           color: var(--text-secondary);
           margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          min-height: 56px;
         }
 
         .project-card-highlights {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          padding: 8px 10px;
+          padding: 7px 9px;
           background: var(--bg-0);
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-xs);
+          min-height: 48px;
         }
 
         .project-card-feat-item {
           display: flex;
           align-items: baseline;
-          gap: 6px;
+          gap: 5px;
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 11.5px;
           color: var(--text-primary);
-          line-height: 1.4;
+          line-height: 1.35;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .project-card-bullet {
           color: var(--accent);
           font-weight: 700;
+          flex-shrink: 0;
         }
 
         /* Tech Section */
         .project-card-tech-section {
           display: flex;
           flex-direction: column;
-          gap: 6px;
-          padding-top: 4px;
+          gap: 5px;
+          padding-top: 2px;
         }
 
         .project-card-tech-label {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 9.5px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
@@ -321,16 +339,16 @@ export function ProjectParallelCard({
         .project-card-tech-pills {
           display: flex;
           flex-wrap: wrap;
-          gap: 5px;
+          gap: 4px;
         }
 
         .project-tech-badge {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 3px;
           font-family: var(--font-mono);
-          font-size: 11px;
-          padding: 3px 8px;
+          font-size: 10px;
+          padding: 2px 6px;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
@@ -350,23 +368,24 @@ export function ProjectParallelCard({
         .project-card-actions {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 6px;
           flex-wrap: wrap;
-          padding-top: 10px;
+          padding-top: 9px;
           margin-top: auto;
           border-top: 1px solid var(--border);
         }
 
         .btn-sm {
-          padding: 6px 12px !important;
-          font-size: 11px !important;
+          padding: 5px 9px !important;
+          font-size: 10px !important;
+          gap: 4px !important;
         }
 
         .project-details-btn {
           background: none;
           border: none;
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10px;
           font-weight: 700;
           color: var(--text-primary);
           cursor: pointer;
@@ -376,6 +395,7 @@ export function ProjectParallelCard({
           text-underline-offset: 3px;
           transition: color 0.15s ease;
           margin-left: auto;
+          white-space: nowrap;
         }
 
         .project-details-btn:hover {

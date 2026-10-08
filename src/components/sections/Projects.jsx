@@ -170,19 +170,19 @@ export function Projects({
       <style>{`
         .work-controls-wrapper {
           display: flex;
-          flex-direction: column;
-          gap: 16px;
-          margin-bottom: clamp(20px, 3.5vh, 32px);
-          max-width: 960px;
-          margin-left: auto;
-          margin-right: auto;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-bottom: clamp(20px, 3vh, 28px);
+          width: 100%;
         }
 
         .work-filter-pills {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 6px;
         }
 
         .work-filter-btn {
@@ -221,17 +221,15 @@ export function Projects({
         .work-jump-strip {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 8px;
           overflow-x: auto;
-          padding-bottom: 10px;
-          border-bottom: 1px solid var(--border);
           scrollbar-width: none;
         }
 
         .work-jump-label {
           font-family: var(--font-mono);
           color: var(--accent);
-          font-size: 10.5px;
+          font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.1em;
           flex-shrink: 0;
@@ -240,16 +238,16 @@ export function Projects({
         .work-jump-items {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 5px;
           flex-wrap: nowrap;
         }
 
         .work-jump-link {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
+          gap: 4px;
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10.5px;
           color: var(--text-secondary);
           text-decoration: none;
           white-space: nowrap;
@@ -266,17 +264,24 @@ export function Projects({
           background: var(--bg-secondary);
         }
 
+        /* All projects in a single line from left to right on desktop */
         .work-parallel-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(18px, 2.5vw, 24px);
-          max-width: 960px;
-          margin: 0 auto;
+          gap: 16px;
+          width: 100%;
+          align-items: stretch;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
           .work-parallel-grid {
             grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (min-width: 1040px) {
+          .work-parallel-grid {
+            grid-template-columns: repeat(4, 1fr);
           }
         }
       `}</style>

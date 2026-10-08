@@ -22,10 +22,6 @@ export function Navbar({ navItems = [], activeSection = '' }) {
       "Hi Ayush,\n\nI reviewed your portfolio and would like to request a copy of your resume for consideration.\n\nBest regards,"
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   // Hide on scroll down, show on scroll up

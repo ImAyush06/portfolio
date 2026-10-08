@@ -54,9 +54,8 @@ export function ProjectParallelCard({
       >
         <div className="project-card-media-bar">
           <span className="project-card-category-tag">{project.category.split('/')[0].trim()}</span>
-          <span className="project-card-zoom-hint">
-            <Maximize2 className="w-3 h-3" />
-            <span>ZOOM</span>
+          <span className="project-card-zoom-hint" title="Click to view full screenshot">
+            <Maximize2 className="w-3.5 h-3.5" />
           </span>
         </div>
 

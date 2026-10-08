@@ -11,26 +11,21 @@ export function Hero() {
     { name: 'C++', role: 'Systems & DSA' },
   ];
 
-  const blueprintNodes = [
+  const buildFocusAreas = [
     {
-      phase: 'FRONTEND INTERFACES',
-      stack: 'React.js · JavaScript · Responsive DOM',
-      sub: 'Fluid client interactions & component design',
+      num: '01',
+      title: 'BUILD',
+      items: ['Frontend experiences', 'Backend services', 'Database-driven applications'],
     },
     {
-      phase: 'BACKEND SERVICES',
-      stack: 'Java · Spring Boot · REST APIs',
-      sub: 'Decoupled services & transactional endpoints',
+      num: '02',
+      title: 'SOLVE',
+      items: ['Problem solving', 'Data structures', 'Algorithmic thinking'],
     },
     {
-      phase: 'DATA & PERSISTENCE',
-      stack: 'MongoDB · Relational DBMS · SQL',
-      sub: 'Structured schemas & database queries',
-    },
-    {
-      phase: 'SYSTEMS & ALGORITHMS',
-      stack: 'C++ · Data Structures · Algorithmic Logic',
-      sub: 'Core fundamentals & computational problem solving',
+      num: '03',
+      title: 'IMPROVE',
+      items: ['Clean code', 'Better UX', 'Continuous learning'],
     },
   ];
 
@@ -111,43 +106,62 @@ export function Hero() {
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN: Editorial "Developer Workspace" Blueprint Panel
+              RIGHT COLUMN: Editorial "WHAT I BUILD" Focus Profile Sheet
               ========================================================= */}
           <div className="hero-blueprint-col">
-            <div className="hero-blueprint-panel">
+            <div className="hero-build-panel">
               
-              {/* Blueprint Header */}
-              <div className="blueprint-header">
-                <div className="blueprint-header-left">
-                  <span className="blueprint-header-tag">DEVELOPER WORKSPACE</span>
-                  <span className="blueprint-sep">/</span>
-                  <span className="blueprint-id">SYSTEM SPEC</span>
-                </div>
-                <div className="blueprint-status">
-                  <span className="blueprint-status-indicator" />
-                  <span>ACTIVE</span>
+              {/* Top Header */}
+              <div className="build-panel-header">
+                <span className="build-panel-kicker">WHAT I BUILD</span>
+                <div className="build-panel-badge">
+                  <span className="build-panel-dot" />
+                  <span>FOCUS</span>
                 </div>
               </div>
 
-              {/* Blueprint Subtitle */}
-              <p className="blueprint-caption">
-                Architectural overview across client interfaces, backend microservices, database schemas, and algorithmic problem-solving.
-              </p>
+              {/* Strong Statement */}
+              <div className="build-panel-headline-block">
+                <h2 className="build-panel-headline">
+                  BUILDING PRACTICAL<br />WEB EXPERIENCES.
+                </h2>
+                <p className="build-panel-subline">
+                  Practical digital products, web applications, and software systems.
+                </p>
+              </div>
 
-              {/* Connected Engineering Blueprint Nodes */}
-              <div className="blueprint-nodes-container">
-                {blueprintNodes.map((node) => (
-                  <div key={node.phase} className="blueprint-node-item">
-                    <div className="blueprint-node-top">
-                      <span className="blueprint-node-bullet">&bull;</span>
-                      <h4 className="blueprint-node-phase">{node.phase}</h4>
-                    </div>
-                    <div className="blueprint-node-details">
-                      <span className="blueprint-node-stack">{node.stack}</span>
-                      <span className="blueprint-node-sub">{node.sub}</span>
+              {/* Three Structured Rows Separated by Thin Rules */}
+              <div className="build-panel-rows">
+                {buildFocusAreas.map((area) => (
+                  <div key={area.num} className="build-row">
+                    <div className="build-row-indicator" aria-hidden="true" />
+                    <div className="build-row-content">
+                      <div className="build-row-meta">
+                        <span className="build-row-num">{area.num}</span>
+                        <h3 className="build-row-title">{area.title}</h3>
+                      </div>
+                      <div className="build-row-desc">
+                        {area.items.map((item, idx) => (
+                          <span key={item} className="build-row-desc-item">
+                            {item}
+                            {idx < area.items.length - 1 && (
+                              <span className="build-row-desc-sep">&middot;</span>
+                            )}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Bottom Editorial Flow */}
+              <div className="build-panel-footer">
+                <span className="build-flow-step">BUILD</span>
+                <span className="build-flow-arrow">&rarr;</span>
+                <span className="build-flow-step">SOLVE</span>
+                <span className="build-flow-arrow">&rarr;</span>
+                <span className="build-flow-step">IMPROVE</span>
               </div>
 
             </div>
@@ -313,164 +327,191 @@ export function Hero() {
           margin-left: 6px;
         }
 
-        /* Right Blueprint Panel */
-        .hero-blueprint-panel {
-          background: var(--surface); /* Paper-like #F2EFE7 */
+        /* Right "WHAT I BUILD" Editorial Panel */
+        .hero-build-panel {
+          background: var(--surface);
           border: 1px solid var(--border);
           border-radius: var(--radius-sm);
-          padding: clamp(20px, 3vw, 32px);
+          padding: clamp(22px, 3vw, 30px);
           position: relative;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
         }
 
-        .blueprint-header {
+        .build-panel-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 14px;
+          padding-bottom: 12px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 14px;
-          flex-wrap: wrap;
-          gap: 8px;
+          margin-bottom: 16px;
         }
 
-        .blueprint-header-left {
-          display: flex;
-          align-items: center;
-          gap: 6px;
+        .build-panel-kicker {
           font-family: var(--font-mono);
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.12em;
           color: var(--text-primary);
+          text-transform: uppercase;
         }
 
-        .blueprint-sep {
-          color: var(--border-strong);
-        }
-
-        .blueprint-id {
-          color: var(--accent);
-        }
-
-        .blueprint-status {
+        .build-panel-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           font-family: var(--font-mono);
           font-size: 10px;
-          letter-spacing: 0.06em;
+          letter-spacing: 0.08em;
           font-weight: 700;
           color: var(--accent);
           background: var(--accent-light);
-          padding: 2px 8px;
+          padding: 2.5px 8px;
           border-radius: var(--radius-xs);
         }
 
-        .blueprint-status-indicator {
+        .build-panel-dot {
           width: 5px;
           height: 5px;
           border-radius: 50%;
           background: var(--accent);
         }
 
-        .blueprint-caption {
+        .build-panel-headline-block {
+          margin-bottom: 18px;
+        }
+
+        .build-panel-headline {
+          font-family: var(--font-display);
+          font-size: clamp(1.22rem, 1.7vw, 1.45rem);
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          color: var(--text-primary);
+          margin: 0 0 6px;
+        }
+
+        .build-panel-subline {
           font-family: var(--font-body);
-          font-size: 12.5px;
+          font-size: 13px;
           line-height: 1.5;
           color: var(--text-secondary);
-          margin: 0 0 18px;
+          margin: 0;
         }
 
-        .blueprint-nodes-container {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 14px 0;
+        /* Continuous Editorial Rows (Separated by thin rules, NOT individual cards) */
+        .build-panel-rows {
           border-top: 1px solid var(--border);
           border-bottom: 1px solid var(--border);
+          margin-bottom: 14px;
         }
 
-        .blueprint-node-item {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
-          padding: 8px 12px;
-          background: var(--bg-0);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
-          transition: background-color 0.15s ease, border-color 0.15s ease;
+        .build-row {
+          position: relative;
+          padding: 13px 14px;
+          border-bottom: 1px solid var(--border);
+          transition: background-color 0.18s ease;
+          overflow: hidden;
         }
 
-        .blueprint-node-item:hover {
-          background: var(--accent-light);
-          border-color: var(--accent);
+        .build-row:last-child {
+          border-bottom: none;
         }
 
-        .blueprint-node-top {
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        .build-row-indicator {
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 3px;
+          background: transparent;
+          transition: background-color 0.18s ease;
         }
 
-        .blueprint-node-bullet {
+        .build-row-content {
+          transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .build-row:hover {
+          background: rgba(85, 107, 47, 0.04);
+        }
+
+        .build-row:hover .build-row-indicator {
+          background: var(--accent);
+        }
+
+        .build-row:hover .build-row-content {
+          transform: translateX(3px);
+        }
+
+        .build-row:hover .build-row-title {
           color: var(--accent);
-          font-size: 14px;
-          line-height: 1;
         }
 
-        .blueprint-node-phase {
+        .build-row-meta {
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+          margin-bottom: 4px;
+        }
+
+        .build-row-num {
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--accent);
+          letter-spacing: 0.05em;
+        }
+
+        .build-row-title {
+          font-family: var(--font-display);
+          font-size: 13.5px;
           font-weight: 700;
           letter-spacing: 0.06em;
           color: var(--text-primary);
           margin: 0;
           text-transform: uppercase;
+          transition: color 0.18s ease;
         }
 
-        .blueprint-node-details {
+        .build-row-desc {
           display: flex;
-          flex-direction: column;
-          gap: 2px;
-          padding-left: 16px;
-        }
-
-        .blueprint-node-stack {
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 3px 6px;
           font-family: var(--font-body);
-          font-size: 13px;
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-
-        .blueprint-node-sub {
-          font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 12.5px;
+          line-height: 1.45;
           color: var(--text-secondary);
+          padding-left: 21px;
         }
 
-        .blueprint-footer {
+        .build-row-desc-sep {
+          color: var(--border-strong);
+        }
+
+        .build-panel-footer {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-top: 14px;
-        }
-
-        .blueprint-footer-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 3px;
+          padding-top: 4px;
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          color: var(--text-secondary);
-          text-decoration: none;
-          transition: color 0.15s ease;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: var(--text-muted);
         }
 
-        .blueprint-footer-link:hover {
+        .build-flow-step {
+          transition: color 0.18s ease;
+        }
+
+        .build-panel-footer:hover .build-flow-step {
+          color: var(--text-primary);
+        }
+
+        .build-flow-arrow {
           color: var(--accent);
+          font-size: 12px;
         }
       `}</style>
     </section>

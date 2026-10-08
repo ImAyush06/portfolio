@@ -110,7 +110,7 @@ export function Experience() {
                   />
                   <div className="training-cert-hover-layer">
                     <Maximize2 className="w-5 h-5" />
-                    <span>CLICK TO EXPAND CERTIFICATE</span>
+                    <span>VIEW DOCUMENT</span>
                   </div>
                 </div>
 

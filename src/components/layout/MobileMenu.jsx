@@ -19,12 +19,6 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
       "Hi Ayush,\n\nI reviewed your portfolio and would like to request a copy of your resume for consideration.\n\nBest regards,"
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      setTimeout(() => {
-        contactEl.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    }
   };
 
   useLockBodyScroll(isOpen);

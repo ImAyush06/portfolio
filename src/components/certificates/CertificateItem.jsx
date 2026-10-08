@@ -25,12 +25,6 @@ export function ParallelCertificateCard({ certificate, onOpenCertificate = () =>
         />
         {/* Soft gradient blend into card surface */}
         <div className="cert-card-gradient-blend" />
-        
-        {/* Hover Action Indicator */}
-        <div className="cert-card-zoom-pill">
-          <Maximize2 className="w-3 h-3" />
-          <span>EXPAND</span>
-        </div>
       </div>
 
       {/* Main Data Body — Immediately Visible at First Glance */}

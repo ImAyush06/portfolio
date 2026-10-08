@@ -18,7 +18,6 @@ export function Education() {
               <span>{education.duration}</span>
             </div>
             <span className="edu-status-tag">UNDERGRADUATE DEGREE</span>
-            <span className="edu-graduation-target">EXPECTED &middot; 2028</span>
           </div>
 
           {/* Timeline Spine */}

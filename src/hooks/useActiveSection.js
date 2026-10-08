@@ -6,25 +6,34 @@ export function useActiveSection(sectionIds, offset = 140) {
   useEffect(() => {
     if (!sectionIds || sectionIds.length === 0) return;
 
-    const observers = [];
     const elements = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateActive = () => {
       const scrollPosition = window.scrollY + offset;
 
       for (let i = elements.length - 1; i >= 0; i--) {
         const el = elements[i];
         if (el.offsetTop <= scrollPosition) {
-          setActiveSection(el.id);
+          setActiveSection((prev) => (prev !== el.id ? el.id : prev));
           break;
         }
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActive);
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    updateActive();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

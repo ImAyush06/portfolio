@@ -225,14 +225,20 @@ export function Hero() {
 
         .hero-title-group {
           font-family: var(--font-display);
-          font-size: clamp(3.4rem, 8.5vw, 6.4rem);
+          font-size: clamp(2.8rem, 5.8vw, 4.6rem);
           font-weight: 800;
-          line-height: 0.92;
-          letter-spacing: -0.04em;
+          line-height: 1.05;
+          letter-spacing: -0.035em;
           color: var(--text-primary);
-          margin: 0 0 clamp(18px, 2.5vh, 26px);
+          margin: 0 0 clamp(16px, 2.2vh, 22px);
           display: flex;
-          flex-direction: column;
+          flex-wrap: wrap;
+          gap: 0 14px;
+          align-items: baseline;
+        }
+
+        .hero-name-first {
+          color: var(--text-primary);
         }
 
         .hero-name-second {

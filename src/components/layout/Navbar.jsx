@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, FileText } from 'lucide-react';
 import { site } from '@/data/site';
@@ -7,9 +7,10 @@ import { CommandPalette } from './CommandPalette';
 
 export function Navbar({ navItems = [], activeSection = '' }) {
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const visibleRef = useRef(true);
 
   const handleResumeClick = (e) => {
     if (site.resume) {
@@ -24,25 +25,41 @@ export function Navbar({ navItems = [], activeSection = '' }) {
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
   };
 
-  // Hide on scroll down, show on scroll up
+  // Hide on scroll down, show on scroll up (optimized with rAF to eliminate lag)
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 80) {
-        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 8) {
-          setVisible(false);
-        } else if (lastScrollY - currentScrollY > 8) {
-          setVisible(true);
-        }
-      } else {
-        setVisible(true);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const lastScrollY = lastScrollYRef.current;
+
+          let nextVisible = true;
+          if (currentScrollY > 80) {
+            if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
+              nextVisible = false;
+            } else if (lastScrollY - currentScrollY > 6) {
+              nextVisible = true;
+            } else {
+              nextVisible = visibleRef.current;
+            }
+          }
+
+          if (nextVisible !== visibleRef.current) {
+            visibleRef.current = nextVisible;
+            setVisible(nextVisible);
+          }
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Global Ctrl+K / Cmd+K listener
   useEffect(() => {
@@ -99,10 +116,19 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           >
             <span
               style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: 'var(--accent)',
+                display: 'inline-block',
+              }}
+            />
+            <span
+              style={{
                 fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: '14px',
-                letterSpacing: '0.06em',
+                fontWeight: 800,
+                fontSize: '14.5px',
+                letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
               }}

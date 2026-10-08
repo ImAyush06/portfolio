@@ -1,0 +1,73 @@
+/* Hairline draw */
+.hairline-x {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+
+.hairline-strong-x {
+  height: 1px;
+  background: var(--line-strong);
+  width: 100%;
+}
+
+.hairline-y {
+  width: 1px;
+  background: var(--line);
+  height: 100%;
+}
+
+/* Pulsing availability indicator */
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.beacon-outer {
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background-color: var(--accent);
+  opacity: 0.7;
+  animation: pulseDot 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Subtle Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Transitions */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .beacon-outer {
+    animation: none;
+    display: none;
+  }
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+}

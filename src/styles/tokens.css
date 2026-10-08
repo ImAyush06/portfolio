@@ -1,0 +1,81 @@
+:root {
+  /* =========================================================================
+     PREMIUM DARK NAVY & TECHNICAL BLUE DESIGN SYSTEM
+     (80% Dark Canvas, 15% Content, 5% Blue/Cyan Accents)
+     ========================================================================= */
+  
+  /* Canvas & Elevated Surfaces */
+  --bg: #07101F;            /* Primary Dark Navy Background */
+  --bg-0: #07101F;
+  --bg-secondary: #0B1628;  /* Secondary Elevated Surface */
+  --bg-1: #0B1628;
+  --surface: #101D32;       /* Surface Card Canvas */
+  --bg-2: #101D32;
+  --surface-raised: #14243D;/* Raised Hover Surface */
+  --bg-overlay: rgba(7, 16, 31, 0.95);
+
+  /* Primary Blue & Accent System */
+  --blue: #2EA8FF;          /* Primary Blue */
+  --blue-primary: #2EA8FF;
+  --blue-deep: #1769D1;     /* Deep Blue */
+  --cyan-subtle: #55D6FF;   /* Subtle Cyan */
+  --blue-light: #55D6FF;
+  --blue-glow: rgba(46, 168, 255, 0.25);
+  --blue-subtle: rgba(46, 168, 255, 0.10);
+  --blue-border: rgba(100, 170, 255, 0.15);
+
+  /* Semantic Mappings */
+  --accent: #2EA8FF;
+  --accent-secondary: #1769D1;
+  --accent-hover: #55D6FF;
+  --accent-subtle: rgba(46, 168, 255, 0.12);
+  --emerald: #10B981;
+
+  /* Legacy aliases mapped gracefully */
+  --cyan: #55D6FF;
+  --violet: #2EA8FF;
+  --violet-light: #55D6FF;
+  --amber: #2EA8FF;
+  --coral: #2EA8FF;
+  --mint: #2EA8FF;
+  --teal: #2EA8FF;
+  --indigo: #1769D1;
+  --purple: #2EA8FF;
+
+  /* Subtle Gradient Accents */
+  --duo-gradient: linear-gradient(135deg, #1769D1 0%, #2EA8FF 100%);
+  --duo-gradient-hover: linear-gradient(135deg, #1d72dd 0%, #4cb4ff 100%);
+  --duo-gradient-subtle: linear-gradient(135deg, rgba(23, 105, 209, 0.15) 0%, rgba(46, 168, 255, 0.10) 100%);
+  --duo-text-gradient: linear-gradient(135deg, #F4F7FB 30%, #BAE6FD 70%, #2EA8FF 100%);
+  --duo-glow: 0 4px 20px rgba(46, 168, 255, 0.25);
+
+  /* Borders & Dividers */
+  --border: rgba(100, 170, 255, 0.15);
+  --line: rgba(100, 170, 255, 0.10);
+  --line-strong: rgba(100, 170, 255, 0.25);
+  --line-coral: rgba(100, 170, 255, 0.25);
+  --line-mint: rgba(100, 170, 255, 0.25);
+
+  /* Typography */
+  --text-primary: #F4F7FB;  /* Crisp Bright White */
+  --ivory: #F4F7FB;
+  --text-secondary: #A7B4C8;/* Recruiter-friendly soft secondary slate */
+  --text-muted: #7E8EAA;    /* Metadata & subtle hints */
+  --muted: #7E8EAA;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-section: clamp(56px, 7vh, 84px);
+  --container: min(1240px, 100% - 2 * clamp(20px, 4vw, 48px));
+
+  /* Typography Fonts */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}

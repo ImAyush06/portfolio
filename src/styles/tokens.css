@@ -1,80 +1,63 @@
 :root {
   /* =========================================================================
-     PREMIUM DARK NAVY & TECHNICAL BLUE DESIGN SYSTEM
-     (80% Dark Canvas, 15% Content, 5% Blue/Cyan Accents)
+     EDITORIAL WARM PAPER & CHARCOAL DESIGN SYSTEM
+     (Warm Paper Canvas, Soft Beige Surfaces, Deep Charcoal Typography, Muted Sage & Copper)
      ========================================================================= */
-  
-  /* Canvas & Elevated Surfaces */
-  --bg: #07101F;            /* Primary Dark Navy Background */
-  --bg-0: #07101F;
-  --bg-secondary: #0B1628;  /* Secondary Elevated Surface */
-  --bg-1: #0B1628;
-  --surface: #101D32;       /* Surface Card Canvas */
-  --bg-2: #101D32;
-  --surface-raised: #14243D;/* Raised Hover Surface */
-  --bg-overlay: rgba(7, 16, 31, 0.95);
 
-  /* Primary Blue & Accent System */
-  --blue: #2EA8FF;          /* Primary Blue */
-  --blue-primary: #2EA8FF;
-  --blue-deep: #1769D1;     /* Deep Blue */
-  --cyan-subtle: #55D6FF;   /* Subtle Cyan */
-  --blue-light: #55D6FF;
-  --blue-glow: rgba(46, 168, 255, 0.25);
-  --blue-subtle: rgba(46, 168, 255, 0.10);
-  --blue-border: rgba(100, 170, 255, 0.15);
+  /* Primary Canvas & Warm Paper Surfaces */
+  --bg: #F5F3EE;              /* Primary Warm Paper Canvas */
+  --bg-0: #F5F3EE;
+  --bg-secondary: #EEECE5;    /* Secondary Soft Beige */
+  --bg-1: #EEECE5;
+  --surface: #FAF9F5;         /* Crisp Warm Card Surface */
+  --bg-2: #FAF9F5;
+  --surface-raised: #FFFFFF;  /* Clean Elevated Surface */
+  --bg-overlay: rgba(245, 243, 238, 0.96);
 
-  /* Semantic Mappings */
-  --accent: #2EA8FF;
-  --accent-secondary: #1769D1;
-  --accent-hover: #55D6FF;
-  --accent-subtle: rgba(46, 168, 255, 0.12);
-  --emerald: #10B981;
+  /* Deep Charcoal & Soft Slate Typography (Eye Comfort) */
+  --text-primary: #20231F;    /* Deep Charcoal Text (Not harsh pure black) */
+  --ivory: #20231F;           /* Remapped to deep charcoal */
+  --text-secondary: #686C64;  /* Muted Editorial Slate */
+  --text-muted: #8A8E85;      /* Subtle Metadata */
+  --muted: #8A8E85;
 
-  /* Legacy aliases mapped gracefully */
-  --cyan: #55D6FF;
-  --violet: #2EA8FF;
-  --violet-light: #55D6FF;
-  --amber: #2EA8FF;
-  --coral: #2EA8FF;
-  --mint: #2EA8FF;
-  --teal: #2EA8FF;
-  --indigo: #1769D1;
-  --purple: #2EA8FF;
+  /* Editorial Accents */
+  --accent: #5E7F68;          /* Primary Accent: Muted Sage Green */
+  --accent-secondary: #C38A5A;/* Secondary Accent: Muted Copper */
+  --accent-soft: #E5EBDD;     /* Very Subtle Sage Highlight */
+  --accent-hover: #4F6D59;
+  --copper: #C38A5A;
+  --copper-soft: #F5ECE3;
+  --emerald: #5E7F68;
+  --blue: #5E7F68;
+  --cyan: #5E7F68;
+  --violet: #C38A5A;
 
-  /* Subtle Gradient Accents */
-  --duo-gradient: linear-gradient(135deg, #1769D1 0%, #2EA8FF 100%);
-  --duo-gradient-hover: linear-gradient(135deg, #1d72dd 0%, #4cb4ff 100%);
-  --duo-gradient-subtle: linear-gradient(135deg, rgba(23, 105, 209, 0.15) 0%, rgba(46, 168, 255, 0.10) 100%);
-  --duo-text-gradient: linear-gradient(135deg, #F4F7FB 30%, #BAE6FD 70%, #2EA8FF 100%);
-  --duo-glow: 0 4px 20px rgba(46, 168, 255, 0.25);
+  /* Thin Editorial Borders & Hairlines */
+  --border: #D9D8D0;          /* 1px Hairline Border */
+  --border-subtle: #E6E4DC;
+  --line: #D9D8D0;
+  --line-strong: #C4C3BA;
+  --line-cyan: #D9D8D0;
 
-  /* Borders & Dividers */
-  --border: rgba(100, 170, 255, 0.15);
-  --line: rgba(100, 170, 255, 0.10);
-  --line-strong: rgba(100, 170, 255, 0.25);
-  --line-coral: rgba(100, 170, 255, 0.25);
-  --line-mint: rgba(100, 170, 255, 0.25);
+  /* Subtle Tonal Gradients (No heavy neon glows) */
+  --duo-gradient: linear-gradient(135deg, #5E7F68 0%, #C38A5A 100%);
+  --duo-gradient-hover: linear-gradient(135deg, #4F6D59 0%, #B07849 100%);
+  --duo-gradient-subtle: linear-gradient(135deg, rgba(94, 127, 104, 0.08) 0%, rgba(195, 138, 90, 0.06) 100%);
+  --duo-text-gradient: linear-gradient(135deg, #20231F 0%, #3D443B 100%);
 
-  /* Typography */
-  --text-primary: #F4F7FB;  /* Crisp Bright White */
-  --ivory: #F4F7FB;
-  --text-secondary: #A7B4C8;/* Recruiter-friendly soft secondary slate */
-  --text-muted: #7E8EAA;    /* Metadata & subtle hints */
-  --muted: #7E8EAA;
-
-  /* Radii */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  /* Clean Sharp Architectural Radii */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
   --radius-full: 9999px;
 
-  /* Spacing */
-  --space-section: clamp(56px, 7vh, 84px);
-  --container: min(1240px, 100% - 2 * clamp(20px, 4vw, 48px));
+  /* Spacing & Container */
+  --space-section: clamp(64px, 8vh, 104px);
+  --container: min(1340px, 100% - 2 * clamp(24px, 5vw, 64px));
 
-  /* Typography Fonts */
+  /* Editorial Typography */
   --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;

@@ -5,38 +5,38 @@ export function BrowserFrame({ children, slug = "localhost:3000", frame = true }
 
   return (
     <div style={{
-      borderRadius: 'var(--radius-md)',
+      borderRadius: 'var(--radius-sm)',
       overflow: 'hidden',
-      border: '1px solid var(--line-strong)',
-      background: 'var(--bg-2)',
-      boxShadow: '0 20px 40px -15px rgba(0,0,0,0.7)',
+      border: '1px solid var(--border)',
+      background: 'var(--surface)',
+      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
     }}>
       {/* Browser Bar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '8px 14px',
-        background: 'var(--bg-1)',
-        borderBottom: '1px solid var(--line)',
+        padding: '7px 12px',
+        background: 'var(--bg-secondary)',
+        borderBottom: '1px solid var(--border)',
       }}>
         {/* Three Dots */}
-        <div style={{ display: 'flex', gap: '6px' }}>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(244,240,232,0.2)' }} />
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(244,240,232,0.2)' }} />
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(244,240,232,0.2)' }} />
+        <div style={{ display: 'flex', gap: '5px' }}>
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#D9D8D0' }} />
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#D9D8D0' }} />
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#D9D8D0' }} />
         </div>
 
         {/* Address text */}
         <div style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '11px',
-          letterSpacing: '0.06em',
-          color: 'var(--muted)',
-          background: 'var(--bg-0)',
-          padding: '2px 12px',
-          borderRadius: 'var(--radius-sm)',
-          border: '1px solid var(--line)',
+          fontSize: '10.5px',
+          letterSpacing: '0.04em',
+          color: 'var(--text-secondary)',
+          background: 'var(--surface)',
+          padding: '2px 10px',
+          borderRadius: 'var(--radius-xs)',
+          border: '1px solid var(--border)',
           maxWidth: '65%',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -45,7 +45,7 @@ export function BrowserFrame({ children, slug = "localhost:3000", frame = true }
           https://{slug}.app
         </div>
 
-        <div style={{ width: '30px' }} />
+        <div style={{ width: '24px' }} />
       </div>
 
       {/* Viewport Content */}

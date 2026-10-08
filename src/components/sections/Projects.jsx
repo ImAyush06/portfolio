@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Layers, Cpu, Globe, Bot } from 'lucide-react';
 import { SectionShell } from '@/components/layout/SectionShell';
 import { projects } from '@/data/projects';
@@ -16,7 +15,6 @@ const categoryTabs = [
 ];
 
 export function Projects({
-  sectionIndex = "03",
   activeHoveredSkill = null,
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -28,7 +26,7 @@ export function Projects({
     title: '',
   });
 
-  // Deep-linking support: check URL hash on load (e.g. #project-hospital-management)
+  // Deep-linking support: check URL hash on load
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
@@ -97,91 +95,48 @@ export function Projects({
         label="PROJECTS"
       >
         {/* Category Filter Tabs & Quick Jump Bar */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+        <div className="projects-controls-bar">
           
-          {/* Category Filter Pills */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '8px',
-            }}
-          >
+          {/* Category Filter Buttons */}
+          <div className="projects-filter-group" role="tablist" aria-label="Project category filter">
             {categoryTabs.map((tab) => {
               const isActive = selectedCategory === tab.id;
               return (
                 <button
                   key={tab.id}
+                  role="tab"
+                  aria-selected={isActive}
                   onClick={() => setSelectedCategory(tab.id)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '7px 14px',
-                    borderRadius: 'var(--radius-xs)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    border: isActive ? '1px solid #FFFFFF' : '1px solid var(--border)',
-                    background: isActive ? '#FFFFFF' : 'var(--bg-secondary)',
-                    color: isActive ? '#0B0C0E' : 'var(--muted)',
-                    transition: 'all 0.2s ease',
-                  }}
-                  className="filter-pill-btn"
+                  className={`projects-tab-btn ${isActive ? 'is-active' : ''}`}
                 >
-                  <span style={{ color: isActive ? '#0B0C0E' : 'var(--text-secondary)' }}>{tab.icon}</span>
+                  <span className="projects-tab-icon">{tab.icon}</span>
                   <span>{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Quick Index Jump Bar */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              overflowX: 'auto',
-              paddingBottom: '12px',
-              borderBottom: '1px solid var(--border)',
-              scrollbarWidth: 'none',
-            }}
-          >
-            <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--mint)', flexShrink: 0, fontSize: '11px', fontWeight: 600 }}>
-              INDEX //
-            </span>
-            {projects.map((p) => (
-              <a
-                key={p.id}
-                href={`#project-${p.id}`}
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  color: 'var(--muted)',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  padding: '4px 10px',
-                  borderRadius: 'var(--radius-xs)',
-                  border: '1px solid var(--line)',
-                  background: 'var(--bg-secondary)',
-                  transition: 'all 0.2s ease',
-                }}
-                className="project-chip-jump"
-              >
-                {p.title}
-              </a>
-            ))}
+          {/* Quick Index Jump Strip */}
+          <div className="projects-jump-strip">
+            <span className="projects-jump-label">QUICK JUMP:</span>
+            <div className="projects-jump-links">
+              {projects.map((p, idx) => (
+                <a
+                  key={p.id}
+                  href={`#project-${p.id}`}
+                  className="projects-jump-anchor"
+                >
+                  <span>0{idx + 1}</span>
+                  <span>{p.title}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
         </div>
 
-        {/* 2-Column Parallel Grid (50% / 50% on Desktop, 1 Column on Mobile) */}
-        <div className="projects-parallel-grid">
+        {/* Large Editorial Project Compositions with Alternating Rhythm */}
+        <div className="projects-editorial-list">
           {filteredProjects.map((project, idx) => (
             <ProjectParallelCard
               key={project.id}
@@ -214,27 +169,105 @@ export function Projects({
       />
 
       <style>{`
-        .projects-parallel-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: clamp(16px, 2.5vw, 24px);
+        .projects-controls-bar {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          margin-bottom: clamp(24px, 4vh, 36px);
         }
 
-        @media (min-width: 1024px) {
-          .projects-parallel-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+        .projects-filter-group {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
         }
 
-        .filter-pill-btn:hover {
-          color: var(--text-primary) !important;
-          border-color: var(--line-strong) !important;
+        .projects-tab-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 7px 14px;
+          border-radius: var(--radius-xs);
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          cursor: pointer;
+          border: 1px solid var(--border);
+          background: var(--surface);
+          color: var(--text-secondary);
+          transition: all 0.15s ease;
         }
 
-        .project-chip-jump:hover {
-          color: #FFFFFF !important;
-          border-color: rgba(255, 255, 255, 0.3) !important;
-          background: rgba(255, 255, 255, 0.08) !important;
+        .projects-tab-btn:hover {
+          background: var(--bg-secondary);
+          color: var(--text-primary);
+          border-color: var(--border-strong);
+        }
+
+        .projects-tab-btn.is-active {
+          border-color: var(--accent);
+          background: var(--accent);
+          color: #FFFFFF;
+        }
+
+        .projects-tab-btn.is-active .projects-tab-icon {
+          color: #FFFFFF;
+        }
+
+        .projects-jump-strip {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          overflow-x: auto;
+          padding-bottom: 12px;
+          border-bottom: 1px solid var(--border);
+          scrollbar-width: none;
+        }
+
+        .projects-jump-label {
+          font-family: var(--font-mono);
+          color: var(--accent);
+          font-size: 10.5px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          flex-shrink: 0;
+        }
+
+        .projects-jump-links {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: nowrap;
+        }
+
+        .projects-jump-anchor {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: var(--text-secondary);
+          text-decoration: none;
+          white-space: nowrap;
+          padding: 4px 10px;
+          border-radius: var(--radius-xs);
+          border: 1px solid var(--border);
+          background: var(--bg-secondary);
+          transition: all 0.15s ease;
+        }
+
+        .projects-jump-anchor:hover {
+          color: var(--text-primary);
+          border-color: var(--accent);
+          background: var(--surface);
+        }
+
+        .projects-editorial-list {
+          display: flex;
+          flex-direction: column;
         }
       `}</style>
     </>

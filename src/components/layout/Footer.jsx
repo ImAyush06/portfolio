@@ -1,215 +1,151 @@
 import React from 'react';
-import { ArrowUp, ArrowRight } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { site } from '@/data/site';
-import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons';
 
 export function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleResumeClick = (e) => {
-    if (site.resume) {
-      window.open(site.resume, '_blank');
-      return;
-    }
-    e.preventDefault();
-    const subject = encodeURIComponent("Resume Request — Ayush Kumar");
-    const body = encodeURIComponent(
-      "Hi Ayush,\n\nI reviewed your portfolio and would like to request a copy of your resume for consideration.\n\nBest regards,"
-    );
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--border)',
-        background: 'var(--bg-0)',
-        padding: 'clamp(44px, 6vw, 68px) 0 32px',
-        position: 'relative',
-        zIndex: 3,
-      }}
-    >
+    <footer className="editorial-footer">
       <div className="container-shell">
-        {/* Main Row */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            gap: '24px',
-            paddingBottom: '32px',
-            borderBottom: '1px solid var(--line)',
-          }}
-        >
-          <div>
-            <span
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: '18px',
-                color: 'var(--ivory)',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                display: 'block',
-              }}
-            >
-              AYUSH KUMAR
-            </span>
-            <div style={{ marginTop: '6px' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  color: 'var(--coral)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  display: 'block',
-                  fontWeight: 600,
-                }}
-              >
-                FULL STACK WEB DEVELOPER
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  color: 'var(--muted)',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  display: 'block',
-                  marginTop: '2px',
-                }}
-              >
-                COMPUTER SCIENCE ENGINEERING STUDENT
-              </span>
-            </div>
+        <div className="footer-content-row">
+          
+          {/* Identity & Role */}
+          <div className="footer-brand-col">
+            <span className="footer-name">AYUSH KUMAR</span>
+            <span className="footer-role">FULL STACK WEB DEVELOPER</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-            {site.github && (
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.06em',
-                  textDecoration: 'none',
-                  color: 'var(--teal)',
-                  transition: 'color 0.2s ease',
-                }}
-                className="footer-link-hover"
-              >
-                GITHUB ↗
-              </a>
-            )}
-            {site.linkedin && (
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.06em',
-                  textDecoration: 'none',
-                  color: 'var(--teal)',
-                  transition: 'color 0.2s ease',
-                }}
-                className="footer-link-hover"
-              >
-                LINKEDIN ↗
-              </a>
-            )}
+          {/* Simple Text Links */}
+          <div className="footer-links-col">
+            <a
+              href={site.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-nav-link"
+            >
+              GitHub &rarr;
+            </a>
+
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-nav-link"
+            >
+              LinkedIn &rarr;
+            </a>
+
             <a
               href={`mailto:${site.email}`}
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
-                letterSpacing: '0.06em',
-                textDecoration: 'none',
-                color: 'var(--teal)',
-                transition: 'color 0.2s ease',
-              }}
-              className="footer-link-hover"
+              className="footer-nav-link"
             >
-              EMAIL ↗
+              Email &rarr;
             </a>
 
-            <a
-              href={site.resume || `mailto:${site.email}?subject=Resume%20Request%20%E2%80%94%20Ayush%20Kumar&body=Hi%20Ayush,%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20resume.%0A%0AThank%20you!`}
-              onClick={handleResumeClick}
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
-                letterSpacing: '0.06em',
-                textDecoration: 'none',
-                color: 'var(--teal)',
-                transition: 'color 0.2s ease',
-                cursor: 'pointer',
-              }}
-              className="footer-link-hover"
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="footer-top-btn"
+              aria-label="Scroll back to top of page"
             >
-              RESUME ↗
-            </a>
+              <span>BACK TO TOP</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
           </div>
-        </div>
 
-        {/* Bottom Sub-row */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingTop: '20px',
-            flexWrap: 'wrap',
-            gap: '12px',
-          }}
-        >
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--muted)' }}>
-            © Ayush Kumar. All rights reserved.
-          </span>
+          {/* Copyright Year */}
+          <div className="footer-copy-col">
+            <span className="footer-copy">&copy; 2026 AYUSH KUMAR</span>
+          </div>
 
-          <button
-            onClick={scrollToTop}
-            aria-label="Back to top"
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              color: 'var(--ivory)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              transition: 'color 0.2s ease',
-            }}
-            className="footer-top-btn"
-          >
-            <span>BACK TO TOP</span>
-            <ArrowUp className="w-3.5 h-3.5" style={{ color: 'var(--coral)' }} />
-          </button>
         </div>
       </div>
 
       <style>{`
-        .footer-link-hover:hover {
-          color: var(--coral) !important;
+        .editorial-footer {
+          border-top: 1px solid var(--border);
+          background: var(--bg-0);
+          padding: clamp(36px, 5vh, 48px) 0 32px;
+          position: relative;
+          z-index: 3;
         }
+
+        .footer-content-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .footer-brand-col {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .footer-name {
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 14px;
+          letter-spacing: 0.06em;
+          color: var(--text-primary);
+        }
+
+        .footer-role {
+          font-family: var(--font-mono);
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          color: var(--accent);
+          font-weight: 600;
+        }
+
+        .footer-links-col {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+
+        .footer-nav-link {
+          font-family: var(--font-mono);
+          font-size: 11.5px;
+          color: var(--text-secondary);
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+
+        .footer-nav-link:hover {
+          color: var(--accent);
+        }
+
+        .footer-top-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          background: none;
+          border: none;
+          padding: 0;
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          letter-spacing: 0.08em;
+          font-weight: 600;
+          color: var(--text-secondary);
+          cursor: pointer;
+          transition: color 0.15s ease;
+        }
+
         .footer-top-btn:hover {
-          color: var(--coral) !important;
+          color: var(--text-primary);
+        }
+
+        .footer-copy-col {
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          color: var(--text-secondary);
         }
       `}</style>
     </footer>

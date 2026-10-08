@@ -4,86 +4,100 @@ import { SectionShell } from '@/components/layout/SectionShell';
 
 export function About() {
   const quickProfile = [
-
     {
-      label: 'EDUCATION',
-      value: 'B.Tech CSE',
+      label: 'DEGREE',
+      value: 'B.Tech Computer Science & Engineering',
     },
     {
-      label: 'UNIVERSITY',
+      label: 'INSTITUTION',
       value: (
         <a
           href="https://www.lpu.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="about-profile-link"
+          className="about-editorial-link"
           aria-label="Lovely Professional University website"
         >
           <span>Lovely Professional University</span>
-          <ArrowUpRight className="w-3 h-3 about-link-icon" aria-hidden="true" />
+          <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
         </a>
       ),
     },
     {
-      label: 'FOCUS',
-      value: 'Full Stack Development',
+      label: 'CORE FOCUS',
+      value: 'Full Stack Web Engineering & Scalable Systems',
     },
     {
-      label: 'INTERESTS',
-      value: 'DSA · Web · Systems · AI',
+      label: 'FOUNDATIONS',
+      value: 'Data Structures & Algorithms · Web Architecture · Databases',
+    },
+    {
+      label: 'STATUS',
+      value: 'Open to Software Engineering Internships & Roles',
     },
   ];
 
-  const focusPills = ['FULL STACK', 'DSA', 'WEB DEVELOPMENT'];
+  const focusKeywords = ['FULL STACK', 'DATA STRUCTURES & ALGORITHMS', 'SYSTEMS & APIS', 'WEB PLATFORMS'];
 
   return (
     <SectionShell id="about" label="ABOUT">
-      <div className="about-editorial-wrap">
+      <div className="about-editorial-container">
         
-        {/* Asymmetric Editorial Layout: 65% Left / 35% Right */}
-        <div className="about-layout-grid">
+        {/* Asymmetric 8 / 4 Editorial Grid */}
+        <div className="about-grid-layout">
           
           {/* =========================================================
-              LEFT COLUMN (65%): Main Statement & Short Introduction
+              LEFT COLUMN (8 COLS): Statement, Narrative, Keywords
               ========================================================= */}
           <div className="about-narrative-col">
             
-            {/* Main Visual Element: Strong, clear, max 2 lines */}
-            <h3 className="about-statement-lead">
+            {/* Primary Editorial Statement */}
+            <h3 className="about-statement-headline">
               I’m a Computer Science Engineering student focused on building practical web applications and solving problems with code.
             </h3>
 
-            {/* Short Introduction: 2 lines max, simple natural English */}
-            <p className="about-statement-sub">
-              I work across frontend, backend and core programming, with an interest in building useful software and learning new technologies.
-            </p>
+            {/* Verified Narrative Paragraphs */}
+            <div className="about-statement-body">
+              <p>
+                I work across frontend, backend, and core programming, with a focus on building useful software products and mastering modern web standards.
+              </p>
+              <p>
+                My work centers around end-to-end development—from interactive user interfaces built with React to scalable backend services architected with Java and Spring Boot, supported by structured database management and clean algorithmic logic.
+              </p>
+            </div>
 
-            {/* Subtle Text Labels (No large cards) */}
-            <div className="about-pills-row" aria-label="Core Engineering Disciplines">
-              {focusPills.map((pill) => (
-                <span key={pill} className="about-pill-item">
-                  {pill}
-                </span>
-              ))}
+            {/* Editorial Keywords Line */}
+            <div className="about-keywords-row">
+              <span className="about-keywords-title">PRIMARY DISCIPLINES:</span>
+              <div className="about-keywords-list">
+                {focusKeywords.map((kw) => (
+                  <span key={kw} className="about-keyword-tag">
+                    {kw}
+                  </span>
+                ))}
+              </div>
             </div>
 
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN (35%): Compact Quick Profile List
+              RIGHT COLUMN (4 COLS): Clean Editorial Fact Sheet
               ========================================================= */}
-          <div className="about-profile-col">
-            <div className="about-profile-list" role="list" aria-label="Quick Profile Details">
-              {quickProfile.map((item) => (
-                <div key={item.label} className="about-profile-row" role="listitem">
-                  <span className="about-profile-label">
-                    {item.label}
-                  </span>
-                  <div className="about-profile-val">
-                    {item.value}
+          <div className="about-fact-col">
+            <div className="about-fact-sheet">
+              <div className="about-fact-header">
+                <span className="about-fact-badge">PROFILE SUMMARY</span>
+                <span className="about-fact-code">2024 &mdash; 2028</span>
+              </div>
+
+              <div className="about-fact-list">
+                {quickProfile.map((item) => (
+                  <div key={item.label} className="about-fact-row">
+                    <span className="about-fact-label">{item.label}</span>
+                    <div className="about-fact-value">{item.value}</div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
@@ -91,177 +105,164 @@ export function About() {
 
       </div>
 
-      {/* Scoped CSS for Redesigned About Section */}
       <style>{`
-        .about-editorial-wrap {
-          max-width: 100%;
+        .about-editorial-container {
+          width: 100%;
         }
 
-        .about-layout-grid {
+        .about-grid-layout {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(32px, 5vw, 64px);
-          align-items: start;
+          gap: clamp(32px, 5vw, 56px);
+          align-items: flex-start;
         }
 
-        @media (min-width: 960px) {
-          .about-layout-grid {
-            grid-template-columns: 1.45fr 0.85fr;
-            gap: clamp(40px, 5.5vw, 72px);
+        @media (min-width: 992px) {
+          .about-grid-layout {
+            grid-template-columns: 1.4fr 0.85fr;
           }
         }
 
-        /* LEFT COLUMN */
-        .about-narrative-col {
-          display: flex;
-          flex-direction: column;
-        }
-
-        /* Main Statement: Large, bold, high contrast */
-        .about-statement-lead {
+        /* Left Narrative */
+        .about-statement-headline {
           font-family: var(--font-display);
-          font-size: clamp(1.4rem, 2.3vw, 2.15rem);
+          font-size: clamp(1.45rem, 2.3vw, 2.15rem);
           font-weight: 700;
-          line-height: 1.32;
+          line-height: 1.25;
           letter-spacing: -0.025em;
           color: var(--text-primary);
-          margin: 0 0 18px 0;
-          max-width: 720px;
+          margin: 0 0 clamp(18px, 2.5vh, 24px);
         }
 
-        /* Short Introduction: Smaller, comfortable line height */
-        .about-statement-sub {
+        .about-statement-body {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          margin-bottom: clamp(24px, 3vh, 32px);
+          max-width: 62ch;
+        }
+
+        .about-statement-body p {
           font-family: var(--font-body);
-          font-size: clamp(14px, 1.1vw, 15.5px);
+          font-size: clamp(14.5px, 1.1vw, 15.5px);
           line-height: 1.65;
           color: var(--text-secondary);
-          margin: 0 0 24px 0;
-          max-width: 640px;
+          margin: 0;
         }
 
-        /* Three Small Text Labels */
-        .about-pills-row {
+        .about-keywords-row {
           display: flex;
-          align-items: center;
+          flex-direction: column;
           gap: 8px;
-          flex-wrap: wrap;
-        }
-
-        .about-pill-item {
-          font-family: var(--font-mono);
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          color: var(--blue);
-          padding: 4px 10px;
-          background: rgba(46, 168, 255, 0.08);
-          border: 1px solid rgba(100, 170, 255, 0.2);
-          border-radius: var(--radius-xs);
-          transition: all 0.2s ease;
-        }
-
-        .about-pill-item:hover {
-          background: rgba(46, 168, 255, 0.16);
-          border-color: var(--blue);
-          color: #FFFFFF;
-        }
-
-        /* RIGHT COLUMN: Quick Profile */
-        .about-profile-col {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .about-profile-list {
-          display: flex;
-          flex-direction: column;
+          padding-top: 20px;
           border-top: 1px solid var(--border);
         }
 
-        .about-profile-row {
-          position: relative;
-          padding: 12px 0 12px 0;
+        .about-keywords-title {
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          letter-spacing: 0.12em;
+          color: var(--accent);
+          font-weight: 700;
+        }
+
+        .about-keywords-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .about-keyword-tag {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.05em;
+          padding: 4px 10px;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          border-radius: var(--radius-xs);
+          font-weight: 500;
+        }
+
+        /* Right Fact Sheet */
+        .about-fact-sheet {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: clamp(20px, 3vw, 28px);
+        }
+
+        .about-fact-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 14px;
           border-bottom: 1px solid var(--border);
+          margin-bottom: 16px;
+        }
+
+        .about-fact-badge {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          color: var(--accent);
+        }
+
+        .about-fact-code {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: var(--text-secondary);
+        }
+
+        .about-fact-list {
           display: flex;
           flex-direction: column;
-          gap: 3px;
-          transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), padding-left 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+          gap: 14px;
         }
 
-        /* Subtle Cyan Indicator & Micro-Interaction on Hover */
-        .about-profile-row::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 14px;
-          bottom: 14px;
-          width: 2px;
-          background: var(--blue);
-          opacity: 0;
-          border-radius: 2px;
-          transition: opacity 0.2s ease, transform 0.2s ease;
-          transform: scaleY(0.4);
+        .about-fact-row {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid var(--border-subtle);
         }
 
-        .about-profile-row:hover {
-          padding-left: 10px;
+        .about-fact-row:last-child {
+          padding-bottom: 0;
+          border-bottom: none;
         }
 
-        .about-profile-row:hover::before {
-          opacity: 1;
-          transform: scaleY(1);
-        }
-
-        .about-profile-label {
+        .about-fact-label {
           font-family: var(--font-mono);
           font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          color: var(--text-muted);
-          text-transform: uppercase;
-        }
-
-        .about-profile-val {
-          font-family: var(--font-display);
-          font-size: 13.5px;
+          letter-spacing: 0.1em;
+          color: var(--text-secondary);
           font-weight: 600;
-          color: var(--text-primary);
-          line-height: 1.4;
-          letter-spacing: -0.01em;
         }
 
-        .about-profile-link {
+        .about-fact-value {
+          font-family: var(--font-body);
+          font-size: 13.5px;
           color: var(--text-primary);
-          text-decoration: none;
+          line-height: 1.45;
+          font-weight: 500;
+        }
+
+        .about-editorial-link {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          transition: color 0.2s ease;
+          color: var(--text-primary);
+          text-decoration: underline;
+          text-decoration-color: var(--accent);
+          text-underline-offset: 3px;
+          transition: color 0.15s ease;
         }
 
-        .about-link-icon {
-          color: var(--blue);
-          transition: transform 0.2s ease;
-        }
-
-        .about-profile-link:hover {
-          color: var(--blue);
-        }
-
-        .about-profile-link:hover .about-link-icon {
-          transform: translate(1px, -1px);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 640px) {
-          .about-statement-lead {
-            font-size: 1.3rem;
-            line-height: 1.35;
-          }
-
-          .about-profile-row {
-            padding: 10px 0;
-          }
+        .about-editorial-link:hover {
+          color: var(--accent);
         }
       `}</style>
     </SectionShell>

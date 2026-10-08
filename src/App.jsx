@@ -45,10 +45,8 @@ export default function App() {
       {/* Top Hairline Scroll Progress Bar */}
       <ScrollProgress />
 
-      {/* Global Background Elements: Subtle Grid & Ambient Radial Glow */}
-      <div className="technical-grid" aria-hidden="true" />
-      <div className="ambient-glow" aria-hidden="true" />
-      <div className="noise-overlay" aria-hidden="true" />
+      {/* Subtle Warm Paper Texture */}
+      <div className="paper-texture" aria-hidden="true" />
 
       {/* Persistent Navigation */}
       <Navbar

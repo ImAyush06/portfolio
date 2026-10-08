@@ -46,8 +46,8 @@ export default function Lightbox({
           position: 'fixed',
           inset: 0,
           zIndex: 9999,
-          background: 'rgba(18, 16, 15, 0.94)',
-          backdropFilter: 'blur(16px)',
+          background: 'rgba(32, 35, 31, 0.72)',
+          backdropFilter: 'blur(8px)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -67,10 +67,18 @@ export default function Lightbox({
           onClick={(e) => e.stopPropagation()}
         >
           <div>
-            <span className="mono-kicker" style={{ fontSize: '11px' }}>
-              LIGHTBOX PREVIEW // {currentIndex + 1 < 10 ? `0${currentIndex + 1}` : currentIndex + 1} OF {images.length < 10 ? `0${images.length}` : images.length}
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                color: 'var(--accent)',
+                letterSpacing: '0.08em',
+                fontWeight: 600,
+              }}
+            >
+              PREVIEW // {currentIndex + 1 < 10 ? `0${currentIndex + 1}` : currentIndex + 1} OF {images.length < 10 ? `0${images.length}` : images.length}
             </span>
-            <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--ivory)', margin: '2px 0 0' }}>
+            <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', color: '#FFFFFF', margin: '2px 0 0', fontWeight: 700 }}>
               {title || currentImage.caption || 'Document Preview'}
             </h4>
           </div>
@@ -79,16 +87,16 @@ export default function Lightbox({
             onClick={onClose}
             aria-label="Close Lightbox"
             style={{
-              background: 'var(--bg-2)',
-              border: '1px solid var(--line-strong)',
-              color: 'var(--ivory)',
-              width: '44px',
-              height: '44px',
+              background: 'rgba(255, 255, 255, 0.15)',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              color: '#FFFFFF',
+              width: '40px',
+              height: '40px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              borderRadius: 'var(--radius-sm)',
+              borderRadius: 'var(--radius-xs)',
             }}
           >
             <X className="w-5 h-5" />

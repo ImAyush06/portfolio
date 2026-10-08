@@ -60,7 +60,6 @@ export function Navbar({ navItems = [], activeSection = '' }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-
   return (
     <>
       <motion.header
@@ -72,9 +71,9 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           top: 0,
           left: 0,
           right: 0,
-          height: '60px',
+          height: '64px',
           zIndex: 100,
-          background: 'rgba(12, 13, 17, 0.88)',
+          background: 'rgba(245, 243, 238, 0.94)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: '1px solid var(--border)',
@@ -84,52 +83,44 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           style={{
             maxWidth: '1360px',
             margin: '0 auto',
-            padding: '0 clamp(16px, 4vw, 36px)',
+            padding: '0 clamp(16px, 4vw, 48px)',
             height: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-            {/* Left: Wordmark */}
+          {/* Left: Clean Editorial Brand */}
           <a
             href="#"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
+              gap: '10px',
               textDecoration: 'none',
               color: 'var(--text-primary)',
             }}
           >
             <span
               style={{
-                width: '7px',
-                height: '7px',
-                background: 'var(--duo-gradient)',
-                borderRadius: '50%',
-                boxShadow: '0 0 10px rgba(56, 189, 248, 0.8)',
-              }}
-            />
-            <span
-              style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: '14px',
+                fontSize: '15px',
                 letterSpacing: '0.04em',
                 textTransform: 'uppercase',
+                color: 'var(--text-primary)',
               }}
             >
               {site.name}
             </span>
           </a>
 
-          {/* Desktop Navigation Links — Clean Names Only (No 01, 02) */}
+          {/* Desktop Navigation Links — Simple Text Links */}
           <nav
             style={{
               display: 'none',
               alignItems: 'center',
-              gap: 'clamp(14px, 2vw, 24px)',
+              gap: 'clamp(16px, 2.2vw, 28px)',
             }}
             className="lg-flex"
           >
@@ -143,15 +134,15 @@ export function Navbar({ navItems = [], activeSection = '' }) {
                     position: 'relative',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    padding: '8px 4px',
+                    padding: '8px 2px',
                     textDecoration: 'none',
-                    color: isActive ? '#FFFFFF' : 'var(--text-secondary)',
+                    color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                     fontFamily: 'var(--font-mono)',
                     fontSize: '11px',
-                    fontWeight: 600,
+                    fontWeight: isActive ? 700 : 500,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    transition: 'color 0.2s ease',
+                    transition: 'color 0.15s ease',
                   }}
                   className="nav-link-hover"
                 >
@@ -166,8 +157,8 @@ export function Navbar({ navItems = [], activeSection = '' }) {
                         left: 0,
                         right: 0,
                         height: '2px',
-                        background: 'var(--duo-gradient)',
-                        boxShadow: '0 0 10px rgba(56, 189, 248, 0.8)',
+                        background: 'var(--accent)',
+                        borderRadius: '1px',
                       }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
@@ -177,8 +168,8 @@ export function Navbar({ navItems = [], activeSection = '' }) {
             })}
           </nav>
 
-          {/* Right Action: Clean Resume, GitHub & LinkedIn Links + Mobile Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {/* Right Action: Clean Editorial Resume Button + Mobile Toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             {/* Resume Button */}
             <a
               href={site.resume || `mailto:${site.email}?subject=Resume%20Request%20%E2%80%94%20Ayush%20Kumar&body=Hi%20Ayush,%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20resume.%0A%0AThank%20you!`}
@@ -188,11 +179,11 @@ export function Navbar({ navItems = [], activeSection = '' }) {
                 display: 'none',
                 alignItems: 'center',
                 gap: '6px',
-                background: 'rgba(56, 189, 248, 0.08)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
                 padding: '6px 14px',
                 borderRadius: 'var(--radius-xs)',
-                color: '#38BDF8',
+                color: 'var(--text-primary)',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '11px',
                 fontWeight: 600,
@@ -203,29 +194,34 @@ export function Navbar({ navItems = [], activeSection = '' }) {
               }}
               className="lg-flex nav-resume-btn"
             >
-              <FileText className="w-3.5 h-3.5" style={{ color: '#38BDF8' }} />
+              <FileText className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
               <span>RESUME</span>
             </a>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile Minimal MENU Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               style={{
-                width: '40px',
-                height: '40px',
+                height: '36px',
+                padding: '0 12px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--bg-secondary)',
+                gap: '6px',
+                background: 'var(--surface)',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius-xs)',
                 color: 'var(--text-primary)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                fontWeight: 600,
+                letterSpacing: '0.06em',
                 cursor: 'pointer',
               }}
               className="mobile-menu-btn"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-4 h-4" />
+              <span>MENU</span>
             </button>
           </div>
         </div>
@@ -254,21 +250,15 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           .lg-flex { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
         }
-        .nav-link-hover:hover { color: var(--text-primary) !important; }
+        .nav-link-hover:hover { color: var(--accent) !important; }
         .nav-resume-btn:hover {
-          background: #38BDF8 !important;
-          color: #0B0C0E !important;
-          border-color: #38BDF8 !important;
-          box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+          background: var(--accent-soft) !important;
+          border-color: var(--accent) !important;
+          color: var(--text-primary) !important;
         }
-        .nav-resume-btn:hover span,
-        .nav-resume-btn:hover svg {
-          color: #0B0C0E !important;
-        }
-        .nav-external-link:hover {
-          border-color: rgba(255, 255, 255, 0.3) !important;
-          color: #FFFFFF !important;
-          background: rgba(255, 255, 255, 0.08) !important;
+        .mobile-menu-btn:hover {
+          background: var(--bg-secondary) !important;
+          border-color: var(--text-secondary) !important;
         }
       `}</style>
     </>

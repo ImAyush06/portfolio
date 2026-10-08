@@ -133,8 +133,8 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
           position: 'fixed',
           inset: 0,
           zIndex: 9999,
-          background: 'rgba(18, 16, 15, 0.82)',
-          backdropFilter: 'blur(12px)',
+          background: 'rgba(32, 35, 31, 0.45)',
+          backdropFilter: 'blur(6px)',
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'center',
@@ -155,10 +155,10 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
           style={{
             width: '100%',
             maxWidth: '560px',
-            background: 'var(--bg-1)',
-            border: '1px solid var(--line-strong)',
-            borderRadius: 'var(--radius-md)',
-            boxShadow: '0 30px 60px rgba(0,0,0,0.8)',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-sm)',
+            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)',
             overflow: 'hidden',
           }}
         >
@@ -183,7 +183,7 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
                 background: 'transparent',
                 border: 'none',
                 outline: 'none',
-                color: 'var(--ivory)',
+                color: 'var(--text-primary)',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '13px',
                 width: '100%',
@@ -193,11 +193,11 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '10px',
-                color: 'var(--muted)',
-                background: 'var(--bg-2)',
-                border: '1px solid var(--line)',
+                color: 'var(--text-secondary)',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
                 padding: '2px 6px',
-                borderRadius: 'var(--radius-sm)',
+                borderRadius: 'var(--radius-xs)',
               }}
             >
               ESC
@@ -207,7 +207,7 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
           {/* Action List */}
           <div style={{ maxHeight: '320px', overflowY: 'auto', padding: '8px' }}>
             {filtered.length === 0 ? (
-              <div style={{ padding: '24px', textAlign: 'center', color: 'var(--muted)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
+              <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
                 No matching actions found.
               </div>
             ) : (
@@ -223,9 +223,9 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      borderRadius: 'var(--radius-sm)',
-                      background: isSelected ? 'var(--bg-2)' : 'transparent',
-                      border: isSelected ? '1px solid var(--line-strong)' : '1px solid transparent',
+                      borderRadius: 'var(--radius-xs)',
+                      background: isSelected ? 'var(--accent-soft)' : 'transparent',
+                      border: isSelected ? '1px solid var(--accent)' : '1px solid transparent',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
                     }}
@@ -234,7 +234,8 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
                       style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '12px',
-                        color: isSelected ? 'var(--accent)' : 'var(--ivory)',
+                        color: isSelected ? 'var(--accent)' : 'var(--text-primary)',
+                        fontWeight: isSelected ? 600 : 500,
                       }}
                     >
                       {item.title}
@@ -244,7 +245,7 @@ export function CommandPalette({ isOpen, onClose, navItems = [] }) {
                         <Check className="w-3.5 h-3.5" /> Copied
                       </span>
                     ) : (
-                      <ArrowUpRight className="w-3.5 h-3.5" style={{ color: 'var(--muted)' }} />
+                      <ArrowUpRight className="w-3.5 h-3.5" style={{ color: 'var(--text-secondary)' }} />
                     )}
                   </div>
                 );

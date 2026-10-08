@@ -27,23 +27,36 @@ export function Certificates() {
   const activeCert = activeCertIndex !== null ? certificates[activeCertIndex] : null;
 
   return (
-    <SectionShell
-      id="certificates"
-      label="CERTIFICATES"
-    >
-      <div className="certificates-parallel-container">
-        <div className="certificates-parallel-grid">
-          {certificates.map((cert) => (
-            <ParallelCertificateCard
-              key={cert.id}
-              certificate={cert}
-              onOpenCertificate={handleOpenCertificate}
-            />
-          ))}
-        </div>
-      </div>
+    <>
+      <SectionShell
+        id="certificates"
+        label="CERTIFICATES"
+      >
+        <div className="certificates-editorial-wrap">
+          
+          {/* Gallery Header Note */}
+          <div className="certificates-note-strip">
+            <span className="certificates-note-dot" />
+            <p className="certificates-note-text">
+              Official enterprise certifications from Infosys Springboard validating foundations in object-oriented systems (C++) and relational database management (DBMS).
+            </p>
+          </div>
 
-      {/* Full Certificate Modal / Lightbox with Aspect-Fit */}
+          {/* Editorial Gallery Grid */}
+          <div className="certificates-gallery-grid">
+            {certificates.map((cert) => (
+              <ParallelCertificateCard
+                key={cert.id}
+                certificate={cert}
+                onOpenCertificate={handleOpenCertificate}
+              />
+            ))}
+          </div>
+
+        </div>
+      </SectionShell>
+
+      {/* Full Certificate Modal with Aspect-Fit */}
       <CertificateModal
         certificate={activeCert}
         isOpen={activeCertIndex !== null}
@@ -55,50 +68,56 @@ export function Certificates() {
       />
 
       <style>{`
-        .certificates-parallel-container {
+        .certificates-editorial-wrap {
           width: 100%;
         }
 
-        .certificates-parallel-grid {
+        .certificates-note-strip {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: clamp(24px, 3.5vh, 32px);
+          padding: 10px 16px;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-xs);
+          max-width: fit-content;
+        }
+
+        .certificates-note-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--accent);
+          flex-shrink: 0;
+        }
+
+        .certificates-note-text {
+          font-family: var(--font-body);
+          font-size: 13px;
+          color: var(--text-secondary);
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .certificates-gallery-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(16px, 2.2vw, 24px);
+          gap: clamp(20px, 3vw, 28px);
         }
 
         @media (min-width: 768px) {
-          .certificates-parallel-grid {
+          .certificates-gallery-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
-        @media (min-width: 1040px) {
-          .certificates-parallel-grid {
+        @media (min-width: 1024px) {
+          .certificates-gallery-grid {
             grid-template-columns: repeat(3, 1fr);
           }
         }
-
-        .parallel-cert-card:hover {
-          border-color: rgba(56, 189, 248, 0.4) !important;
-          box-shadow: 0 16px 36px -10px rgba(56, 189, 248, 0.18), 0 20px 48px -14px rgba(0, 0, 0, 0.8) !important;
-          transform: translateY(-2px);
-        }
-
-        .cert-frame-hover:hover .cert-img-zoom {
-          transform: scale(1.05);
-        }
-
-        .cert-frame-hover:hover .cert-overlay-reveal {
-          opacity: 1 !important;
-        }
-
-        .cert-btn-ghost-hover:hover {
-          background: rgba(56, 189, 248, 0.16) !important;
-          border-color: rgba(56, 189, 248, 0.55) !important;
-          color: #FFFFFF !important;
-          box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25) !important;
-          transform: translateY(-1px);
-        }
       `}</style>
-    </SectionShell>
+    </>
   );
 }

@@ -37,63 +37,66 @@ export function Contact() {
 
   return (
     <SectionShell id="contact" label="CONTACT">
-      <div className="contact-editorial-wrap">
+      <div className="contact-magazine-layout">
         
-        {/* 8 / 4 Asymmetric Grid */}
-        <div className="contact-layout-grid">
+        {/* Asymmetric Magazine-Style Final Page Grid */}
+        <div className="contact-grid">
           
           {/* =========================================================
-              LEFT COLUMN (8 COLS): Primary Conversation Call
+              LEFT COLUMN: Magazine Headline, Big Email, Actions & Socials
               ========================================================= */}
-          <div className="contact-primary-col">
-            <span className="contact-kicker">INITIATE CONVERSATION</span>
-            
-            <h3 className="contact-headline">
-              LET’S TALK.
+          <div className="contact-hero-col">
+            <span className="contact-kicker-tag">FINAL SECTION // GET IN TOUCH</span>
+
+            {/* Large Magazine Statement per prompt section 17 */}
+            <h3 className="contact-magazine-title">
+              <span>LET’S BUILD</span>
+              <span>SOMETHING</span>
+              <span className="contact-highlight">USEFUL.</span>
             </h3>
 
-            <p className="contact-narrative">
+            <p className="contact-lead-text">
               I’m always open to discussing web engineering projects, technical collaborations, software engineering internships, or full stack opportunities.
             </p>
 
-            {/* Direct Email Presentation */}
-            <div className="contact-email-block">
-              <span className="contact-email-label">DIRECT EMAIL ADDRESS</span>
+            {/* Direct Email Display */}
+            <div className="contact-email-station">
+              <span className="contact-email-tag">DIRECT EMAIL:</span>
               <a
                 href={`mailto:${site.email}`}
-                className="contact-email-link"
+                className="contact-large-email"
               >
                 {site.email}
               </a>
             </div>
 
-            {/* Direct Actions: Email Me, Copy, GitHub, LinkedIn */}
-            <div className="contact-actions-row">
+            {/* Primary Action Buttons */}
+            <div className="contact-buttons-row">
               <a
                 href={`mailto:${site.email}?subject=Hello%20Ayush`}
-                className="contact-btn-primary"
+                className="btn-editorial-primary"
               >
                 <span>EMAIL ME</span>
-                <span className="contact-btn-arrow">&rarr;</span>
+                <span className="btn-arrow">&rarr;</span>
               </a>
 
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="contact-btn-copy"
+                className="btn-editorial-secondary"
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-accent" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copied ? 'EMAIL COPIED' : 'COPY EMAIL'}</span>
               </button>
             </div>
 
-            {/* Social Links */}
-            <div className="contact-social-row">
+            {/* Large Editorial Links: GitHub & LinkedIn */}
+            <div className="contact-editorial-links">
               <a
                 href={site.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-social-link"
+                className="contact-editorial-link"
               >
                 <GithubIcon className="w-4 h-4" />
                 <span>GITHUB &rarr;</span>
@@ -103,7 +106,7 @@ export function Contact() {
                 href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-social-link"
+                className="contact-editorial-link"
               >
                 <LinkedinIcon className="w-4 h-4" />
                 <span>LINKEDIN &rarr;</span>
@@ -113,62 +116,62 @@ export function Contact() {
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN (4 COLS): Clean Secondary Direct Note Form
+              RIGHT COLUMN: Clean Note Dispatch Panel
               ========================================================= */}
-          <div className="contact-form-col">
-            <div className="contact-note-card">
-              <div className="contact-card-header">
-                <span className="contact-card-title">SEND A QUICK NOTE</span>
-                <span className="contact-card-badge">DIRECT</span>
+          <div className="contact-dispatch-col">
+            <div className="contact-dispatch-card">
+              <div className="dispatch-card-header">
+                <span className="dispatch-title">DISPATCH A NOTE</span>
+                <span className="dispatch-badge">DIRECT</span>
               </div>
 
-              <form onSubmit={handleSubmit} className="contact-actual-form">
-                <div className="contact-form-group">
-                  <label htmlFor="contact-name" className="contact-field-label">YOUR NAME</label>
+              <form onSubmit={handleSubmit} className="dispatch-form">
+                <div className="dispatch-field">
+                  <label htmlFor="contact-name" className="dispatch-label">NAME</label>
                   <input
                     id="contact-name"
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Ayush or Recruiter"
-                    className="contact-field-input"
+                    placeholder="Your name or team"
+                    className="dispatch-input"
                   />
                 </div>
 
-                <div className="contact-form-group">
-                  <label htmlFor="contact-email" className="contact-field-label">YOUR EMAIL</label>
+                <div className="dispatch-field">
+                  <label htmlFor="contact-email" className="dispatch-label">EMAIL</label>
                   <input
                     id="contact-email"
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@company.com"
-                    className="contact-field-input"
+                    placeholder="email@domain.com"
+                    className="dispatch-input"
                   />
                 </div>
 
-                <div className="contact-form-group">
-                  <label htmlFor="contact-message" className="contact-field-label">MESSAGE</label>
+                <div className="dispatch-field">
+                  <label htmlFor="contact-message" className="dispatch-label">MESSAGE</label>
                   <textarea
                     id="contact-message"
                     required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Brief note or opportunity details..."
-                    className="contact-field-textarea"
+                    placeholder="Project details or role overview..."
+                    className="dispatch-textarea"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="contact-submit-btn"
+                  className="btn-editorial-primary dispatch-submit-btn"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>{status === 'sending' ? 'PREPARING MAIL...' : status === 'success' ? 'OPENING CLIENT...' : 'DISPATCH NOTE'}</span>
+                  <span>{status === 'sending' ? 'PREPARING MAIL...' : status === 'success' ? 'OPENING CLIENT...' : 'SEND MESSAGE'}</span>
                 </button>
               </form>
             </div>
@@ -179,11 +182,11 @@ export function Contact() {
       </div>
 
       <style>{`
-        .contact-editorial-wrap {
+        .contact-magazine-layout {
           width: 100%;
         }
 
-        .contact-layout-grid {
+        .contact-grid {
           display: grid;
           grid-template-columns: 1fr;
           gap: clamp(36px, 5vw, 64px);
@@ -191,66 +194,72 @@ export function Contact() {
         }
 
         @media (min-width: 992px) {
-          .contact-layout-grid {
+          .contact-grid {
             grid-template-columns: 1.35fr 0.95fr;
           }
         }
 
-        /* Left Column */
-        .contact-primary-col {
+        /* Left Hero Column */
+        .contact-hero-col {
           display: flex;
           flex-direction: column;
         }
 
-        .contact-kicker {
+        .contact-kicker-tag {
           font-family: var(--font-mono);
           font-size: 11px;
           letter-spacing: 0.12em;
           color: var(--accent);
-          font-weight: 600;
+          font-weight: 700;
           text-transform: uppercase;
           margin-bottom: 8px;
         }
 
-        .contact-headline {
+        .contact-magazine-title {
           font-family: var(--font-display);
-          font-size: clamp(2.4rem, 5vw, 4.2rem);
+          font-size: clamp(2.4rem, 5.2vw, 4.4rem);
           font-weight: 800;
           letter-spacing: -0.035em;
           color: var(--text-primary);
-          line-height: 1.05;
+          line-height: 1.02;
           margin: 0 0 clamp(16px, 2.5vh, 22px);
+          display: flex;
+          flex-direction: column;
         }
 
-        .contact-narrative {
+        .contact-highlight {
+          color: var(--accent); /* Olive */
+        }
+
+        .contact-lead-text {
           font-family: var(--font-body);
-          font-size: clamp(15px, 1.15vw, 16.5px);
+          font-size: clamp(14.5px, 1.1vw, 16px);
           line-height: 1.65;
           color: var(--text-secondary);
-          margin: 0 0 clamp(24px, 3vh, 32px);
-          max-width: 54ch;
+          margin: 0 0 clamp(24px, 3.2vh, 32px);
+          max-width: 52ch;
         }
 
-        .contact-email-block {
+        .contact-email-station {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          padding-bottom: 24px;
+          padding-bottom: 22px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 24px;
+          margin-bottom: 22px;
         }
 
-        .contact-email-label {
+        .contact-email-tag {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          letter-spacing: 0.1em;
+          font-size: 10px;
+          letter-spacing: 0.12em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .contact-email-link {
+        .contact-large-email {
           font-family: var(--font-display);
-          font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+          font-size: clamp(1.3rem, 2.3vw, 1.9rem);
           font-weight: 700;
           color: var(--text-primary);
           text-decoration: underline;
@@ -260,115 +269,67 @@ export function Contact() {
           transition: text-decoration-color 0.2s ease, color 0.2s ease;
         }
 
-        .contact-email-link:hover {
+        .contact-large-email:hover {
           color: var(--accent);
           text-decoration-color: var(--accent);
         }
 
-        .contact-actions-row {
+        .contact-buttons-row {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 14px;
           flex-wrap: wrap;
-          margin-bottom: 28px;
+          margin-bottom: 26px;
         }
 
-        .contact-btn-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 24px;
-          background: var(--accent);
-          color: #FFFFFF;
-          border: 1px solid var(--accent);
-          border-radius: var(--radius-sm);
-          font-family: var(--font-mono);
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          text-decoration: none;
-          transition: all 0.15s ease;
-          box-shadow: 0 2px 8px rgba(94, 127, 104, 0.2);
-        }
-
-        .contact-btn-primary:hover {
-          background: var(--accent-hover);
-          transform: translateY(-1px);
-        }
-
-        .contact-btn-arrow {
-          transition: transform 0.2s ease;
-        }
-
-        .contact-btn-primary:hover .contact-btn-arrow {
-          transform: translateX(3px);
-        }
-
-        .contact-btn-copy {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          padding: 12px 20px;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          color: var(--text-primary);
-          font-family: var(--font-mono);
-          font-size: 11.5px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          cursor: pointer;
-          transition: all 0.15s ease;
-        }
-
-        .contact-btn-copy:hover {
-          background: var(--bg-secondary);
-          border-color: var(--text-secondary);
-        }
-
-        .contact-social-row {
+        .contact-editorial-links {
           display: flex;
           align-items: center;
           gap: 24px;
-          padding-top: 20px;
+          padding-top: 18px;
           border-top: 1px solid var(--border);
         }
 
-        .contact-social-link {
+        .contact-editorial-link {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           font-family: var(--font-mono);
           font-size: 12px;
-          font-weight: 600;
+          font-weight: 700;
           color: var(--text-primary);
           text-decoration: none;
           transition: color 0.15s ease;
         }
 
-        .contact-social-link:hover {
+        .contact-editorial-link:hover {
           color: var(--accent);
         }
 
-        /* Right Column: Note Card */
-        .contact-note-card {
+        /* Right Dispatch Column */
+        .contact-dispatch-col {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .contact-dispatch-card {
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-xs);
           padding: clamp(20px, 3vw, 28px);
           box-shadow: 0 2px 14px rgba(0, 0, 0, 0.02);
         }
 
-        .contact-card-header {
+        .dispatch-card-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 14px;
+          padding-bottom: 12px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 18px;
+          margin-bottom: 16px;
         }
 
-        .contact-card-title {
+        .dispatch-title {
           font-family: var(--font-mono);
           font-size: 11px;
           font-weight: 700;
@@ -376,43 +337,43 @@ export function Contact() {
           color: var(--text-primary);
         }
 
-        .contact-card-badge {
+        .dispatch-badge {
           font-family: var(--font-mono);
           font-size: 9.5px;
           color: var(--accent);
-          background: var(--accent-soft);
+          background: var(--accent-light);
           padding: 2px 7px;
           border-radius: var(--radius-xs);
-          font-weight: 600;
+          font-weight: 700;
         }
 
-        .contact-actual-form {
+        .dispatch-form {
           display: flex;
           flex-direction: column;
           gap: 14px;
         }
 
-        .contact-form-group {
+        .dispatch-field {
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          gap: 4px;
         }
 
-        .contact-field-label {
+        .dispatch-label {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 9.5px;
           letter-spacing: 0.1em;
           color: var(--text-secondary);
-          font-weight: 600;
+          font-weight: 700;
         }
 
-        .contact-field-input,
-        .contact-field-textarea {
+        .dispatch-input,
+        .dispatch-textarea {
           width: 100%;
           background: var(--bg-0);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
-          padding: 10px 14px;
+          padding: 10px 12px;
           font-family: var(--font-body);
           font-size: 13.5px;
           color: var(--text-primary);
@@ -421,33 +382,16 @@ export function Contact() {
           box-sizing: border-box;
         }
 
-        .contact-field-input:focus,
-        .contact-field-textarea:focus {
+        .dispatch-input:focus,
+        .dispatch-textarea:focus {
           border-color: var(--accent);
-          background: #FFFFFF;
+          background: var(--surface-raised);
         }
 
-        .contact-submit-btn {
-          display: inline-flex;
-          align-items: center;
+        .dispatch-submit-btn {
+          width: 100%;
           justify-content: center;
-          gap: 8px;
-          padding: 11px 18px;
-          background: var(--accent);
-          color: #FFFFFF;
-          border: 1px solid var(--accent);
-          border-radius: var(--radius-xs);
-          font-family: var(--font-mono);
-          font-size: 11.5px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          cursor: pointer;
-          transition: all 0.15s ease;
           margin-top: 4px;
-        }
-
-        .contact-submit-btn:hover {
-          background: var(--accent-hover);
         }
       `}</style>
     </SectionShell>

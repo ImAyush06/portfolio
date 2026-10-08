@@ -73,11 +73,11 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
         }}
       >
         {/* Top Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '20px', borderBottom: '1px solid var(--line)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '20px', borderBottom: '1px solid var(--border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ width: '8px', height: '8px', background: 'var(--accent)' }} />
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '15px', color: 'var(--ivory)' }}>
-              {site.name}
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '15px', color: 'var(--text-primary)' }}>
+              AYUSH KUMAR
             </span>
           </div>
 
@@ -85,15 +85,15 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
             onClick={onClose}
             aria-label="Close navigation"
             style={{
-              width: '44px',
-              height: '44px',
+              width: '40px',
+              height: '40px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'var(--bg-1)',
-              border: '1px solid var(--line)',
-              color: 'var(--ivory)',
-              borderRadius: 'var(--radius-sm)',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-primary)',
+              borderRadius: 'var(--radius-xs)',
               cursor: 'pointer',
             }}
           >
@@ -102,56 +102,60 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
         </div>
 
         {/* Navigation Links with Staggered Entrance */}
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 3vh, 24px)', padding: 'clamp(28px, 6vh, 48px) 0' }}>
-          {navItems.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.05 * idx, duration: 0.3 }}
-            >
-              <button
-                onClick={() => handleNavClick(item.id)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  width: '100%',
-                }}
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 3vh, 22px)', padding: 'clamp(24px, 5vh, 40px) 0' }}>
+          {navItems.map((item, idx) => {
+            const displayLabel = item.id === 'projects' ? 'WORK' : item.label;
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.04 * idx, duration: 0.25 }}
               >
-                <span
+                <button
+                  onClick={() => handleNavClick(item.id)}
                   style={{
-                    width: '7px',
-                    height: '7px',
-                    borderRadius: '50%',
-                    background: 'var(--duo-gradient)',
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.75rem, 8vw, 2.5rem)',
-                    fontWeight: 700,
-                    color: 'var(--text-primary)',
-                    letterSpacing: '-0.02em',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%',
                   }}
                 >
-                  {item.label}
-                </span>
-              </button>
-            </motion.div>
-          ))}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '12px',
+                      color: 'var(--accent)',
+                      fontWeight: 700,
+                    }}
+                  >
+                    0{idx + 1}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(1.75rem, 8vw, 2.5rem)',
+                      fontWeight: 700,
+                      color: 'var(--text-primary)',
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
+                    {displayLabel}
+                  </span>
+                </button>
+              </motion.div>
+            );
+          })}
         </nav>
 
-        {/* Bottom Resume Action, Socials & Copy Email */}
-        <div style={{ paddingTop: '20px', borderTop: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          
-          {/* Resume Option */}
+        {/* Bottom Resume Action & Sign-off */}
+        <div style={{ paddingTop: '20px', borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <a
             href={site.resume || `mailto:${site.email}?subject=Resume%20Request%20%E2%80%94%20Ayush%20Kumar&body=Hi%20Ayush,%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20resume.%0A%0AThank%20you!`}
             onClick={handleResumeClick}
@@ -161,12 +165,12 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
               justifyContent: 'center',
               gap: '8px',
               padding: '12px 18px',
-              background: 'var(--accent)',
-              border: '1px solid var(--accent)',
-              borderRadius: 'var(--radius-sm)',
-              color: '#FFFFFF',
+              background: 'var(--text-primary)',
+              border: '1px solid var(--text-primary)',
+              borderRadius: 'var(--radius-xs)',
+              color: 'var(--surface-raised)',
               fontFamily: 'var(--font-mono)',
-              fontSize: '12px',
+              fontSize: '11.5px',
               fontWeight: 600,
               letterSpacing: '0.06em',
               textDecoration: 'none',
@@ -179,7 +183,7 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
             <span>RESUME / REQUEST RESUME</span>
           </a>
 
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--muted)' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10.5px', color: 'var(--text-secondary)' }}>
             AYUSH KUMAR // FULL STACK WEB DEVELOPER
           </div>
         </div>

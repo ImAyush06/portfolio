@@ -46,7 +46,7 @@ export function CertificateModal({
           position: 'fixed',
           inset: 0,
           zIndex: 99999,
-          background: 'rgba(32, 35, 31, 0.7)',
+          background: 'rgba(36, 39, 32, 0.75)',
           backdropFilter: 'blur(6px)',
           WebkitBackdropFilter: 'blur(6px)',
           display: 'flex',
@@ -95,7 +95,7 @@ export function CertificateModal({
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '11px',
-                  color: '#EEECE5',
+                  color: '#E9E6DD',
                 }}
               >
                 {certificate.date || certificate.year}
@@ -119,7 +119,7 @@ export function CertificateModal({
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '11px',
-                color: '#EEECE5',
+                color: '#E9E6DD',
               }}
             >
               {currentIndex + 1} / {totalCount}
@@ -132,7 +132,7 @@ export function CertificateModal({
                 width: '38px',
                 height: '38px',
                 borderRadius: 'var(--radius-xs)',
-                background: 'rgba(255, 255, 255, 0.12)',
+                background: 'rgba(255, 255, 255, 0.15)',
                 border: '1px solid rgba(255, 255, 255, 0.25)',
                 color: '#FFFFFF',
                 display: 'flex',
@@ -146,7 +146,7 @@ export function CertificateModal({
           </div>
         </div>
 
-        {/* Center Presentation: Authentic Document Image */}
+        {/* Center Presentation: Authentic Document Image in Pure Ratio */}
         <div
           onClick={(e) => e.stopPropagation()}
           style={{
@@ -171,10 +171,10 @@ export function CertificateModal({
                 position: 'absolute',
                 left: '8px',
                 zIndex: 10,
-                width: '44px',
-                height: '44px',
+                width: '42px',
+                height: '42px',
                 borderRadius: 'var(--radius-xs)',
-                background: 'rgba(32, 35, 31, 0.7)',
+                background: 'rgba(36, 39, 32, 0.7)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#FFFFFF',
                 display: 'flex',
@@ -187,7 +187,7 @@ export function CertificateModal({
             </button>
           )}
 
-          {/* Certificate Image in Pure Ratio */}
+          {/* Certificate Image Frame */}
           <div
             style={{
               maxHeight: '75vh',
@@ -195,7 +195,7 @@ export function CertificateModal({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4)',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.45)',
               borderRadius: 'var(--radius-xs)',
               overflow: 'hidden',
               background: '#FFFFFF',
@@ -222,10 +222,10 @@ export function CertificateModal({
                 position: 'absolute',
                 right: '8px',
                 zIndex: 10,
-                width: '44px',
-                height: '44px',
+                width: '42px',
+                height: '42px',
                 borderRadius: 'var(--radius-xs)',
-                background: 'rgba(32, 35, 31, 0.7)',
+                background: 'rgba(36, 39, 32, 0.7)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#FFFFFF',
                 display: 'flex',
@@ -248,7 +248,7 @@ export function CertificateModal({
             margin: '0 auto',
             background: 'var(--surface)',
             border: '1px solid var(--border)',
-            borderRadius: 'var(--radius-sm)',
+            borderRadius: 'var(--radius-xs)',
             padding: '14px 20px',
             display: 'flex',
             alignItems: 'center',

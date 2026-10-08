@@ -21,127 +21,125 @@ export function Experience() {
         id="experience"
         label="TRAINING"
       >
-        <div className="training-editorial-wrap">
+        <div className="training-editorial-wrapper">
           
-          {/* Editorial Timeline Container */}
-          <div className="training-timeline">
+          {/* Editorial Timeline Entry */}
+          <div className="training-entry-layout">
             
-            {/* Timeline Item */}
-            <div className="training-timeline-item">
+            {/* Left Timeline Pillar: Number, Year & Institution */}
+            <div className="training-pillar-col">
+              <div className="training-entry-index">
+                <span className="training-num">01</span>
+                <span className="training-sep">/</span>
+                <span className="training-year">{item.year || '2026'}</span>
+              </div>
+
+              <h4 className="training-org-title">{item.organization}</h4>
+              <span className="training-org-dept">{item.department}</span>
+              <span className="training-org-school">{item.school}</span>
+
+              {/* Merit Badge */}
+              <div className="training-merit-tag">
+                <Award className="w-3.5 h-3.5" />
+                <span>{item.grade} &middot; MERIT</span>
+              </div>
+            </div>
+
+            {/* Subtle Vertical Spine Rule for Desktop */}
+            <div className="training-spine-col" aria-hidden="true">
+              <div className="training-spine-node" />
+              <div className="training-spine-line" />
+            </div>
+
+            {/* Right Content Pillar */}
+            <div className="training-content-col">
               
-              {/* Left Timeline Pillar: Year & Organization */}
-              <div className="training-timeline-left">
-                <div className="training-year-tag">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>{item.year || '2026'}</span>
-                </div>
-                <span className="training-org-name">{item.organization}</span>
-                <span className="training-dept-name">{item.department}</span>
-                <span className="training-school-name">{item.school}</span>
-
-                <div className="training-merit-badge">
-                  <Award className="w-3.5 h-3.5" />
-                  <span>{item.grade} &middot; CERTIFICATE OF MERIT</span>
-                </div>
+              <div className="training-title-block">
+                <span className="training-type-label">SUMMER IMMERSION &middot; {item.duration}</span>
+                <h3 className="training-program-name">{item.title}</h3>
+                <p className="training-program-sub">{item.subtitle}</p>
               </div>
 
-              {/* Timeline Center Rule & Node */}
-              <div className="training-timeline-spine">
-                <div className="training-timeline-node" />
-                <div className="training-timeline-line" />
-              </div>
+              <p className="training-lead-text">
+                {item.summary}
+              </p>
 
-              {/* Right Content: Title, Summary, Certificate Preview, Skills */}
-              <div className="training-timeline-content">
-                
-                <div className="training-header-block">
-                  <div className="training-type-kicker">SUMMER TRAINING &middot; {item.duration}</div>
-                  <h3 className="training-program-title">{item.title}</h3>
-                  <p className="training-program-subtitle">{item.subtitle}</p>
-                </div>
+              <p className="training-body-text">
+                {item.description}
+              </p>
 
-                <p className="training-lead-summary">
-                  {item.summary}
-                </p>
-
-                <p className="training-detailed-desc">
-                  {item.description}
-                </p>
-
-                {/* Training Highlights */}
-                {item.highlights && item.highlights.length > 0 && (
-                  <div className="training-highlights-box">
-                    <span className="training-highlights-heading">PROGRAM HIGHLIGHTS</span>
-                    <ul className="training-highlights-list">
-                      {item.highlights.map((h, idx) => (
-                        <li key={idx} className="training-highlight-item">
-                          <span className="training-bullet">&rarr;</span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Skills Learned */}
-                <div className="training-skills-row">
-                  <span className="training-skills-label">COMPETENCIES:</span>
-                  <div className="training-skills-tags">
-                    {item.skills.map((skill) => (
-                      <span key={skill} className="training-skill-pill">
-                        {skill}
-                      </span>
+              {/* Highlights */}
+              {item.highlights && item.highlights.length > 0 && (
+                <div className="training-highlights-card">
+                  <span className="training-highlights-title">KEY CURRICULUM HIGHLIGHTS</span>
+                  <div className="training-highlights-grid">
+                    {item.highlights.map((h, idx) => (
+                      <div key={idx} className="training-highlight-row">
+                        <span className="training-highlight-bullet">&rarr;</span>
+                        <span>{h}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
+              )}
 
-                {/* Certificate Document Thumbnail Preview */}
-                <div className="training-cert-preview-card">
-                  <div
-                    className="training-cert-thumb-wrap"
-                    onClick={handleOpenCertificate}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => { if (e.key === 'Enter') handleOpenCertificate(); }}
-                    aria-label="View official Certificate of Merit in Lightbox"
-                  >
-                    <img
-                      src={item.image}
-                      alt="LPU Certificate of Merit"
-                      className="training-cert-thumb-img"
-                    />
-                    <div className="training-cert-overlay">
-                      <Maximize2 className="w-4 h-4" />
-                      <span>VIEW FULL CERTIFICATE</span>
-                    </div>
-                  </div>
+              {/* Skills */}
+              <div className="training-skills-strip">
+                <span className="training-skills-heading">COMPETENCIES:</span>
+                <div className="training-skills-list">
+                  {item.skills.map((s) => (
+                    <span key={s} className="training-skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-                  <div className="training-cert-info">
-                    <span className="training-cert-doc-title">OFFICIAL UNIVERSITY CREDENTIAL</span>
-                    <p className="training-cert-meta">
-                      Issued by Lovely Professional University on {item.date} &middot; Certificate No. {item.certificateNo}
-                    </p>
-                    <div className="training-cert-actions">
-                      <button
-                        type="button"
-                        onClick={handleOpenCertificate}
-                        className="training-cert-btn"
-                      >
-                        <span>EXPAND DOCUMENT &rarr;</span>
-                      </button>
-                      <a
-                        href={item.verificationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="training-cert-link"
-                      >
-                        <span>LPU.IN</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
+              {/* Official Certificate Preview */}
+              <div className="training-cert-dock">
+                <div
+                  className="training-cert-preview-box"
+                  onClick={handleOpenCertificate}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleOpenCertificate(); }}
+                  aria-label="Enlarge Certificate of Merit"
+                >
+                  <img
+                    src={item.image}
+                    alt="LPU Certificate of Merit"
+                    className="training-cert-img"
+                  />
+                  <div className="training-cert-hover-layer">
+                    <Maximize2 className="w-4 h-4" />
+                    <span>EXPAND CREDENTIAL</span>
                   </div>
                 </div>
 
+                <div className="training-cert-dock-info">
+                  <span className="training-cert-dock-tag">OFFICIAL UNIVERSITY CREDENTIAL</span>
+                  <p className="training-cert-dock-desc">
+                    Issued by Lovely Professional University &middot; Certificate No. {item.certificateNo}
+                  </p>
+                  <div className="training-cert-dock-links">
+                    <button
+                      type="button"
+                      onClick={handleOpenCertificate}
+                      className="training-cert-expand-btn"
+                    >
+                      <span>VIEW FULL DOCUMENT &rarr;</span>
+                    </button>
+                    <a
+                      href={item.verificationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="training-cert-verify-link"
+                    >
+                      <span>LPU.IN</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -161,122 +159,124 @@ export function Experience() {
       />
 
       <style>{`
-        .training-editorial-wrap {
+        .training-editorial-wrapper {
           width: 100%;
         }
 
-        .training-timeline {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .training-timeline-item {
+        .training-entry-layout {
           display: grid;
           grid-template-columns: 1fr;
           gap: 24px;
-          position: relative;
         }
 
         @media (min-width: 992px) {
-          .training-timeline-item {
-            grid-template-columns: 260px 32px 1fr;
+          .training-entry-layout {
+            grid-template-columns: 240px 32px 1fr;
             gap: 0;
           }
         }
 
-        /* Timeline Left */
-        .training-timeline-left {
+        /* Left Pillar */
+        .training-pillar-col {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          padding-right: 24px;
+          gap: 6px;
+          padding-right: 20px;
         }
 
-        .training-year-tag {
-          display: inline-flex;
-          align-items: center;
+        .training-entry-index {
+          display: flex;
+          align-items: baseline;
           gap: 6px;
           font-family: var(--font-mono);
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--accent);
-          background: var(--surface);
-          border: 1px solid var(--border);
-          padding: 4px 10px;
-          border-radius: var(--radius-xs);
-          width: fit-content;
+          margin-bottom: 4px;
         }
 
-        .training-org-name {
+        .training-num {
+          font-size: 18px;
+          font-weight: 800;
+          color: var(--accent); /* Olive */
+        }
+
+        .training-sep {
+          color: var(--border-strong);
+        }
+
+        .training-year {
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .training-org-title {
           font-family: var(--font-display);
           font-size: 15px;
           font-weight: 700;
           color: var(--text-primary);
-          margin-top: 6px;
+          margin: 0;
         }
 
-        .training-dept-name {
+        .training-org-dept {
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 12.5px;
           color: var(--text-secondary);
         }
 
-        .training-school-name {
+        .training-org-school {
           font-family: var(--font-body);
           font-size: 12px;
-          color: var(--text-secondary);
+          color: var(--text-muted);
         }
 
-        .training-merit-badge {
+        .training-merit-tag {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           margin-top: 10px;
-          padding: 4px 10px;
-          background: var(--accent-soft);
-          border: 1px solid #D1DAC7;
+          padding: 3px 8px;
+          background: var(--accent-light);
+          border: 1px solid var(--accent);
           border-radius: var(--radius-xs);
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           font-weight: 700;
           color: var(--accent);
           width: fit-content;
         }
 
-        /* Timeline Spine */
-        .training-timeline-spine {
+        /* Spine */
+        .training-spine-col {
           display: none;
           flex-direction: column;
           align-items: center;
-          position: relative;
         }
 
         @media (min-width: 992px) {
-          .training-timeline-spine {
+          .training-spine-col {
             display: flex;
           }
         }
 
-        .training-timeline-node {
-          width: 10px;
-          height: 10px;
+        .training-spine-node {
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           background: var(--accent);
-          border: 2px solid var(--surface);
+          border: 2px solid var(--bg-0);
           box-shadow: 0 0 0 1px var(--accent);
-          margin-top: 8px;
+          margin-top: 6px;
           z-index: 2;
         }
 
-        .training-timeline-line {
+        .training-spine-line {
           width: 1px;
           flex: 1;
           background: var(--border);
           margin-top: 4px;
         }
 
-        /* Timeline Content Right */
-        .training-timeline-content {
+        /* Right Content Pillar */
+        .training-content-col {
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -284,47 +284,49 @@ export function Experience() {
         }
 
         @media (min-width: 992px) {
-          .training-timeline-content {
+          .training-content-col {
             padding-left: 28px;
           }
         }
 
-        .training-type-kicker {
+        .training-type-label {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10.5px;
           letter-spacing: 0.1em;
           color: var(--accent);
-          font-weight: 600;
+          font-weight: 700;
+          text-transform: uppercase;
           margin-bottom: 4px;
+          display: block;
         }
 
-        .training-program-title {
+        .training-program-name {
           font-family: var(--font-display);
-          font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-          font-weight: 700;
+          font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+          font-weight: 800;
           letter-spacing: -0.025em;
           color: var(--text-primary);
           line-height: 1.25;
-          margin: 0 0 6px;
+          margin: 0 0 4px;
         }
 
-        .training-program-subtitle {
+        .training-program-sub {
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 11.5px;
           color: var(--text-secondary);
           margin: 0;
         }
 
-        .training-lead-summary {
+        .training-lead-text {
           font-family: var(--font-body);
-          font-size: 14.5px;
-          line-height: 1.65;
+          font-size: 14px;
+          line-height: 1.6;
           color: var(--text-primary);
           font-weight: 500;
           margin: 0;
         }
 
-        .training-detailed-desc {
+        .training-body-text {
           font-family: var(--font-body);
           font-size: 13.5px;
           line-height: 1.6;
@@ -332,65 +334,61 @@ export function Experience() {
           margin: 0;
         }
 
-        .training-highlights-box {
+        .training-highlights-card {
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 16px 20px;
+          border-radius: var(--radius-xs);
+          padding: 14px 16px;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
         }
 
-        .training-highlights-heading {
+        .training-highlights-title {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .training-highlights-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
+        .training-highlights-grid {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 5px;
         }
 
-        .training-highlight-item {
+        .training-highlight-row {
           display: flex;
           align-items: baseline;
           gap: 8px;
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 12.5px;
           color: var(--text-primary);
         }
 
-        .training-bullet {
+        .training-highlight-bullet {
           color: var(--accent);
           font-family: var(--font-mono);
-          font-size: 12px;
           font-weight: 700;
         }
 
-        .training-skills-row {
+        .training-skills-strip {
           display: flex;
           align-items: baseline;
           gap: 10px;
           flex-wrap: wrap;
         }
 
-        .training-skills-label {
+        .training-skills-heading {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .training-skills-tags {
+        .training-skills-list {
           display: flex;
           flex-wrap: wrap;
           gap: 6px;
@@ -398,35 +396,35 @@ export function Experience() {
 
         .training-skill-pill {
           font-family: var(--font-mono);
-          font-size: 11px;
-          padding: 3px 9px;
+          font-size: 10.5px;
+          padding: 2px 8px;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
-          color: var(--text-primary);
           border-radius: var(--radius-xs);
+          color: var(--text-primary);
         }
 
-        /* Certificate Thumbnail Card */
-        .training-cert-preview-card {
+        /* Certificate Dock */
+        .training-cert-dock {
           display: grid;
           grid-template-columns: 1fr;
           gap: 16px;
-          padding: 16px;
+          padding: 14px;
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          margin-top: 8px;
+          border-radius: var(--radius-xs);
+          margin-top: 6px;
           align-items: center;
         }
 
         @media (min-width: 640px) {
-          .training-cert-preview-card {
-            grid-template-columns: 160px 1fr;
-            gap: 20px;
+          .training-cert-dock {
+            grid-template-columns: 140px 1fr;
+            gap: 18px;
           }
         }
 
-        .training-cert-thumb-wrap {
+        .training-cert-preview-box {
           width: 100%;
           aspect-ratio: 4 / 3;
           border-radius: var(--radius-xs);
@@ -434,66 +432,67 @@ export function Experience() {
           position: relative;
           cursor: zoom-in;
           border: 1px solid var(--border);
+          background: var(--bg-0);
         }
 
-        .training-cert-thumb-img {
+        .training-cert-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
         }
 
-        .training-cert-overlay {
+        .training-cert-hover-layer {
           position: absolute;
           inset: 0;
-          background: rgba(32, 35, 31, 0.45);
+          background: rgba(36, 39, 32, 0.45);
           opacity: 0;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 6px;
+          gap: 4px;
           color: #FFFFFF;
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 9.5px;
           letter-spacing: 0.06em;
           font-weight: 600;
           transition: opacity 0.2s ease;
         }
 
-        .training-cert-thumb-wrap:hover .training-cert-overlay {
+        .training-cert-preview-box:hover .training-cert-hover-layer {
           opacity: 1;
         }
 
-        .training-cert-info {
+        .training-cert-dock-info {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 4px;
         }
 
-        .training-cert-doc-title {
+        .training-cert-dock-tag {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          letter-spacing: 0.1em;
+          font-size: 10px;
+          letter-spacing: 0.08em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .training-cert-meta {
+        .training-cert-dock-desc {
           font-family: var(--font-body);
-          font-size: 12.5px;
+          font-size: 12px;
           color: var(--text-secondary);
           margin: 0;
         }
 
-        .training-cert-actions {
+        .training-cert-dock-links {
           display: flex;
           align-items: center;
           gap: 14px;
           margin-top: 6px;
         }
 
-        .training-cert-btn {
+        .training-cert-expand-btn {
           background: none;
           border: none;
           font-family: var(--font-mono);
@@ -507,21 +506,21 @@ export function Experience() {
           text-underline-offset: 3px;
         }
 
-        .training-cert-btn:hover {
+        .training-cert-expand-btn:hover {
           color: var(--accent);
         }
 
-        .training-cert-link {
+        .training-cert-verify-link {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 3px;
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10.5px;
           color: var(--text-secondary);
           text-decoration: none;
         }
 
-        .training-cert-link:hover {
+        .training-cert-verify-link:hover {
           color: var(--accent);
         }
       `}</style>

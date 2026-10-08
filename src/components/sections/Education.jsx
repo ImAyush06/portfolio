@@ -6,66 +6,60 @@ import { education } from '@/data/education';
 export function Education() {
   return (
     <SectionShell id="education" label="EDUCATION">
-      <div className="edu-editorial-wrapper">
+      <div className="edu-timeline-container">
         
-        {/* 3 / 9 Asymmetric Academic Timeline */}
-        <div className="edu-timeline-grid">
+        {/* Compact Editorial Timeline */}
+        <div className="edu-timeline-layout">
           
-          {/* =========================================================
-              LEFT COLUMN (3 COLS): Timeline Period & Academic Status
-              ========================================================= */}
-          <div className="edu-timeline-left">
-            <div className="edu-period-badge">
+          {/* Left Pillar: Period & Status */}
+          <div className="edu-left-pillar">
+            <div className="edu-period-tag">
               <Calendar className="w-3.5 h-3.5" />
               <span>{education.duration}</span>
             </div>
-            <span className="edu-status-note">UNDERGRADUATE DEGREE</span>
-            <span className="edu-expected-grad">GRADUATION // 2028</span>
+            <span className="edu-status-tag">UNDERGRADUATE DEGREE</span>
+            <span className="edu-graduation-target">EXPECTED &middot; 2028</span>
           </div>
 
-          {/* Spine indicator for desktop */}
-          <div className="edu-timeline-spine">
-            <div className="edu-timeline-node" />
-            <div className="edu-timeline-line" />
+          {/* Timeline Spine */}
+          <div className="edu-spine-col" aria-hidden="true">
+            <div className="edu-spine-node" />
+            <div className="edu-spine-line" />
           </div>
 
-          {/* =========================================================
-              RIGHT COLUMN (9 COLS): Degree, University, Coursework
-              ========================================================= */}
-          <div className="edu-timeline-right">
+          {/* Right Pillar: Degree, University, Coursework */}
+          <div className="edu-right-pillar">
             
-            {/* Degree & College Header */}
-            <div className="edu-header-block">
-              <h3 className="edu-degree-title">
+            <div className="edu-degree-header">
+              <h3 className="edu-degree-heading">
                 {education.degree}
               </h3>
 
-              <div className="edu-university-row">
+              <div className="edu-institution-line">
                 <a
                   href="https://www.lpu.in/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="edu-university-link"
+                  className="edu-institution-link"
                 >
                   <span>{education.college}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
-                <span className="edu-loc-bullet">&middot;</span>
-                <span className="edu-location">{education.location}</span>
+                <span className="edu-sep">&middot;</span>
+                <span className="edu-location-text">{education.location}</span>
               </div>
             </div>
 
-            {/* Academic Summary */}
-            <p className="edu-narrative">
-              Pursuing comprehensive computer science engineering curriculum focusing on systems programming, algorithmic complexity, relational database design, and modern software architectures.
+            <p className="edu-summary-text">
+              Pursuing foundational and applied engineering studies with coursework in data structures, systems architecture, object-oriented software design, and database management.
             </p>
 
-            {/* Verified Coursework */}
-            <div className="edu-coursework-section">
-              <span className="edu-coursework-title">RELEVANT ACADEMIC COURSEWORK:</span>
-              <div className="edu-coursework-pills">
+            {/* Coursework List */}
+            <div className="edu-coursework-block">
+              <span className="edu-coursework-label">CORE ACADEMIC COURSEWORK:</span>
+              <div className="edu-coursework-tags">
                 {education.coursework.map((course) => (
-                  <span key={course} className="edu-course-pill">
+                  <span key={course} className="edu-course-tag">
                     {course}
                   </span>
                 ))}
@@ -79,133 +73,132 @@ export function Education() {
       </div>
 
       <style>{`
-        .edu-editorial-wrapper {
+        .edu-timeline-container {
           width: 100%;
         }
 
-        .edu-timeline-grid {
+        .edu-timeline-layout {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 24px;
+          gap: 20px;
         }
 
         @media (min-width: 992px) {
-          .edu-timeline-grid {
-            grid-template-columns: 240px 32px 1fr;
+          .edu-timeline-layout {
+            grid-template-columns: 220px 32px 1fr;
             gap: 0;
           }
         }
 
-        /* Left Column */
-        .edu-timeline-left {
+        /* Left Pillar */
+        .edu-left-pillar {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          padding-right: 24px;
+          gap: 6px;
+          padding-right: 20px;
         }
 
-        .edu-period-badge {
+        .edu-period-tag {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           font-family: var(--font-mono);
           font-size: 11px;
           font-weight: 700;
-          color: var(--accent);
+          color: var(--accent); /* Olive */
           background: var(--surface);
           border: 1px solid var(--border);
-          padding: 4px 10px;
+          padding: 3px 9px;
           border-radius: var(--radius-xs);
           width: fit-content;
         }
 
-        .edu-status-note {
+        .edu-status-tag {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.08em;
           color: var(--text-secondary);
           margin-top: 4px;
-          font-weight: 600;
+          font-weight: 700;
         }
 
-        .edu-expected-grad {
+        .edu-graduation-target {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           color: var(--accent);
           font-weight: 600;
         }
 
         /* Spine */
-        .edu-timeline-spine {
+        .edu-spine-col {
           display: none;
           flex-direction: column;
           align-items: center;
-          position: relative;
         }
 
         @media (min-width: 992px) {
-          .edu-timeline-spine {
+          .edu-spine-col {
             display: flex;
           }
         }
 
-        .edu-timeline-node {
-          width: 10px;
-          height: 10px;
+        .edu-spine-node {
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           background: var(--accent);
-          border: 2px solid var(--surface);
+          border: 2px solid var(--bg-0);
           box-shadow: 0 0 0 1px var(--accent);
-          margin-top: 8px;
+          margin-top: 6px;
           z-index: 2;
         }
 
-        .edu-timeline-line {
+        .edu-spine-line {
           width: 1px;
           flex: 1;
           background: var(--border);
           margin-top: 4px;
         }
 
-        /* Right Column */
-        .edu-timeline-right {
+        /* Right Pillar */
+        .edu-right-pillar {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
           padding-left: 0;
         }
 
         @media (min-width: 992px) {
-          .edu-timeline-right {
+          .edu-right-pillar {
             padding-left: 28px;
           }
         }
 
-        .edu-header-block {
+        .edu-degree-header {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 4px;
         }
 
-        .edu-degree-title {
+        .edu-degree-heading {
           font-family: var(--font-display);
-          font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-          font-weight: 700;
+          font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+          font-weight: 800;
           letter-spacing: -0.025em;
           color: var(--text-primary);
           line-height: 1.25;
           margin: 0;
         }
 
-        .edu-university-row {
+        .edu-institution-line {
           display: flex;
           align-items: center;
           gap: 8px;
           flex-wrap: wrap;
-          font-size: 13.5px;
+          font-size: 13px;
         }
 
-        .edu-university-link {
+        .edu-institution-link {
           display: inline-flex;
           align-items: center;
           gap: 4px;
@@ -217,53 +210,53 @@ export function Education() {
           transition: color 0.15s ease;
         }
 
-        .edu-university-link:hover {
+        .edu-institution-link:hover {
           color: var(--accent);
         }
 
-        .edu-loc-bullet {
-          color: var(--border);
+        .edu-sep {
+          color: var(--border-strong);
         }
 
-        .edu-location {
+        .edu-location-text {
           color: var(--text-secondary);
         }
 
-        .edu-narrative {
+        .edu-summary-text {
           font-family: var(--font-body);
-          font-size: 14px;
+          font-size: 13.5px;
           line-height: 1.6;
           color: var(--text-secondary);
           margin: 0;
-          max-width: 62ch;
+          max-width: 60ch;
         }
 
-        .edu-coursework-section {
+        .edu-coursework-block {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          padding-top: 16px;
+          gap: 6px;
+          padding-top: 14px;
           border-top: 1px solid var(--border);
         }
 
-        .edu-coursework-title {
+        .edu-coursework-label {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .edu-coursework-pills {
+        .edu-coursework-tags {
           display: flex;
           flex-wrap: wrap;
           gap: 6px;
         }
 
-        .edu-course-pill {
+        .edu-course-tag {
           font-family: var(--font-mono);
-          font-size: 11px;
-          padding: 3px 9px;
+          font-size: 10.5px;
+          padding: 2px 8px;
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);

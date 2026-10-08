@@ -1,52 +1,49 @@
 :root {
   /* =========================================================================
-     EDITORIAL WARM PAPER & CHARCOAL DESIGN SYSTEM
-     (Warm Paper Canvas, Soft Beige Surfaces, Deep Charcoal Typography, Muted Sage & Copper)
+     HATKE LIGHT THEME: WARM PAPER + GRAPHITE + OLIVE/LIME EDITORIAL ENGINEERING
+     (Editorial Art Director + Senior Frontend Engineer System)
      ========================================================================= */
 
-  /* Primary Canvas & Warm Paper Surfaces */
-  --bg: #F5F3EE;              /* Primary Warm Paper Canvas */
-  --bg-0: #F5F3EE;
-  --bg-secondary: #EEECE5;    /* Secondary Soft Beige */
-  --bg-1: #EEECE5;
-  --surface: #FAF9F5;         /* Crisp Warm Card Surface */
-  --bg-2: #FAF9F5;
-  --surface-raised: #FFFFFF;  /* Clean Elevated Surface */
-  --bg-overlay: rgba(245, 243, 238, 0.96);
+  /* Structural Warm Environment Backgrounds */
+  --bg: #E9E6DD;              /* Primary warm grey/cream page canvas */
+  --bg-0: #E9E6DD;
+  --bg-secondary: #DEDACF;    /* Large editorial sections / slightly darker warm grey */
+  --bg-1: #DEDACF;
+  --surface: #F2EFE7;         /* Paper-like light surface for content & visual areas */
+  --bg-2: #F2EFE7;
+  --surface-raised: #F7F4EC;  /* Elevated surface (drawers, modals, crisp sheets) */
+  --bg-overlay: rgba(233, 230, 221, 0.96);
 
-  /* Deep Charcoal & Soft Slate Typography (Eye Comfort) */
-  --text-primary: #20231F;    /* Deep Charcoal Text (Not harsh pure black) */
-  --ivory: #20231F;           /* Remapped to deep charcoal */
-  --text-secondary: #686C64;  /* Muted Editorial Slate */
-  --text-muted: #8A8E85;      /* Subtle Metadata */
-  --muted: #8A8E85;
+  /* Deep Graphite & Warm Slate Typography (Eye Comfort) */
+  --text-primary: #242720;    /* Primary Deep Graphite Text */
+  --ivory: #242720;           /* Remapped to deep graphite */
+  --text-secondary: #65685F;  /* Secondary Warm Slate */
+  --text-muted: #85887F;      /* Muted Technical Metadata */
+  --muted: #85887F;
 
   /* Editorial Accents */
-  --accent: #5E7F68;          /* Primary Accent: Muted Sage Green */
-  --accent-secondary: #C38A5A;/* Secondary Accent: Muted Copper */
-  --accent-soft: #E5EBDD;     /* Very Subtle Sage Highlight */
-  --accent-hover: #4F6D59;
-  --copper: #C38A5A;
-  --copper-soft: #F5ECE3;
-  --emerald: #5E7F68;
-  --blue: #5E7F68;
-  --cyan: #5E7F68;
-  --violet: #C38A5A;
+  --accent: #687A45;          /* Primary Accent: Olive / Earthy Green */
+  --accent-light: #D9E2BE;    /* Soft Olive / Lime Highlight */
+  --accent-soft: #D9E2BE;
+  --accent-hover: #556637;
+  --accent-secondary: #B57945;/* Secondary Accent: Muted Warm Copper / Amber */
+  --copper: #B57945;
+  --soft-accent: #E8D5BF;     /* Soft Amber */
+  --copper-soft: #E8D5BF;
+  --emerald: #687A45;
+  --blue: #687A45;
+  --cyan: #687A45;
+  --violet: #B57945;
 
-  /* Thin Editorial Borders & Hairlines */
-  --border: #D9D8D0;          /* 1px Hairline Border */
-  --border-subtle: #E6E4DC;
-  --line: #D9D8D0;
-  --line-strong: #C4C3BA;
-  --line-cyan: #D9D8D0;
+  /* Thin Rules & Technical Borders */
+  --border: #C8C5BB;          /* 1px Thin Rule */
+  --border-subtle: #D5D2C8;
+  --border-strong: #AAA79C;   /* Strong Architectural Border */
+  --line: #C8C5BB;
+  --line-strong: #AAA79C;
+  --line-cyan: #C8C5BB;
 
-  /* Subtle Tonal Gradients (No heavy neon glows) */
-  --duo-gradient: linear-gradient(135deg, #5E7F68 0%, #C38A5A 100%);
-  --duo-gradient-hover: linear-gradient(135deg, #4F6D59 0%, #B07849 100%);
-  --duo-gradient-subtle: linear-gradient(135deg, rgba(94, 127, 104, 0.08) 0%, rgba(195, 138, 90, 0.06) 100%);
-  --duo-text-gradient: linear-gradient(135deg, #20231F 0%, #3D443B 100%);
-
-  /* Clean Sharp Architectural Radii */
+  /* Clean Architectural Radii (Rectangles & Editorial Blocks) */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;

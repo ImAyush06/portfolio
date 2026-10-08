@@ -32,17 +32,17 @@ export function Certificates() {
         id="certificates"
         label="CERTIFICATES"
       >
-        <div className="certificates-editorial-wrap">
+        <div className="certificates-gallery-section">
           
-          {/* Gallery Header Note */}
-          <div className="certificates-note-strip">
-            <span className="certificates-note-dot" />
-            <p className="certificates-note-text">
-              Official enterprise certifications from Infosys Springboard validating foundations in object-oriented systems (C++) and relational database management (DBMS).
+          {/* Note strip */}
+          <div className="certificates-intro-strip">
+            <span className="certificates-intro-dot" />
+            <p className="certificates-intro-text">
+              Verified technical credentials from Infosys Springboard validating foundations in C++ object-oriented architecture and database management systems (DBMS).
             </p>
           </div>
 
-          {/* Editorial Gallery Grid */}
+          {/* Image-First Gallery Grid */}
           <div className="certificates-gallery-grid">
             {certificates.map((cert) => (
               <ParallelCertificateCard
@@ -56,7 +56,7 @@ export function Certificates() {
         </div>
       </SectionShell>
 
-      {/* Full Certificate Modal with Aspect-Fit */}
+      {/* Full Aspect-Fit Certificate Modal */}
       <CertificateModal
         certificate={activeCert}
         isOpen={activeCertIndex !== null}
@@ -68,23 +68,23 @@ export function Certificates() {
       />
 
       <style>{`
-        .certificates-editorial-wrap {
+        .certificates-gallery-section {
           width: 100%;
         }
 
-        .certificates-note-strip {
+        .certificates-intro-strip {
           display: flex;
           align-items: center;
           gap: 10px;
           margin-bottom: clamp(24px, 3.5vh, 32px);
-          padding: 10px 16px;
+          padding: 8px 14px;
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           max-width: fit-content;
         }
 
-        .certificates-note-dot {
+        .certificates-intro-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
@@ -92,7 +92,7 @@ export function Certificates() {
           flex-shrink: 0;
         }
 
-        .certificates-note-text {
+        .certificates-intro-text {
           font-family: var(--font-body);
           font-size: 13px;
           color: var(--text-secondary);
@@ -112,7 +112,7 @@ export function Certificates() {
           }
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1040px) {
           .certificates-gallery-grid {
             grid-template-columns: repeat(3, 1fr);
           }

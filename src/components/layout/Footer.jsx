@@ -15,7 +15,7 @@ export function Footer() {
           {/* Identity & Role */}
           <div className="footer-brand-col">
             <span className="footer-name">AYUSH KUMAR</span>
-            <span className="footer-role">FULL STACK WEB DEVELOPER</span>
+            <span className="footer-role">Computer Science Engineering Student &middot; Full Stack Developer</span>
           </div>
 
           {/* Simple Text Links */}
@@ -49,7 +49,7 @@ export function Footer() {
               type="button"
               onClick={scrollToTop}
               className="footer-top-btn"
-              aria-label="Scroll back to top of page"
+              aria-label="Scroll to top of page"
             >
               <span>BACK TO TOP</span>
               <ArrowUp className="w-3.5 h-3.5" />
@@ -68,7 +68,7 @@ export function Footer() {
         .editorial-footer {
           border-top: 1px solid var(--border);
           background: var(--bg-0);
-          padding: clamp(36px, 5vh, 48px) 0 32px;
+          padding: clamp(32px, 4.5vh, 44px) 0 28px;
           position: relative;
           z-index: 3;
         }
@@ -78,7 +78,7 @@ export function Footer() {
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 18px;
         }
 
         .footer-brand-col {
@@ -89,18 +89,17 @@ export function Footer() {
 
         .footer-name {
           font-family: var(--font-display);
-          font-weight: 700;
-          font-size: 14px;
+          font-weight: 800;
+          font-size: 13.5px;
           letter-spacing: 0.06em;
           color: var(--text-primary);
+          text-transform: uppercase;
         }
 
         .footer-role {
-          font-family: var(--font-mono);
-          font-size: 10px;
-          letter-spacing: 0.1em;
-          color: var(--accent);
-          font-weight: 600;
+          font-family: var(--font-body);
+          font-size: 12px;
+          color: var(--text-secondary);
         }
 
         .footer-links-col {
@@ -112,7 +111,7 @@ export function Footer() {
 
         .footer-nav-link {
           font-family: var(--font-mono);
-          font-size: 11.5px;
+          font-size: 11px;
           color: var(--text-secondary);
           text-decoration: none;
           transition: color 0.15s ease;
@@ -125,14 +124,14 @@ export function Footer() {
         .footer-top-btn {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
+          gap: 4px;
           background: none;
           border: none;
           padding: 0;
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.08em;
-          font-weight: 600;
+          font-weight: 700;
           color: var(--text-secondary);
           cursor: pointer;
           transition: color 0.15s ease;
@@ -144,8 +143,8 @@ export function Footer() {
 
         .footer-copy-col {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          color: var(--text-secondary);
+          font-size: 10px;
+          color: var(--text-muted);
         }
       `}</style>
     </footer>

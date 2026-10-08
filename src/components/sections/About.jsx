@@ -3,98 +3,100 @@ import { ArrowUpRight } from 'lucide-react';
 import { SectionShell } from '@/components/layout/SectionShell';
 
 export function About() {
-  const quickProfile = [
+  const specFacts = [
     {
-      label: 'DEGREE',
-      value: 'B.Tech Computer Science & Engineering',
+      label: 'LOCATION',
+      value: 'Phagwara, Punjab, India',
     },
     {
-      label: 'INSTITUTION',
+      label: 'EDUCATION',
       value: (
-        <a
-          href="https://www.lpu.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="about-editorial-link"
-          aria-label="Lovely Professional University website"
-        >
-          <span>Lovely Professional University</span>
-          <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
-        </a>
+        <span>
+          B.Tech CSE &middot;{' '}
+          <a
+            href="https://www.lpu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-spec-link"
+          >
+            Lovely Professional University <ArrowUpRight className="w-3 h-3 inline" />
+          </a>
+        </span>
       ),
     },
     {
       label: 'CORE FOCUS',
-      value: 'Full Stack Web Engineering & Scalable Systems',
+      value: 'Full Stack Web Engineering & Decoupled Backends',
     },
     {
-      label: 'FOUNDATIONS',
-      value: 'Data Structures & Algorithms · Web Architecture · Databases',
+      label: 'INTERESTS',
+      value: 'DSA &middot; System Fundamentals &middot; REST APIs &middot; Web Architecture',
     },
     {
       label: 'STATUS',
-      value: 'Open to Software Engineering Internships & Roles',
+      value: 'Available for Software Engineering Roles & Internships',
     },
   ];
 
-  const focusKeywords = ['FULL STACK', 'DATA STRUCTURES & ALGORITHMS', 'SYSTEMS & APIS', 'WEB PLATFORMS'];
+  const disciplines = ['FULL STACK', 'DSA & ALGORITHMS', 'SPRING BOOT & JAVA', 'REACT INTERFACES'];
 
   return (
     <SectionShell id="about" label="ABOUT">
-      <div className="about-editorial-container">
+      <div className="about-split-container">
         
-        {/* Asymmetric 8 / 4 Editorial Grid */}
-        <div className="about-grid-layout">
+        {/* Split Editorial Layout */}
+        <div className="about-split-grid">
           
           {/* =========================================================
-              LEFT COLUMN (8 COLS): Statement, Narrative, Keywords
+              LEFT COLUMN: 01 ABOUT, Statement & Disciplines
               ========================================================= */}
-          <div className="about-narrative-col">
+          <div className="about-statement-col">
+            <span className="about-section-tag">ENGINEERING PROFILE</span>
             
-            {/* Primary Editorial Statement */}
-            <h3 className="about-statement-headline">
-              I’m a Computer Science Engineering student focused on building practical web applications and solving problems with code.
+            <h3 className="about-hero-headline">
+              Building practical software where clean interface design meets structured server-side systems.
             </h3>
 
-            {/* Verified Narrative Paragraphs */}
-            <div className="about-statement-body">
-              <p>
-                I work across frontend, backend, and core programming, with a focus on building useful software products and mastering modern web standards.
-              </p>
-              <p>
-                My work centers around end-to-end development—from interactive user interfaces built with React to scalable backend services architected with Java and Spring Boot, supported by structured database management and clean algorithmic logic.
-              </p>
-            </div>
+            <p className="about-hero-sub">
+              I’m a Computer Science Engineering student focused on building practical web applications and solving problems with code across frontend, backend, and core CS foundations.
+            </p>
 
-            {/* Editorial Keywords Line */}
-            <div className="about-keywords-row">
-              <span className="about-keywords-title">PRIMARY DISCIPLINES:</span>
-              <div className="about-keywords-list">
-                {focusKeywords.map((kw) => (
-                  <span key={kw} className="about-keyword-tag">
-                    {kw}
+            <div className="about-disciplines-row">
+              <span className="about-disciplines-label">KEY DISCIPLINES:</span>
+              <div className="about-disciplines-tags">
+                {disciplines.map((d) => (
+                  <span key={d} className="about-discipline-pill">
+                    {d}
                   </span>
                 ))}
               </div>
             </div>
-
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN (4 COLS): Clean Editorial Fact Sheet
+              RIGHT COLUMN: Profile Specification Sheet (Thin Dividers)
               ========================================================= */}
-          <div className="about-fact-col">
-            <div className="about-fact-sheet">
-              <div className="about-fact-header">
-                <span className="about-fact-badge">PROFILE SUMMARY</span>
-                <span className="about-fact-code">2024 &mdash; 2028</span>
+          <div className="about-spec-col">
+            <div className="about-spec-sheet">
+              <div className="about-spec-header">
+                <span className="about-spec-title">PROFILE SPECIFICATION</span>
+                <span className="about-spec-code">SYS // 2024–2028</span>
               </div>
 
-              <div className="about-fact-list">
-                {quickProfile.map((item) => (
-                  <div key={item.label} className="about-fact-row">
-                    <span className="about-fact-label">{item.label}</span>
-                    <div className="about-fact-value">{item.value}</div>
+              <div className="about-narrative-paragraph">
+                <p>
+                  I work across frontend, backend, and core programming, with a focus on building useful software products and mastering modern web standards.
+                </p>
+                <p>
+                  My engineering work centers around end-to-end development—from responsive React components to scalable Java and Spring Boot REST APIs, backed by structured database modeling and clean algorithmic problem-solving.
+                </p>
+              </div>
+
+              <div className="about-spec-table">
+                {specFacts.map((fact) => (
+                  <div key={fact.label} className="about-spec-row">
+                    <span className="about-spec-label">{fact.label}</span>
+                    <div className="about-spec-value">{fact.value}</div>
                   </div>
                 ))}
               </div>
@@ -106,154 +108,178 @@ export function About() {
       </div>
 
       <style>{`
-        .about-editorial-container {
+        .about-split-container {
           width: 100%;
         }
 
-        .about-grid-layout {
+        .about-split-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(32px, 5vw, 56px);
+          gap: clamp(36px, 5vw, 64px);
           align-items: flex-start;
         }
 
         @media (min-width: 992px) {
-          .about-grid-layout {
-            grid-template-columns: 1.4fr 0.85fr;
+          .about-split-grid {
+            grid-template-columns: 1.15fr 1fr;
           }
         }
 
-        /* Left Narrative */
-        .about-statement-headline {
-          font-family: var(--font-display);
-          font-size: clamp(1.45rem, 2.3vw, 2.15rem);
-          font-weight: 700;
-          line-height: 1.25;
-          letter-spacing: -0.025em;
-          color: var(--text-primary);
-          margin: 0 0 clamp(18px, 2.5vh, 24px);
-        }
-
-        .about-statement-body {
+        /* Left Column */
+        .about-statement-col {
           display: flex;
           flex-direction: column;
-          gap: 14px;
-          margin-bottom: clamp(24px, 3vh, 32px);
-          max-width: 62ch;
         }
 
-        .about-statement-body p {
+        .about-section-tag {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          color: var(--accent);
+          font-weight: 700;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+
+        .about-hero-headline {
+          font-family: var(--font-display);
+          font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+          color: var(--text-primary);
+          margin: 0 0 clamp(16px, 2.2vh, 22px);
+        }
+
+        .about-hero-sub {
           font-family: var(--font-body);
           font-size: clamp(14.5px, 1.1vw, 15.5px);
           line-height: 1.65;
           color: var(--text-secondary);
-          margin: 0;
+          margin: 0 0 clamp(20px, 3vh, 28px);
+          max-width: 52ch;
         }
 
-        .about-keywords-row {
+        .about-disciplines-row {
           display: flex;
           flex-direction: column;
           gap: 8px;
-          padding-top: 20px;
+          padding-top: 18px;
           border-top: 1px solid var(--border);
         }
 
-        .about-keywords-title {
+        .about-disciplines-label {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          letter-spacing: 0.12em;
+          font-size: 10px;
+          letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .about-keywords-list {
+        .about-disciplines-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 6px;
         }
 
-        .about-keyword-tag {
+        .about-discipline-pill {
           font-family: var(--font-mono);
           font-size: 11px;
-          letter-spacing: 0.05em;
-          padding: 4px 10px;
-          background: var(--bg-secondary);
-          border: 1px solid var(--border);
-          color: var(--text-primary);
-          border-radius: var(--radius-xs);
-          font-weight: 500;
-        }
-
-        /* Right Fact Sheet */
-        .about-fact-sheet {
+          padding: 3px 9px;
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-xs);
+          color: var(--text-primary);
+        }
+
+        /* Right Column */
+        .about-spec-col {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .about-spec-sheet {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-xs);
           padding: clamp(20px, 3vw, 28px);
         }
 
-        .about-fact-header {
+        .about-spec-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 14px;
-          border-bottom: 1px solid var(--border);
-          margin-bottom: 16px;
-        }
-
-        .about-fact-badge {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          color: var(--accent);
-        }
-
-        .about-fact-code {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--text-secondary);
-        }
-
-        .about-fact-list {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .about-fact-row {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
           padding-bottom: 12px;
+          border-bottom: 1px solid var(--border);
+          margin-bottom: 14px;
+        }
+
+        .about-spec-title {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: var(--text-primary);
+        }
+
+        .about-spec-code {
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          color: var(--accent);
+          font-weight: 600;
+        }
+
+        .about-narrative-paragraph {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 18px;
+        }
+
+        .about-narrative-paragraph p {
+          font-family: var(--font-body);
+          font-size: 13.5px;
+          line-height: 1.6;
+          color: var(--text-secondary);
+          margin: 0;
+        }
+
+        .about-spec-table {
+          display: flex;
+          flex-direction: column;
+          border-top: 1px solid var(--border);
+        }
+
+        .about-spec-row {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          padding: 10px 0;
           border-bottom: 1px solid var(--border-subtle);
         }
 
-        .about-fact-row:last-child {
-          padding-bottom: 0;
+        .about-spec-row:last-child {
           border-bottom: none;
+          padding-bottom: 0;
         }
 
-        .about-fact-label {
+        .about-spec-label {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 9.5px;
           letter-spacing: 0.1em;
-          color: var(--text-secondary);
-          font-weight: 600;
+          color: var(--text-muted);
+          font-weight: 700;
         }
 
-        .about-fact-value {
+        .about-spec-value {
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 13px;
           color: var(--text-primary);
-          line-height: 1.45;
           font-weight: 500;
+          line-height: 1.45;
         }
 
-        .about-editorial-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
+        .about-spec-link {
           color: var(--text-primary);
           text-decoration: underline;
           text-decoration-color: var(--accent);
@@ -261,7 +287,7 @@ export function About() {
           transition: color 0.15s ease;
         }
 
-        .about-editorial-link:hover {
+        .about-spec-link:hover {
           color: var(--accent);
         }
       `}</style>

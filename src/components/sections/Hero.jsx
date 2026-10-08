@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, Code2, Terminal, Layers, Database } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { site } from '@/data/site';
 
 export function Hero() {
@@ -11,47 +11,74 @@ export function Hero() {
     { name: 'C++', role: 'Systems & DSA' },
   ];
 
+  const blueprintNodes = [
+    {
+      num: '01',
+      phase: 'FRONTEND INTERFACES',
+      stack: 'React.js · JavaScript · Responsive DOM',
+      sub: 'Fluid client interactions & modular components',
+    },
+    {
+      num: '02',
+      phase: 'BACKEND SERVICES',
+      stack: 'Java · Spring Boot · REST APIs',
+      sub: 'Decoupled services & transactional endpoints',
+    },
+    {
+      num: '03',
+      phase: 'DATA & PERSISTENCE',
+      stack: 'MongoDB · Relational DBMS · SQL',
+      sub: 'Structured schemas & database queries',
+    },
+    {
+      num: '04',
+      phase: 'SYSTEMS & ALGORITHMS',
+      stack: 'C++ · Data Structures · Complexity Analysis',
+      sub: 'Algorithmic logic & computational foundations',
+    },
+  ];
+
   return (
     <section
       id="hero"
-      aria-label="Introduction & Technical Overview"
-      className="hero-section"
+      aria-label="Introduction & Engineering Overview"
+      className="hero-editorial-section"
     >
       <div className="container-shell">
         
-        {/* Asymmetric 7 / 5 Editorial Grid */}
+        {/* Asymmetric 12-Column Grid (~7 cols / ~5 cols) */}
         <div className="hero-editorial-grid">
           
           {/* =========================================================
-              LEFT COLUMN (7 COLS): Identity, Typography, Human Copy, CTAs
+              LEFT COLUMN: Identity, Typography, Human Copy, Actions
               ========================================================= */}
-          <div className="hero-left-col">
+          <div className="hero-identity-col">
             
-            {/* Top Editorial Kicker */}
-            <div className="hero-kicker-bar">
-              <span className="hero-kicker-text">PORTFOLIO / 2026</span>
-              <span className="hero-kicker-sep" aria-hidden="true">/</span>
-              <span className="hero-kicker-sub">FULL STACK ENGINEERING</span>
+            {/* Small Top Editorial Label */}
+            <div className="hero-kicker-strip">
+              <span className="hero-kicker-dot" />
+              <span className="hero-kicker-title">COMPUTER SCIENCE / FULL STACK DEVELOPMENT</span>
+              <span className="hero-kicker-year">2026</span>
             </div>
 
-            {/* Giant Architectural Name Typography */}
-            <h1 className="hero-main-title">
-              <span className="hero-name-line">AYUSH</span>
-              <span className="hero-name-line hero-name-accent">KUMAR</span>
+            {/* Giant Asymmetric Architectural Typography */}
+            <h1 className="hero-title-group">
+              <span className="hero-name-first">AYUSH</span>
+              <span className="hero-name-second">KUMAR</span>
             </h1>
 
-            {/* Clean Professional Title & University */}
-            <div className="hero-role-wrapper">
-              <p className="hero-role-title">
-                FULL STACK WEB DEVELOPER <span className="hero-amp">&amp;</span> COMPUTER SCIENCE ENGINEERING STUDENT
+            {/* Professional Title & Academic Credential */}
+            <div className="hero-role-block">
+              <p className="hero-role-headline">
+                COMPUTER SCIENCE ENGINEERING STUDENT <span className="hero-role-amp">&amp;</span> FULL STACK DEVELOPER
               </p>
-              <p className="hero-role-sub">
+              <p className="hero-role-location">
                 B.Tech CSE &middot; Lovely Professional University &middot; Punjab, India
               </p>
             </div>
 
-            {/* Verified Human Introduction (Preserved Content) */}
-            <div className="hero-intro-prose">
+            {/* Human Introduction (Preserved Verified Content) */}
+            <div className="hero-narrative-block">
               <p>
                 I build practical web applications and software systems using modern frontend, backend, and database technologies.
               </p>
@@ -60,27 +87,27 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Editorial CTAs */}
-            <div className="hero-actions-row">
-              <a href="#projects" className="hero-btn-primary" id="hero-btn-projects">
-                <span>VIEW PROJECTS</span>
-                <span className="hero-btn-arrow">&rarr;</span>
+            {/* Editorial Minimal Buttons */}
+            <div className="hero-actions-group">
+              <a href="#projects" className="btn-editorial-primary" id="hero-btn-work">
+                <span>VIEW WORK</span>
+                <span className="btn-arrow">&rarr;</span>
               </a>
 
-              <a href="#contact" className="hero-link-secondary" id="hero-btn-contact">
+              <a href="#contact" className="btn-editorial-secondary" id="hero-btn-contact">
                 <span>CONTACT ME</span>
-                <span className="hero-link-arrow">&rarr;</span>
+                <span className="btn-arrow">&rarr;</span>
               </a>
             </div>
 
-            {/* Minimal Editorial Footnote */}
-            <div className="hero-tech-strip">
-              <span className="hero-tech-label">CORE TOOLKIT</span>
-              <div className="hero-tech-items">
-                {verifiedTechs.map((t, idx) => (
-                  <span key={t.name} className="hero-tech-item">
-                    <strong>{t.name}</strong>
-                    {idx < verifiedTechs.length - 1 && <span className="hero-tech-bullet">&middot;</span>}
+            {/* Core Toolkit Line */}
+            <div className="hero-toolkit-bar">
+              <span className="hero-toolkit-heading">CORE TOOLKIT:</span>
+              <div className="hero-toolkit-items">
+                {verifiedTechs.map((tech, idx) => (
+                  <span key={tech.name} className="hero-toolkit-entry">
+                    <strong>{tech.name}</strong>
+                    {idx < verifiedTechs.length - 1 && <span className="hero-toolkit-dot">&middot;</span>}
                   </span>
                 ))}
               </div>
@@ -89,53 +116,53 @@ export function Hero() {
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN (5 COLS): Typographic Monogram & Spec Sheet
+              RIGHT COLUMN: Editorial "Developer Workspace" Blueprint Panel
               ========================================================= */}
-          <div className="hero-right-col">
-            <div className="hero-spec-sheet">
+          <div className="hero-blueprint-col">
+            <div className="hero-blueprint-panel">
               
-              {/* Header Spec Tag */}
-              <div className="hero-spec-header">
-                <span className="hero-spec-badge">INDEX // 00</span>
-                <span className="hero-spec-status">
-                  <span className="hero-status-pulse" />
-                  AVAILABLE FOR ROLES
-                </span>
-              </div>
-
-              {/* Large Typographic AK Design Mark */}
-              <div className="hero-monogram-area" aria-hidden="true">
-                <div className="hero-monogram-text">AK</div>
-                <div className="hero-monogram-line" />
-              </div>
-
-              {/* Editorial Spec Details */}
-              <div className="hero-spec-details">
-                <div className="hero-spec-row">
-                  <span className="hero-spec-term">FOCUS</span>
-                  <span className="hero-spec-desc">Full Stack Web &amp; Core Systems</span>
+              {/* Blueprint Header */}
+              <div className="blueprint-header">
+                <div className="blueprint-header-left">
+                  <span className="blueprint-header-tag">DEVELOPER WORKSPACE</span>
+                  <span className="blueprint-sep">/</span>
+                  <span className="blueprint-id">SPEC // 01</span>
                 </div>
-                <div className="hero-spec-row">
-                  <span className="hero-spec-term">STACK</span>
-                  <span className="hero-spec-desc">React &middot; Java &middot; Spring Boot &middot; MongoDB</span>
-                </div>
-                <div className="hero-spec-row">
-                  <span className="hero-spec-term">FOUNDATION</span>
-                  <span className="hero-spec-desc">C++ &middot; DSA &middot; DBMS &middot; REST APIs</span>
-                </div>
-                <div className="hero-spec-row">
-                  <span className="hero-spec-term">LOCATION</span>
-                  <span className="hero-spec-desc">Phagwara, Punjab, India</span>
+                <div className="blueprint-status">
+                  <span className="blueprint-status-indicator" />
+                  <span>ACTIVE ENGINEERING</span>
                 </div>
               </div>
 
-              {/* Spec Footer with Quick Links */}
-              <div className="hero-spec-footer">
+              {/* Blueprint Subtitle */}
+              <p className="blueprint-caption">
+                Architectural discipline overview across user interfaces, application servers, persistence, and algorithmic foundations.
+              </p>
+
+              {/* Connected Engineering Blueprint Nodes */}
+              <div className="blueprint-nodes-container">
+                {blueprintNodes.map((node, idx) => (
+                  <div key={node.num} className="blueprint-node-item">
+                    <div className="blueprint-node-top">
+                      <span className="blueprint-node-num">{node.num}</span>
+                      <span className="blueprint-node-connector" />
+                      <h4 className="blueprint-node-phase">{node.phase}</h4>
+                    </div>
+                    <div className="blueprint-node-details">
+                      <span className="blueprint-node-stack">{node.stack}</span>
+                      <span className="blueprint-node-sub">{node.sub}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Blueprint Footer Links */}
+              <div className="blueprint-footer">
                 <a
                   href={site.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-spec-link"
+                  className="blueprint-footer-link"
                 >
                   <span>GITHUB</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -144,14 +171,14 @@ export function Hero() {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-spec-link"
+                  className="blueprint-footer-link"
                 >
                   <span>LINKEDIN</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="hero-spec-link"
+                  className="blueprint-footer-link"
                 >
                   <span>EMAIL</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -166,9 +193,9 @@ export function Hero() {
       </div>
 
       <style>{`
-        .hero-section {
-          padding-top: clamp(88px, 11vh, 128px);
-          padding-bottom: clamp(48px, 7vh, 80px);
+        .hero-editorial-section {
+          padding-top: clamp(84px, 11vh, 120px);
+          padding-bottom: clamp(48px, 7vh, 76px);
           position: relative;
           z-index: 2;
         }
@@ -176,89 +203,91 @@ export function Hero() {
         .hero-editorial-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(36px, 5vw, 64px);
+          gap: clamp(36px, 5vw, 60px);
           align-items: center;
         }
 
         @media (min-width: 992px) {
           .hero-editorial-grid {
-            grid-template-columns: 1.35fr 0.95fr;
+            grid-template-columns: 1.25fr 1fr;
           }
         }
 
-        /* Left Column */
-        .hero-left-col {
+        /* Left Identity Column */
+        .hero-identity-col {
           display: flex;
           flex-direction: column;
         }
 
-        .hero-kicker-bar {
+        .hero-kicker-strip {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           font-family: var(--font-mono);
-          font-size: 11.5px;
+          font-size: 11px;
           letter-spacing: 0.12em;
-          color: var(--accent);
-          font-weight: 600;
-          margin-bottom: clamp(14px, 2vh, 20px);
+          color: var(--accent); /* Olive */
+          font-weight: 700;
           text-transform: uppercase;
+          margin-bottom: clamp(14px, 2vh, 20px);
         }
 
-        .hero-kicker-sep {
-          color: var(--border);
+        .hero-kicker-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--accent);
         }
 
-        .hero-kicker-sub {
-          color: var(--text-secondary);
+        .hero-kicker-year {
+          color: var(--text-muted);
+          margin-left: 4px;
         }
 
-        .hero-main-title {
+        .hero-title-group {
           font-family: var(--font-display);
-          font-size: clamp(3.2rem, 8vw, 6.4rem);
+          font-size: clamp(3.4rem, 8.5vw, 6.4rem);
           font-weight: 800;
-          line-height: 0.94;
+          line-height: 0.92;
           letter-spacing: -0.04em;
           color: var(--text-primary);
-          margin: 0 0 clamp(20px, 2.5vh, 28px);
+          margin: 0 0 clamp(18px, 2.5vh, 26px);
           display: flex;
           flex-direction: column;
         }
 
-        .hero-name-accent {
+        .hero-name-second {
           color: var(--text-primary);
-          position: relative;
         }
 
-        .hero-role-wrapper {
-          padding-bottom: 20px;
+        .hero-role-block {
+          padding-bottom: 18px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 22px;
+          margin-bottom: 20px;
         }
 
-        .hero-role-title {
+        .hero-role-headline {
           font-family: var(--font-mono);
-          font-size: clamp(13px, 1.15vw, 15px);
-          font-weight: 600;
+          font-size: clamp(12.5px, 1.1vw, 14.5px);
+          font-weight: 700;
           letter-spacing: 0.04em;
           color: var(--text-primary);
           line-height: 1.45;
-          margin: 0 0 6px;
+          margin: 0 0 5px;
         }
 
-        .hero-amp {
+        .hero-role-amp {
           color: var(--accent);
-          font-weight: 700;
         }
 
-        .hero-role-sub {
+        .hero-role-location {
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 13px;
           color: var(--text-secondary);
           margin: 0;
         }
 
-        .hero-intro-prose {
+        .hero-narrative-block {
           display: flex;
           flex-direction: column;
           gap: 10px;
@@ -266,245 +295,215 @@ export function Hero() {
           max-width: 58ch;
         }
 
-        .hero-intro-prose p {
+        .hero-narrative-block p {
           font-family: var(--font-body);
-          font-size: clamp(14.5px, 1.1vw, 16px);
+          font-size: clamp(14.5px, 1.1vw, 15.5px);
           line-height: 1.6;
           color: var(--text-secondary);
           margin: 0;
         }
 
-        .hero-actions-row {
+        .hero-actions-group {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 16px;
           flex-wrap: wrap;
-          margin-bottom: clamp(28px, 4vh, 40px);
+          margin-bottom: clamp(28px, 3.5vh, 38px);
         }
 
-        /* Primary Sage Green Editorial Button */
-        .hero-btn-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background: var(--accent);
-          color: #FFFFFF;
-          font-family: var(--font-mono);
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.08em;
-          padding: 13px 24px;
-          border-radius: var(--radius-sm);
-          text-decoration: none;
-          transition: all 0.2s ease;
-          border: 1px solid var(--accent);
-          box-shadow: 0 2px 8px rgba(94, 127, 104, 0.25);
-        }
-
-        .hero-btn-primary:hover {
-          background: var(--accent-hover);
-          border-color: var(--accent-hover);
-          transform: translateY(-1px);
-          box-shadow: 0 4px 14px rgba(94, 127, 104, 0.35);
-        }
-
-        .hero-btn-arrow {
-          font-size: 14px;
-          transition: transform 0.2s ease;
-        }
-
-        .hero-btn-primary:hover .hero-btn-arrow {
-          transform: translateX(3px);
-        }
-
-        /* Secondary Editorial Underlined Link */
-        .hero-link-secondary {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--font-mono);
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.08em;
-          color: var(--text-primary);
-          text-decoration: none;
-          border-bottom: 1.5px solid var(--text-primary);
-          padding-bottom: 2px;
-          transition: all 0.2s ease;
-        }
-
-        .hero-link-secondary:hover {
-          color: var(--accent);
-          border-bottom-color: var(--accent);
-        }
-
-        .hero-link-arrow {
-          font-size: 14px;
-          transition: transform 0.2s ease;
-        }
-
-        .hero-link-secondary:hover .hero-link-arrow {
-          transform: translateX(3px);
-        }
-
-        .hero-tech-strip {
+        .hero-toolkit-bar {
           display: flex;
           align-items: baseline;
-          gap: 14px;
+          gap: 12px;
           flex-wrap: wrap;
-          padding-top: 18px;
+          padding-top: 16px;
           border-top: 1px solid var(--border);
         }
 
-        .hero-tech-label {
+        .hero-toolkit-heading {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 10px;
           letter-spacing: 0.12em;
           color: var(--accent);
           font-weight: 700;
         }
 
-        .hero-tech-items {
+        .hero-toolkit-items {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
           flex-wrap: wrap;
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 12.5px;
           color: var(--text-secondary);
         }
 
-        .hero-tech-item strong {
+        .hero-toolkit-entry strong {
           color: var(--text-primary);
-          font-weight: 500;
+          font-weight: 600;
         }
 
-        .hero-tech-bullet {
-          color: var(--border);
-          margin-left: 8px;
+        .hero-toolkit-dot {
+          color: var(--border-strong);
+          margin-left: 6px;
         }
 
-        /* Right Column: Spec Sheet */
-        .hero-spec-sheet {
-          background: var(--surface);
+        /* Right Blueprint Panel */
+        .hero-blueprint-panel {
+          background: var(--surface); /* Paper-like #F2EFE7 */
           border: 1px solid var(--border);
-          border-radius: var(--radius-md);
-          padding: clamp(24px, 3.5vw, 36px);
+          border-radius: var(--radius-sm);
+          padding: clamp(20px, 3vw, 32px);
           position: relative;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
 
-        .hero-spec-header {
+        .blueprint-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 16px;
+          padding-bottom: 14px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 24px;
+          margin-bottom: 14px;
+          flex-wrap: wrap;
+          gap: 8px;
         }
 
-        .hero-spec-badge {
+        .blueprint-header-left {
+          display: flex;
+          align-items: center;
+          gap: 6px;
           font-family: var(--font-mono);
           font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: var(--text-primary);
+        }
+
+        .blueprint-sep {
+          color: var(--border-strong);
+        }
+
+        .blueprint-id {
           color: var(--accent);
         }
 
-        .hero-spec-status {
+        .blueprint-status {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
+          gap: 6px;
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          font-weight: 600;
+          font-size: 10px;
           letter-spacing: 0.06em;
+          font-weight: 700;
           color: var(--accent);
-          background: var(--accent-soft);
-          padding: 3px 9px;
+          background: var(--accent-light);
+          padding: 2px 8px;
           border-radius: var(--radius-xs);
         }
 
-        .hero-status-pulse {
-          width: 6px;
-          height: 6px;
+        .blueprint-status-indicator {
+          width: 5px;
+          height: 5px;
           border-radius: 50%;
           background: var(--accent);
         }
 
-        .hero-monogram-area {
-          padding: 20px 0 28px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          position: relative;
+        .blueprint-caption {
+          font-family: var(--font-body);
+          font-size: 12.5px;
+          line-height: 1.5;
+          color: var(--text-secondary);
+          margin: 0 0 18px;
         }
 
-        .hero-monogram-text {
-          font-family: var(--font-display);
-          font-size: clamp(4.5rem, 9vw, 6.8rem);
-          font-weight: 800;
-          letter-spacing: -0.06em;
-          color: var(--text-primary);
-          opacity: 0.14;
-          line-height: 0.85;
-          user-select: none;
-        }
-
-        .hero-monogram-line {
-          width: 48px;
-          height: 2px;
-          background: var(--accent);
-          margin-top: 14px;
-        }
-
-        .hero-spec-details {
+        .blueprint-nodes-container {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          padding: 18px 0;
+          padding: 14px 0;
           border-top: 1px solid var(--border);
           border-bottom: 1px solid var(--border);
         }
 
-        .hero-spec-row {
+        .blueprint-node-item {
           display: flex;
-          justify-content: space-between;
-          align-items: baseline;
-          gap: 12px;
-          font-size: 12.5px;
+          flex-direction: column;
+          gap: 3px;
+          padding: 8px 12px;
+          background: var(--bg-0);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-xs);
+          transition: background-color 0.15s ease, border-color 0.15s ease;
         }
 
-        .hero-spec-term {
+        .blueprint-node-item:hover {
+          background: var(--accent-light);
+          border-color: var(--accent);
+        }
+
+        .blueprint-node-top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .blueprint-node-num {
           font-family: var(--font-mono);
           font-size: 10.5px;
-          letter-spacing: 0.08em;
-          color: var(--text-secondary);
-          font-weight: 600;
-          flex-shrink: 0;
+          font-weight: 700;
+          color: var(--accent);
         }
 
-        .hero-spec-desc {
-          font-family: var(--font-body);
+        .blueprint-node-connector {
+          width: 8px;
+          height: 1px;
+          background: var(--border-strong);
+        }
+
+        .blueprint-node-phase {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
           color: var(--text-primary);
-          text-align: right;
-          font-weight: 500;
+          margin: 0;
+          text-transform: uppercase;
         }
 
-        .hero-spec-footer {
+        .blueprint-node-details {
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+          padding-left: 20px;
+        }
+
+        .blueprint-node-stack {
+          font-family: var(--font-body);
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
+        .blueprint-node-sub {
+          font-family: var(--font-body);
+          font-size: 11px;
+          color: var(--text-secondary);
+        }
+
+        .blueprint-footer {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-top: 18px;
+          padding-top: 14px;
         }
 
-        .hero-spec-link {
+        .blueprint-footer-link {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 3px;
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10.5px;
           font-weight: 600;
           letter-spacing: 0.06em;
           color: var(--text-secondary);
@@ -512,7 +511,7 @@ export function Hero() {
           transition: color 0.15s ease;
         }
 
-        .hero-spec-link:hover {
+        .blueprint-footer-link:hover {
           color: var(--accent);
         }
       `}</style>

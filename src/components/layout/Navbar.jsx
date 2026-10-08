@@ -71,11 +71,11 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           top: 0,
           left: 0,
           right: 0,
-          height: '64px',
+          height: '56px',
           zIndex: 100,
-          background: 'rgba(245, 243, 238, 0.94)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
+          background: 'rgba(233, 230, 221, 0.94)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid var(--border)',
         }}
       >
@@ -90,13 +90,13 @@ export function Navbar({ navItems = [], activeSection = '' }) {
             justifyContent: 'space-between',
           }}
         >
-          {/* Left: Clean Editorial Brand */}
+          {/* Left: Clean Editorial Name */}
           <a
             href="#"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: '8px',
               textDecoration: 'none',
               color: 'var(--text-primary)',
             }}
@@ -105,27 +105,29 @@ export function Navbar({ navItems = [], activeSection = '' }) {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: '15px',
-                letterSpacing: '0.04em',
+                fontSize: '14px',
+                letterSpacing: '0.06em',
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
               }}
             >
-              {site.name}
+              AYUSH KUMAR
             </span>
           </a>
 
-          {/* Desktop Navigation Links — Simple Text Links */}
+          {/* Desktop Navigation Links — Slim text links with olive underline */}
           <nav
             style={{
               display: 'none',
               alignItems: 'center',
-              gap: 'clamp(16px, 2.2vw, 28px)',
+              gap: 'clamp(14px, 2vw, 24px)',
             }}
             className="lg-flex"
           >
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
+              const displayLabel = item.id === 'projects' ? 'WORK' : item.label;
+
               return (
                 <a
                   key={item.id}
@@ -134,7 +136,7 @@ export function Navbar({ navItems = [], activeSection = '' }) {
                     position: 'relative',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    padding: '8px 2px',
+                    padding: '6px 2px',
                     textDecoration: 'none',
                     color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                     fontFamily: 'var(--font-mono)',
@@ -144,21 +146,20 @@ export function Navbar({ navItems = [], activeSection = '' }) {
                     textTransform: 'uppercase',
                     transition: 'color 0.15s ease',
                   }}
-                  className="nav-link-hover"
+                  className="nav-link-item"
                 >
-                  <span>{item.label}</span>
+                  <span>{displayLabel}</span>
 
                   {isActive && (
                     <motion.div
-                      layoutId="activeNavUnderline"
+                      layoutId="activeNavIndicator"
                       style={{
                         position: 'absolute',
-                        bottom: 0,
+                        bottom: '-2px',
                         left: 0,
                         right: 0,
                         height: '2px',
-                        background: 'var(--accent)',
-                        borderRadius: '1px',
+                        background: 'var(--accent)', /* Olive */
                       }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
@@ -168,9 +169,8 @@ export function Navbar({ navItems = [], activeSection = '' }) {
             })}
           </nav>
 
-          {/* Right Action: Clean Editorial Resume Button + Mobile Toggle */}
+          {/* Right Action: Slim Resume text button + Mobile Menu Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            {/* Resume Button */}
             <a
               href={site.resume || `mailto:${site.email}?subject=Resume%20Request%20%E2%80%94%20Ayush%20Kumar&body=Hi%20Ayush,%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20resume.%0A%0AThank%20you!`}
               onClick={handleResumeClick}
@@ -178,23 +178,23 @@ export function Navbar({ navItems = [], activeSection = '' }) {
               style={{
                 display: 'none',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '5px',
                 background: 'var(--surface)',
                 border: '1px solid var(--border)',
-                padding: '6px 14px',
+                padding: '5px 12px',
                 borderRadius: 'var(--radius-xs)',
                 color: 'var(--text-primary)',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
+                fontSize: '10.5px',
                 fontWeight: 600,
-                letterSpacing: '0.04em',
+                letterSpacing: '0.06em',
                 textDecoration: 'none',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.15s ease',
                 cursor: 'pointer',
               }}
               className="lg-flex nav-resume-btn"
             >
-              <FileText className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+              <FileText className="w-3 h-3" style={{ color: 'var(--accent)' }} />
               <span>RESUME</span>
             </a>
 
@@ -203,8 +203,8 @@ export function Navbar({ navItems = [], activeSection = '' }) {
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               style={{
-                height: '36px',
-                padding: '0 12px',
+                height: '32px',
+                padding: '0 10px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -220,7 +220,7 @@ export function Navbar({ navItems = [], activeSection = '' }) {
               }}
               className="mobile-menu-btn"
             >
-              <Menu className="w-4 h-4" />
+              <Menu className="w-3.5 h-3.5" />
               <span>MENU</span>
             </button>
           </div>
@@ -250,9 +250,9 @@ export function Navbar({ navItems = [], activeSection = '' }) {
           .lg-flex { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
         }
-        .nav-link-hover:hover { color: var(--accent) !important; }
+        .nav-link-item:hover { color: var(--accent) !important; }
         .nav-resume-btn:hover {
-          background: var(--accent-soft) !important;
+          background: var(--accent-light) !important;
           border-color: var(--accent) !important;
           color: var(--text-primary) !important;
         }

@@ -7,7 +7,7 @@ import { ProjectDrawer } from '@/components/projects/ProjectDrawer';
 import Lightbox from '@/components/ui/Lightbox';
 
 const categoryTabs = [
-  { id: 'all', label: 'All Projects', icon: <Sparkles className="w-3.5 h-3.5" /> },
+  { id: 'all', label: 'All Work', icon: <Sparkles className="w-3.5 h-3.5" /> },
   { id: 'full stack', label: 'Full Stack', icon: <Layers className="w-3.5 h-3.5" /> },
   { id: 'systems', label: 'Systems & C++', icon: <Cpu className="w-3.5 h-3.5" /> },
   { id: 'frontend', label: 'Web Platform', icon: <Globe className="w-3.5 h-3.5" /> },
@@ -92,13 +92,13 @@ export function Projects({
     <>
       <SectionShell
         id="projects"
-        label="PROJECTS"
+        label="SELECTED WORK"
       >
-        {/* Category Filter Tabs & Quick Jump Bar */}
-        <div className="projects-controls-bar">
+        {/* Controls: Filter & Quick Jump */}
+        <div className="work-controls-wrapper">
           
-          {/* Category Filter Buttons */}
-          <div className="projects-filter-group" role="tablist" aria-label="Project category filter">
+          {/* Category Filter Pills */}
+          <div className="work-filter-pills" role="tablist" aria-label="Project filter">
             {categoryTabs.map((tab) => {
               const isActive = selectedCategory === tab.id;
               return (
@@ -107,27 +107,27 @@ export function Projects({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setSelectedCategory(tab.id)}
-                  className={`projects-tab-btn ${isActive ? 'is-active' : ''}`}
+                  className={`work-filter-btn ${isActive ? 'is-active' : ''}`}
                 >
-                  <span className="projects-tab-icon">{tab.icon}</span>
+                  <span className="work-filter-icon">{tab.icon}</span>
                   <span>{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Quick Index Jump Strip */}
-          <div className="projects-jump-strip">
-            <span className="projects-jump-label">QUICK JUMP:</span>
-            <div className="projects-jump-links">
+          {/* Quick Jump Bar */}
+          <div className="work-jump-strip">
+            <span className="work-jump-label">INDEX //</span>
+            <div className="work-jump-items">
               {projects.map((p, idx) => (
                 <a
                   key={p.id}
                   href={`#project-${p.id}`}
-                  className="projects-jump-anchor"
+                  className="work-jump-link"
                 >
-                  <span>0{idx + 1}</span>
-                  <span>{p.title}</span>
+                  <span className="jump-num">0{idx + 1}</span>
+                  <span className="jump-name">{p.title}</span>
                 </a>
               ))}
             </div>
@@ -135,8 +135,8 @@ export function Projects({
 
         </div>
 
-        {/* Large Editorial Project Compositions with Alternating Rhythm */}
-        <div className="projects-editorial-list">
+        {/* Featured Case Studies List */}
+        <div className="work-case-studies-list">
           {filteredProjects.map((project, idx) => (
             <ProjectParallelCard
               key={project.id}
@@ -169,25 +169,25 @@ export function Projects({
       />
 
       <style>{`
-        .projects-controls-bar {
+        .work-controls-wrapper {
           display: flex;
           flex-direction: column;
           gap: 16px;
-          margin-bottom: clamp(24px, 4vh, 36px);
+          margin-bottom: clamp(20px, 3.5vh, 32px);
         }
 
-        .projects-filter-group {
+        .work-filter-pills {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
           gap: 8px;
         }
 
-        .projects-tab-btn {
+        .work-filter-btn {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          padding: 7px 14px;
+          padding: 6px 12px;
           border-radius: var(--radius-xs);
           font-family: var(--font-mono);
           font-size: 11px;
@@ -201,33 +201,32 @@ export function Projects({
           transition: all 0.15s ease;
         }
 
-        .projects-tab-btn:hover {
+        .work-filter-btn:hover {
           background: var(--bg-secondary);
           color: var(--text-primary);
-          border-color: var(--border-strong);
         }
 
-        .projects-tab-btn.is-active {
-          border-color: var(--accent);
-          background: var(--accent);
-          color: #FFFFFF;
+        .work-filter-btn.is-active {
+          border-color: var(--text-primary);
+          background: var(--text-primary);
+          color: var(--surface-raised);
         }
 
-        .projects-tab-btn.is-active .projects-tab-icon {
-          color: #FFFFFF;
+        .work-filter-btn.is-active .work-filter-icon {
+          color: var(--accent-light);
         }
 
-        .projects-jump-strip {
+        .work-jump-strip {
           display: flex;
           align-items: center;
           gap: 12px;
           overflow-x: auto;
-          padding-bottom: 12px;
+          padding-bottom: 10px;
           border-bottom: 1px solid var(--border);
           scrollbar-width: none;
         }
 
-        .projects-jump-label {
+        .work-jump-label {
           font-family: var(--font-mono);
           color: var(--accent);
           font-size: 10.5px;
@@ -236,14 +235,14 @@ export function Projects({
           flex-shrink: 0;
         }
 
-        .projects-jump-links {
+        .work-jump-items {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
           flex-wrap: nowrap;
         }
 
-        .projects-jump-anchor {
+        .work-jump-link {
           display: inline-flex;
           align-items: center;
           gap: 5px;
@@ -252,20 +251,25 @@ export function Projects({
           color: var(--text-secondary);
           text-decoration: none;
           white-space: nowrap;
-          padding: 4px 10px;
+          padding: 3px 8px;
           border-radius: var(--radius-xs);
           border: 1px solid var(--border);
-          background: var(--bg-secondary);
+          background: var(--surface);
           transition: all 0.15s ease;
         }
 
-        .projects-jump-anchor:hover {
+        .work-jump-link:hover {
           color: var(--text-primary);
           border-color: var(--accent);
-          background: var(--surface);
+          background: var(--bg-secondary);
         }
 
-        .projects-editorial-list {
+        .jump-num {
+          color: var(--accent);
+          font-weight: 700;
+        }
+
+        .work-case-studies-list {
           display: flex;
           flex-direction: column;
         }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Copy, Check, Send } from 'lucide-react';
+import { Mail, Copy, Check, Send } from 'lucide-react';
 import { site } from '@/data/site';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons';
 import { SectionShell } from '@/components/layout/SectionShell';
@@ -39,16 +39,15 @@ export function Contact() {
     <SectionShell id="contact" label="CONTACT">
       <div className="contact-magazine-layout">
         
-        {/* Asymmetric Magazine-Style Final Page Grid */}
+        {/* Asymmetric Magazine-Style Contact Grid */}
         <div className="contact-grid">
           
           {/* =========================================================
-              LEFT COLUMN: Magazine Headline, Big Email, Actions & Socials
+              LEFT COLUMN: Headline, Big Email, Actions & Rounded Social Icons
               ========================================================= */}
           <div className="contact-hero-col">
-            <span className="contact-kicker-tag">FINAL SECTION // GET IN TOUCH</span>
+            <span className="contact-kicker-tag">GET IN TOUCH</span>
 
-            {/* Large Magazine Statement per prompt section 17 */}
             <h3 className="contact-magazine-title">
               <span>LET’S BUILD</span>
               <span>SOMETHING</span>
@@ -56,7 +55,7 @@ export function Contact() {
             </h3>
 
             <p className="contact-lead-text">
-              I’m always open to discussing web engineering projects, technical collaborations, software engineering internships, or full stack opportunities.
+              I’m open to software engineering internships, full stack opportunities, and technical discussions. Feel free to reach out directly.
             </p>
 
             {/* Direct Email Display */}
@@ -76,8 +75,8 @@ export function Contact() {
                 href={`mailto:${site.email}?subject=Hello%20Ayush`}
                 className="btn-editorial-primary"
               >
+                <Mail className="w-4 h-4" />
                 <span>EMAIL ME</span>
-                <span className="btn-arrow">&rarr;</span>
               </a>
 
               <button
@@ -85,32 +84,46 @@ export function Contact() {
                 onClick={handleCopyEmail}
                 className="btn-editorial-secondary"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-accent" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-4 h-4 text-accent" /> : <Copy className="w-4 h-4" />}
                 <span>{copied ? 'EMAIL COPIED' : 'COPY EMAIL'}</span>
               </button>
             </div>
 
-            {/* Large Editorial Links: GitHub & LinkedIn */}
-            <div className="contact-editorial-links">
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-editorial-link"
-              >
-                <GithubIcon className="w-4 h-4" />
-                <span>GITHUB &rarr;</span>
-              </a>
+            {/* Rounded Social Icons per user request */}
+            <div className="contact-social-station">
+              <span className="contact-social-label">CONNECT:</span>
+              <div className="contact-rounded-icons">
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-circle-btn"
+                  title="GitHub Profile"
+                  aria-label="GitHub Profile"
+                >
+                  <GithubIcon className="w-5 h-5" />
+                </a>
 
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-editorial-link"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-                <span>LINKEDIN &rarr;</span>
-              </a>
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-circle-btn"
+                  title="LinkedIn Profile"
+                  aria-label="LinkedIn Profile"
+                >
+                  <LinkedinIcon className="w-5 h-5" />
+                </a>
+
+                <a
+                  href={`mailto:${site.email}`}
+                  className="contact-circle-btn"
+                  title="Direct Email"
+                  aria-label="Direct Email"
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
             </div>
 
           </div>
@@ -127,27 +140,27 @@ export function Contact() {
 
               <form onSubmit={handleSubmit} className="dispatch-form">
                 <div className="dispatch-field">
-                  <label htmlFor="contact-name" className="dispatch-label">NAME</label>
+                  <label htmlFor="contact-name" className="dispatch-label">YOUR NAME</label>
                   <input
                     id="contact-name"
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Your name or team"
+                    placeholder="Your name or organization"
                     className="dispatch-input"
                   />
                 </div>
 
                 <div className="dispatch-field">
-                  <label htmlFor="contact-email" className="dispatch-label">EMAIL</label>
+                  <label htmlFor="contact-email" className="dispatch-label">EMAIL ADDRESS</label>
                   <input
                     id="contact-email"
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="email@domain.com"
+                    placeholder="email@example.com"
                     className="dispatch-input"
                   />
                 </div>
@@ -160,7 +173,7 @@ export function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Project details or role overview..."
+                    placeholder="Details about project, role, or collaboration..."
                     className="dispatch-textarea"
                   />
                 </div>
@@ -189,13 +202,13 @@ export function Contact() {
         .contact-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(36px, 5vw, 64px);
+          gap: clamp(32px, 5vw, 60px);
           align-items: flex-start;
         }
 
         @media (min-width: 992px) {
           .contact-grid {
-            grid-template-columns: 1.35fr 0.95fr;
+            grid-template-columns: 1.3fr 1fr;
           }
         }
 
@@ -233,10 +246,10 @@ export function Contact() {
 
         .contact-lead-text {
           font-family: var(--font-body);
-          font-size: clamp(14.5px, 1.1vw, 16px);
+          font-size: clamp(15px, 1.15vw, 16.5px);
           line-height: 1.65;
           color: var(--text-secondary);
-          margin: 0 0 clamp(24px, 3.2vh, 32px);
+          margin: 0 0 clamp(20px, 3vh, 28px);
           max-width: 52ch;
         }
 
@@ -244,14 +257,14 @@ export function Contact() {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          padding-bottom: 22px;
+          padding-bottom: 20px;
           border-bottom: 1px solid var(--border);
-          margin-bottom: 22px;
+          margin-bottom: 20px;
         }
 
         .contact-email-tag {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 11px;
           letter-spacing: 0.12em;
           color: var(--accent);
           font-weight: 700;
@@ -279,31 +292,52 @@ export function Contact() {
           align-items: center;
           gap: 14px;
           flex-wrap: wrap;
-          margin-bottom: 26px;
+          margin-bottom: 24px;
         }
 
-        .contact-editorial-links {
+        /* Rounded Social Icons Station */
+        .contact-social-station {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 14px;
           padding-top: 18px;
           border-top: 1px solid var(--border);
         }
 
-        .contact-editorial-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
+        .contact-social-label {
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 700;
-          color: var(--text-primary);
-          text-decoration: none;
-          transition: color 0.15s ease;
+          color: var(--accent);
+          letter-spacing: 0.1em;
         }
 
-        .contact-editorial-link:hover {
-          color: var(--accent);
+        .contact-rounded-icons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .contact-circle-btn {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          transition: all 0.2s ease;
+          text-decoration: none;
+        }
+
+        .contact-circle-btn:hover {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #FFFFFF;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(104, 122, 69, 0.2);
         }
 
         /* Right Dispatch Column */
@@ -331,7 +365,7 @@ export function Contact() {
 
         .dispatch-title {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           letter-spacing: 0.1em;
           color: var(--text-primary);
@@ -339,10 +373,10 @@ export function Contact() {
 
         .dispatch-badge {
           font-family: var(--font-mono);
-          font-size: 9.5px;
+          font-size: 10px;
           color: var(--accent);
           background: var(--accent-light);
-          padding: 2px 7px;
+          padding: 2px 8px;
           border-radius: var(--radius-xs);
           font-weight: 700;
         }
@@ -356,12 +390,12 @@ export function Contact() {
         .dispatch-field {
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 5px;
         }
 
         .dispatch-label {
           font-family: var(--font-mono);
-          font-size: 9.5px;
+          font-size: 10.5px;
           letter-spacing: 0.1em;
           color: var(--text-secondary);
           font-weight: 700;
@@ -375,7 +409,7 @@ export function Contact() {
           border-radius: var(--radius-xs);
           padding: 10px 12px;
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 14px;
           color: var(--text-primary);
           outline: none;
           transition: border-color 0.15s ease;

@@ -1,6 +1,34 @@
 import React, { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
 import { SectionShell } from '@/components/layout/SectionShell';
 import { skillCategories } from '@/data/skills';
+
+// Official Technology Documentation Links
+const techUrlMap = {
+  "React.js": "https://react.dev/",
+  "JavaScript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  "HTML5": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  "CSS3": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  "Java": "https://dev.java/",
+  "Spring Boot": "https://spring.io/projects/spring-boot",
+  "MongoDB": "https://www.mongodb.com/",
+  "REST APIs": "https://restfulapi.net/",
+  "C": "https://en.cppreference.com/w/c",
+  "C++": "https://isocpp.org/",
+  "Data Structures": "https://en.wikipedia.org/wiki/Data_structure",
+  "Algorithms": "https://en.wikipedia.org/wiki/Algorithm",
+  "Object-Oriented Programming (OOP)": "https://en.wikipedia.org/wiki/Object-oriented_programming",
+  "Linux / Unix": "https://www.kernel.org/",
+  "Git & GitHub": "https://git-scm.com/",
+  "VS Code": "https://code.visualstudio.com/",
+  "Postman": "https://www.postman.com/",
+  "AWS (Cloud Foundations)": "https://aws.amazon.com/",
+  "PHP": "https://www.php.net/",
+  "Relational DBMS": "https://en.wikipedia.org/wiki/Relational_database",
+  "SQL": "https://en.wikipedia.org/wiki/SQL",
+  "Database Normalization": "https://en.wikipedia.org/wiki/Database_normalization",
+  "Indexing & Query Optimization": "https://en.wikipedia.org/wiki/Database_index"
+};
 
 export function Skills() {
   const [hoveredRowId, setHoveredRowId] = useState(null);
@@ -16,13 +44,13 @@ export function Skills() {
             <h3 className="skills-section-headline">WHAT I WORK WITH</h3>
           </div>
           <p className="skills-section-intro">
-            A comprehensive index of technical skills across frontend user interfaces, backend services, database architectures, and core computer science problem solving.
+            Core technical competencies across frontend client interfaces, backend microservices, database architectures, and systems programming.
           </p>
         </div>
 
         {/* Large Editorial List with Thin Horizontal Rules */}
         <div className="skills-editorial-list" role="list">
-          {skillCategories.map((cat, idx) => {
+          {skillCategories.map((cat) => {
             const isHovered = hoveredRowId === cat.id;
 
             return (
@@ -33,35 +61,54 @@ export function Skills() {
                 onMouseEnter={() => setHoveredRowId(cat.id)}
                 onMouseLeave={() => setHoveredRowId(null)}
               >
-                {/* Number & Category Name */}
+                {/* Category Header */}
                 <div className="skills-row-meta">
-                  <span className="skills-number">{cat.number || `0${idx + 1}`}</span>
+                  <span className="skills-category-bullet">&bull;</span>
                   <div className="skills-title-group">
                     <h4 className="skills-category-title">{cat.label}</h4>
                     <span className="skills-category-subtitle">{cat.title}</span>
                   </div>
                 </div>
 
-                {/* Description & Technology Pills */}
+                {/* Description & Technology Badges */}
                 <div className="skills-row-body">
                   <p className="skills-category-desc">{cat.description}</p>
                   
                   <div className="skills-tags-cluster">
-                    {cat.items.map((item) => (
-                      <span
-                        key={item.name}
-                        className={`skills-tech-item ${item.status === 'CORE' ? 'is-core' : ''}`}
-                      >
-                        <span className="skills-tech-name">{item.name}</span>
-                        {item.status === 'CORE' && (
-                          <span className="skills-core-badge" title="Core Foundation">CORE</span>
-                        )}
-                      </span>
-                    ))}
+                    {cat.items.map((item) => {
+                      const url = techUrlMap[item.name];
+
+                      return url ? (
+                        <a
+                          key={item.name}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`skills-tech-item is-link ${item.status === 'CORE' ? 'is-core' : ''}`}
+                          title={`Official documentation for ${item.name}`}
+                        >
+                          <span className="skills-tech-name">{item.name}</span>
+                          {item.status === 'CORE' && (
+                            <span className="skills-core-badge">CORE</span>
+                          )}
+                          <ExternalLink className="w-2.5 h-2.5 skills-ext-icon" />
+                        </a>
+                      ) : (
+                        <span
+                          key={item.name}
+                          className={`skills-tech-item ${item.status === 'CORE' ? 'is-core' : ''}`}
+                        >
+                          <span className="skills-tech-name">{item.name}</span>
+                          {item.status === 'CORE' && (
+                            <span className="skills-core-badge">CORE</span>
+                          )}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Subtle Indicator Arrow / Rule */}
+                {/* Subtle Indicator Arrow */}
                 <div className="skills-row-indicator" aria-hidden="true">
                   <span>&rarr;</span>
                 </div>
@@ -81,8 +128,8 @@ export function Skills() {
           display: grid;
           grid-template-columns: 1fr;
           gap: 16px;
-          margin-bottom: clamp(28px, 4vw, 44px);
-          padding-bottom: 20px;
+          margin-bottom: clamp(24px, 3.5vw, 36px);
+          padding-bottom: 16px;
           border-bottom: 1px solid var(--border);
         }
 
@@ -116,7 +163,7 @@ export function Skills() {
 
         .skills-section-intro {
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 14.5px;
           line-height: 1.6;
           color: var(--text-secondary);
           margin: 0;
@@ -132,42 +179,38 @@ export function Skills() {
         .skills-list-row {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 18px;
-          padding: clamp(24px, 3.5vw, 32px) clamp(16px, 2vw, 24px);
+          gap: 16px;
+          padding: clamp(20px, 3vw, 28px) clamp(14px, 2vw, 20px);
           border-bottom: 1px solid var(--border);
           background: transparent;
-          transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
           border-left: 3px solid transparent;
         }
 
         @media (min-width: 840px) {
           .skills-list-row {
-            grid-template-columns: 240px 1fr 32px;
+            grid-template-columns: 220px 1fr 32px;
             align-items: flex-start;
           }
         }
 
-        /* Hover Interaction per prompt: reveal subtle accent bg, shift row slightly */
         .skills-list-row:hover,
         .skills-list-row.is-active {
-          background-color: var(--surface); /* Paper-like #F2EFE7 */
-          border-left-color: var(--accent);  /* Olive accent #687A45 */
-          transform: translateX(6px);
+          background-color: var(--surface); /* #F2EFE7 */
+          border-left-color: var(--accent);
+          transform: translateX(4px);
         }
 
         .skills-row-meta {
           display: flex;
           align-items: baseline;
-          gap: 14px;
+          gap: 10px;
         }
 
-        .skills-number {
-          font-family: var(--font-mono);
-          font-size: 13px;
-          font-weight: 700;
+        .skills-category-bullet {
           color: var(--accent);
-          letter-spacing: 0.08em;
-          flex-shrink: 0;
+          font-size: 18px;
+          line-height: 1;
         }
 
         .skills-title-group {
@@ -188,7 +231,7 @@ export function Skills() {
 
         .skills-category-subtitle {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 11px;
           color: var(--text-secondary);
           letter-spacing: 0.04em;
         }
@@ -196,12 +239,12 @@ export function Skills() {
         .skills-row-body {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 10px;
         }
 
         .skills-category-desc {
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 13.5px;
           line-height: 1.5;
           color: var(--text-secondary);
           margin: 0;
@@ -216,15 +259,16 @@ export function Skills() {
         .skills-tech-item {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 5px;
           padding: 4px 10px;
           background: var(--bg-0);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           font-family: var(--font-mono);
-          font-size: 11.5px;
+          font-size: 12px;
           color: var(--text-primary);
-          transition: background-color 0.15s ease, border-color 0.15s ease;
+          text-decoration: none;
+          transition: all 0.15s ease;
         }
 
         .skills-tech-item.is-core {
@@ -233,13 +277,20 @@ export function Skills() {
           font-weight: 600;
         }
 
-        .skills-list-row:hover .skills-tech-item {
-          background: #FFFFFF;
+        .skills-tech-item.is-link:hover {
+          background: var(--accent-light);
+          border-color: var(--accent);
+          color: var(--text-primary);
+        }
+
+        .skills-ext-icon {
+          color: var(--text-muted);
+          opacity: 0.7;
         }
 
         .skills-core-badge {
-          font-size: 8.5px;
-          padding: 1px 4px;
+          font-size: 9px;
+          padding: 1px 5px;
           background: var(--accent-light);
           color: var(--accent);
           border-radius: var(--radius-xs);

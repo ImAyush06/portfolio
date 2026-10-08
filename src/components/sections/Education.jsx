@@ -195,7 +195,7 @@ export function Education() {
           align-items: center;
           gap: 8px;
           flex-wrap: wrap;
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .edu-institution-link {
@@ -203,7 +203,7 @@ export function Education() {
           align-items: center;
           gap: 4px;
           color: var(--text-primary);
-          font-weight: 600;
+          font-weight: 700;
           text-decoration: underline;
           text-decoration-color: var(--accent);
           text-underline-offset: 3px;
@@ -224,7 +224,7 @@ export function Education() {
 
         .edu-summary-text {
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 14.5px;
           line-height: 1.6;
           color: var(--text-secondary);
           margin: 0;

@@ -120,13 +120,12 @@ export function Projects({
           <div className="work-jump-strip">
             <span className="work-jump-label">INDEX //</span>
             <div className="work-jump-items">
-              {projects.map((p, idx) => (
+              {projects.map((p) => (
                 <a
                   key={p.id}
                   href={`#project-${p.id}`}
                   className="work-jump-link"
                 >
-                  <span className="jump-num">0{idx + 1}</span>
                   <span className="jump-name">{p.title}</span>
                 </a>
               ))}
@@ -135,8 +134,8 @@ export function Projects({
 
         </div>
 
-        {/* Featured Case Studies List */}
-        <div className="work-case-studies-list">
+        {/* Parallel Compact Project Cards Grid */}
+        <div className="work-parallel-grid">
           {filteredProjects.map((project, idx) => (
             <ProjectParallelCard
               key={project.id}
@@ -264,14 +263,16 @@ export function Projects({
           background: var(--bg-secondary);
         }
 
-        .jump-num {
-          color: var(--accent);
-          font-weight: 700;
+        .work-parallel-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(20px, 3vw, 28px);
         }
 
-        .work-case-studies-list {
-          display: flex;
-          flex-direction: column;
+        @media (min-width: 768px) {
+          .work-parallel-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
       `}</style>
     </>

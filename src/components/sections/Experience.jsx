@@ -23,15 +23,16 @@ export function Experience() {
       >
         <div className="training-editorial-wrapper">
           
-          {/* Editorial Timeline Entry */}
+          {/* Timeline Entry */}
           <div className="training-entry-layout">
             
-            {/* Left Timeline Pillar: Number, Year & Institution */}
+            {/* Left Pillar: Year & Institution */}
             <div className="training-pillar-col">
-              <div className="training-entry-index">
-                <span className="training-num">01</span>
-                <span className="training-sep">/</span>
+              <div className="training-entry-meta">
+                <span className="training-entry-bullet">&bull;</span>
                 <span className="training-year">{item.year || '2026'}</span>
+                <span className="training-sep">&middot;</span>
+                <span className="training-duration-tag">{item.duration}</span>
               </div>
 
               <h4 className="training-org-title">{item.organization}</h4>
@@ -55,7 +56,7 @@ export function Experience() {
             <div className="training-content-col">
               
               <div className="training-title-block">
-                <span className="training-type-label">SUMMER IMMERSION &middot; {item.duration}</span>
+                <span className="training-type-label">SUMMER TRAINING PROGRAM</span>
                 <h3 className="training-program-name">{item.title}</h3>
                 <p className="training-program-sub">{item.subtitle}</p>
               </div>
@@ -64,14 +65,10 @@ export function Experience() {
                 {item.summary}
               </p>
 
-              <p className="training-body-text">
-                {item.description}
-              </p>
-
               {/* Highlights */}
               {item.highlights && item.highlights.length > 0 && (
                 <div className="training-highlights-card">
-                  <span className="training-highlights-title">KEY CURRICULUM HIGHLIGHTS</span>
+                  <span className="training-highlights-title">KEY CURRICULUM HIGHLIGHTS:</span>
                   <div className="training-highlights-grid">
                     {item.highlights.map((h, idx) => (
                       <div key={idx} className="training-highlight-row">
@@ -95,7 +92,7 @@ export function Experience() {
                 </div>
               </div>
 
-              {/* Official Certificate Preview */}
+              {/* Official Certificate Preview — Prominent & Bigger display */}
               <div className="training-cert-dock">
                 <div
                   className="training-cert-preview-box"
@@ -109,15 +106,17 @@ export function Experience() {
                     src={item.image}
                     alt="LPU Certificate of Merit"
                     className="training-cert-img"
+                    loading="lazy"
                   />
                   <div className="training-cert-hover-layer">
-                    <Maximize2 className="w-4 h-4" />
-                    <span>EXPAND CREDENTIAL</span>
+                    <Maximize2 className="w-5 h-5" />
+                    <span>CLICK TO EXPAND CERTIFICATE</span>
                   </div>
                 </div>
 
                 <div className="training-cert-dock-info">
                   <span className="training-cert-dock-tag">OFFICIAL UNIVERSITY CREDENTIAL</span>
+                  <h4 className="training-cert-dock-title">Certificate of Merit (Grade A)</h4>
                   <p className="training-cert-dock-desc">
                     Issued by Lovely Professional University &middot; Certificate No. {item.certificateNo}
                   </p>
@@ -125,9 +124,10 @@ export function Experience() {
                     <button
                       type="button"
                       onClick={handleOpenCertificate}
-                      className="training-cert-expand-btn"
+                      className="btn-editorial-primary btn-sm"
                     >
-                      <span>VIEW FULL DOCUMENT &rarr;</span>
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span>VIEW FULL DOCUMENT</span>
                     </button>
                     <a
                       href={item.verificationUrl}
@@ -184,33 +184,37 @@ export function Experience() {
           padding-right: 20px;
         }
 
-        .training-entry-index {
+        .training-entry-meta {
           display: flex;
-          align-items: baseline;
+          align-items: center;
           gap: 6px;
           font-family: var(--font-mono);
           margin-bottom: 4px;
         }
 
-        .training-num {
-          font-size: 18px;
-          font-weight: 800;
-          color: var(--accent); /* Olive */
+        .training-entry-bullet {
+          color: var(--accent);
+          font-size: 16px;
+        }
+
+        .training-year {
+          font-size: 13px;
+          font-weight: 700;
+          color: var(--text-primary);
         }
 
         .training-sep {
           color: var(--border-strong);
         }
 
-        .training-year {
-          font-size: 12px;
-          font-weight: 700;
-          color: var(--text-primary);
+        .training-duration-tag {
+          font-size: 11px;
+          color: var(--text-secondary);
         }
 
         .training-org-title {
           font-family: var(--font-display);
-          font-size: 15px;
+          font-size: 16px;
           font-weight: 700;
           color: var(--text-primary);
           margin: 0;
@@ -218,7 +222,7 @@ export function Experience() {
 
         .training-org-dept {
           font-family: var(--font-body);
-          font-size: 12.5px;
+          font-size: 13px;
           color: var(--text-secondary);
         }
 
@@ -233,12 +237,12 @@ export function Experience() {
           align-items: center;
           gap: 6px;
           margin-top: 10px;
-          padding: 3px 8px;
+          padding: 4px 10px;
           background: var(--accent-light);
           border: 1px solid var(--accent);
           border-radius: var(--radius-xs);
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 700;
           color: var(--accent);
           width: fit-content;
@@ -291,7 +295,7 @@ export function Experience() {
 
         .training-type-label {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 11px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
@@ -312,25 +316,17 @@ export function Experience() {
 
         .training-program-sub {
           font-family: var(--font-mono);
-          font-size: 11.5px;
+          font-size: 12px;
           color: var(--text-secondary);
           margin: 0;
         }
 
         .training-lead-text {
           font-family: var(--font-body);
-          font-size: 14px;
+          font-size: 14.5px;
           line-height: 1.6;
           color: var(--text-primary);
           font-weight: 500;
-          margin: 0;
-        }
-
-        .training-body-text {
-          font-family: var(--font-body);
-          font-size: 13.5px;
-          line-height: 1.6;
-          color: var(--text-secondary);
           margin: 0;
         }
 
@@ -346,7 +342,7 @@ export function Experience() {
 
         .training-highlights-title {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 10.5px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
@@ -355,7 +351,7 @@ export function Experience() {
         .training-highlights-grid {
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          gap: 6px;
         }
 
         .training-highlight-row {
@@ -363,7 +359,7 @@ export function Experience() {
           align-items: baseline;
           gap: 8px;
           font-family: var(--font-body);
-          font-size: 12.5px;
+          font-size: 13px;
           color: var(--text-primary);
         }
 
@@ -382,7 +378,7 @@ export function Experience() {
 
         .training-skills-heading {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 10.5px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
@@ -396,31 +392,31 @@ export function Experience() {
 
         .training-skill-pill {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          padding: 2px 8px;
+          font-size: 11px;
+          padding: 3px 8px;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           color: var(--text-primary);
         }
 
-        /* Certificate Dock */
+        /* Certificate Dock — Prominent preview */
         .training-cert-dock {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 16px;
-          padding: 14px;
+          gap: 18px;
+          padding: 16px;
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
-          margin-top: 6px;
+          margin-top: 8px;
           align-items: center;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 680px) {
           .training-cert-dock {
-            grid-template-columns: 140px 1fr;
-            gap: 18px;
+            grid-template-columns: 260px 1fr;
+            gap: 22px;
           }
         }
 
@@ -431,8 +427,9 @@ export function Experience() {
           overflow: hidden;
           position: relative;
           cursor: zoom-in;
-          border: 1px solid var(--border);
+          border: 1px solid var(--border-strong);
           background: var(--bg-0);
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
         }
 
         .training-cert-img {
@@ -440,6 +437,11 @@ export function Experience() {
           height: 100%;
           object-fit: cover;
           display: block;
+          transition: transform 0.3s ease;
+        }
+
+        .training-cert-preview-box:hover .training-cert-img {
+          transform: scale(1.03);
         }
 
         .training-cert-hover-layer {
@@ -451,10 +453,10 @@ export function Experience() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 4px;
+          gap: 6px;
           color: #FFFFFF;
           font-family: var(--font-mono);
-          font-size: 9.5px;
+          font-size: 10.5px;
           letter-spacing: 0.06em;
           font-weight: 600;
           transition: opacity 0.2s ease;
@@ -467,20 +469,28 @@ export function Experience() {
         .training-cert-dock-info {
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 6px;
         }
 
         .training-cert-dock-tag {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 10.5px;
           letter-spacing: 0.08em;
           color: var(--accent);
           font-weight: 700;
         }
 
+        .training-cert-dock-title {
+          font-family: var(--font-display);
+          font-size: 16px;
+          font-weight: 800;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
         .training-cert-dock-desc {
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 13px;
           color: var(--text-secondary);
           margin: 0;
         }
@@ -489,25 +499,8 @@ export function Experience() {
           display: flex;
           align-items: center;
           gap: 14px;
-          margin-top: 6px;
-        }
-
-        .training-cert-expand-btn {
-          background: none;
-          border: none;
-          font-family: var(--font-mono);
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--text-primary);
-          cursor: pointer;
-          padding: 0;
-          text-decoration: underline;
-          text-decoration-color: var(--accent);
-          text-underline-offset: 3px;
-        }
-
-        .training-cert-expand-btn:hover {
-          color: var(--accent);
+          margin-top: 8px;
+          flex-wrap: wrap;
         }
 
         .training-cert-verify-link {
@@ -515,7 +508,7 @@ export function Experience() {
           align-items: center;
           gap: 3px;
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 11px;
           color: var(--text-secondary);
           text-decoration: none;
         }

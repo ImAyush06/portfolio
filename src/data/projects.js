@@ -48,12 +48,12 @@ export const projects = [
     year: "2026",
     status: "Completed",
     description: "A full-stack clinical management system engineered to digitally orchestrate patient triage, doctor consultations, appointment queues, medical billing, and clinical histories using decoupled Spring Boot services and MongoDB.",
-    image: "/projects/brainware.jpg",
-    imageAlt: "Hospital Management System Clinical Dashboard Screenshot",
-    imageRatio: "16/10",
+    image: "/projects/hospital.jpg",
+    imageAlt: "Hospital Management System Clinical Triage & Operations Dashboard",
+    imageRatio: "16/9",
     frame: true,
     gallery: [
-      { src: "/projects/brainware.jpg", alt: "Clinical Interface", caption: "Patient Admission & Scheduling Console" },
+      { src: "/projects/hospital.jpg", alt: "Clinical Interface", caption: "Patient Admission & Scheduling Console" },
     ],
     technologies: ["Java", "Spring Boot", "MongoDB", "JavaScript", "HTML5", "CSS3", "REST APIs"],
     features: [

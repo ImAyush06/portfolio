@@ -1,16 +1,35 @@
 import React from 'react';
-import { ArrowUpRight, ExternalLink, Maximize2 } from 'lucide-react';
+import { ExternalLink, Maximize2, Sparkles } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/BrandIcons';
+
+// Official Technology Documentation Websites Map
+const techUrlMap = {
+  "React.js": "https://react.dev/",
+  "React": "https://react.dev/",
+  "JavaScript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  "HTML5": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  "CSS3": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  "Java": "https://dev.java/",
+  "Spring Boot": "https://spring.io/projects/spring-boot",
+  "MongoDB": "https://www.mongodb.com/",
+  "REST APIs": "https://restfulapi.net/",
+  "C": "https://en.cppreference.com/w/c",
+  "C++": "https://isocpp.org/",
+  "Linux": "https://www.kernel.org/",
+  "Operating Systems": "https://en.wikipedia.org/wiki/Operating_system",
+  "Cryptographic Hashing": "https://en.wikipedia.org/wiki/Cryptographic_hash_function",
+  "Security Protocols": "https://en.wikipedia.org/wiki/Communications_protocol#Security",
+  "Google Gemini API": "https://ai.google.dev/",
+  "Local Storage API": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+  "Netlify CI/CD": "https://www.netlify.com/",
+};
 
 export function ProjectParallelCard({
   project,
   index,
-  activeHoveredSkill = null,
   onOpenDetails = () => {},
   onOpenLightbox = () => {},
 }) {
-  const isReversed = index % 2 === 1;
-
   const galleryImages = project.gallery && project.gallery.length > 0
     ? project.gallery
     : [{ src: project.image, alt: project.imageAlt || project.title, caption: project.title }];
@@ -22,122 +41,101 @@ export function ProjectParallelCard({
   return (
     <article
       id={`project-${project.id}`}
-      className={`featured-case-study ${isReversed ? 'is-reversed' : ''}`}
+      className="project-compact-card"
     >
-      {/* =========================================================
-          MEDIA COLUMN: Large Real Project Screenshot in Paper Frame
-          ========================================================= */}
-      <div className="case-study-media-col">
-        <div
-          className="case-study-frame"
-          onClick={handleImageClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => { if (e.key === 'Enter') handleImageClick(); }}
-          aria-label={`Enlarge screenshot for ${project.title}`}
-        >
-          {/* Subtle Paper Frame Header */}
-          <div className="case-study-frame-top">
-            <div className="case-study-frame-dots">
-              <span className="dot" />
-              <span className="dot" />
-              <span className="dot" />
-            </div>
-            <span className="case-study-frame-url">
-              https://{project.id}.app
-            </span>
-            <span className="case-study-frame-tag">SCREENSHOT</span>
-          </div>
+      {/* Top Media: Project Screenshot with Aspect Ratio 16:9 & Zoom Action */}
+      <div
+        className="project-card-media-box"
+        onClick={handleImageClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') handleImageClick(); }}
+        aria-label={`Enlarge screenshot for ${project.title}`}
+      >
+        <div className="project-card-media-bar">
+          <span className="project-card-category-tag">{project.category.split('/')[0].trim()}</span>
+          <span className="project-card-zoom-hint">
+            <Maximize2 className="w-3 h-3" />
+            <span>ZOOM</span>
+          </span>
+        </div>
 
-          {/* Actual Unfiltered Project Image */}
-          <div className="case-study-image-wrapper">
-            <img
-              src={project.image}
-              alt={project.imageAlt || project.title}
-              className="case-study-actual-image"
-              loading="lazy"
-            />
-            <div className="case-study-zoom-overlay">
-              <Maximize2 className="w-4 h-4" />
-              <span>CLICK TO EXPAND SCREENSHOT</span>
-            </div>
-          </div>
+        <div className="project-card-img-wrap">
+          <img
+            src={project.image}
+            alt={project.imageAlt || project.title}
+            className="project-card-img"
+            loading="lazy"
+          />
         </div>
       </div>
 
-      {/* =========================================================
-          CONTENT COLUMN: Number, Title, Description, Stack, CTAs
-          ========================================================= */}
-      <div className="case-study-content-col">
+      {/* Card Content: Title, Summary, Technologies & Actions */}
+      <div className="project-card-body">
         
-        {/* Project Number & Category Tag */}
-        <div className="case-study-meta-line">
-          <span className="case-study-num">0{index + 1}</span>
-          <span className="case-study-meta-divider">/</span>
-          <span className="case-study-category">{project.category}</span>
-          {project.year && (
-            <>
-              <span className="case-study-meta-divider">/</span>
-              <span className="case-study-year">{project.year}</span>
-            </>
+        {/* Title & Subtitle */}
+        <div className="project-card-title-group">
+          <h3 className="project-card-title">{project.title}</h3>
+          {project.subtitle && (
+            <p className="project-card-subtitle">{project.subtitle}</p>
           )}
         </div>
 
-        {/* Dynamic Growing Accent Line on Hover */}
-        <div className="case-study-accent-line" />
-
-        {/* Project Title */}
-        <h3 className="case-study-title">
-          {project.title}
-        </h3>
-
-        {/* Project Subtitle */}
-        {project.subtitle && (
-          <p className="case-study-subtitle">
-            {project.subtitle}
-          </p>
-        )}
-
-        {/* Short Verified Description */}
-        <p className="case-study-description">
+        {/* Concise Description */}
+        <p className="project-card-desc">
           {project.description}
         </p>
 
-        {/* Highlights / Features */}
+        {/* Key Points (Short, To-the-point) */}
         {project.features && project.features.length > 0 && (
-          <div className="case-study-features-box">
-            {project.features.slice(0, 3).map((feat, fIdx) => (
-              <div key={fIdx} className="case-study-feature-item">
-                <span className="case-study-feature-bullet">&rarr;</span>
+          <div className="project-card-highlights">
+            {project.features.slice(0, 2).map((feat, fIdx) => (
+              <div key={fIdx} className="project-card-feat-item">
+                <span className="project-card-bullet">&bull;</span>
                 <span>{feat}</span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Technologies List */}
-        <div className="case-study-stack-row">
-          <span className="case-study-stack-label">STACK:</span>
-          <div className="case-study-stack-pills">
-            {project.technologies.map((tech) => (
-              <span key={tech} className="case-study-tech-pill">
-                {tech}
-              </span>
-            ))}
+        {/* Tech Stack Pills — Responsive & Links to Official Sites */}
+        <div className="project-card-tech-section">
+          <span className="project-card-tech-label">TECHNOLOGIES:</span>
+          <div className="project-card-tech-pills">
+            {project.technologies.map((tech) => {
+              const url = techUrlMap[tech];
+              return url ? (
+                <a
+                  key={tech}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-tech-badge is-link"
+                  title={`Official website for ${tech}`}
+                >
+                  <span>{tech}</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              ) : (
+                <span key={tech} className="project-tech-badge">
+                  {tech}
+                </span>
+              );
+            })}
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="case-study-actions-row">
+        {/* Action Buttons Row */}
+        <div className="project-card-actions">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-editorial-primary"
+              className="btn-editorial-primary btn-sm"
             >
               <span>LIVE DEMO</span>
-              <ExternalLink className="w-3.5 h-3.5 btn-arrow" />
+              <ExternalLink className="w-3 h-3" />
             </a>
           )}
 
@@ -146,266 +144,174 @@ export function ProjectParallelCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-editorial-secondary"
+              className="btn-editorial-secondary btn-sm"
             >
               <GithubIcon className="w-3.5 h-3.5" />
-              <span>SOURCE CODE</span>
+              <span>SOURCE</span>
             </a>
           )}
 
           <button
             type="button"
             onClick={() => onOpenDetails(project)}
-            className="case-study-details-link"
+            className="project-details-btn"
           >
-            <span>CASE STUDY &amp; SPECS</span>
-            <span className="details-arrow">&rarr;</span>
+            <span>SPECS &amp; CASE STUDY &rarr;</span>
           </button>
         </div>
 
       </div>
 
       <style>{`
-        .featured-case-study {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: clamp(28px, 4.5vw, 56px);
-          align-items: center;
-          padding: clamp(36px, 5.5vw, 64px) 0;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .featured-case-study:last-child {
-          border-bottom: none;
-        }
-
-        @media (min-width: 992px) {
-          .featured-case-study {
-            grid-template-columns: 1.15fr 0.95fr;
-          }
-
-          .featured-case-study.is-reversed {
-            grid-template-columns: 0.95fr 1.15fr;
-          }
-
-          .featured-case-study.is-reversed .case-study-media-col {
-            order: 2;
-          }
-
-          .featured-case-study.is-reversed .case-study-content-col {
-            order: 1;
-          }
-        }
-
-        /* Media Column */
-        .case-study-frame {
-          background: var(--surface); /* Paper surface #F2EFE7 */
+        .project-compact-card {
+          background: var(--surface); /* #F2EFE7 */
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           overflow: hidden;
-          cursor: zoom-in;
-          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-          transition: transform 0.25s ease, border-color 0.25s ease;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
         }
 
-        .case-study-frame:hover {
+        .project-compact-card:hover {
           transform: translateY(-2px);
-          border-color: var(--border-strong);
+          border-color: var(--accent);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
         }
 
-        .case-study-frame-top {
+        /* Media Box */
+        .project-card-media-box {
+          position: relative;
+          background: var(--bg-secondary);
+          border-bottom: 1px solid var(--border);
+          cursor: zoom-in;
+          overflow: hidden;
+        }
+
+        .project-card-media-bar {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 8px 14px;
-          background: var(--bg-secondary);
+          padding: 8px 12px;
+          background: var(--bg-0);
           border-bottom: 1px solid var(--border);
         }
 
-        .case-study-frame-dots {
-          display: flex;
-          gap: 5px;
+        .project-card-category-tag {
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          font-weight: 700;
+          color: var(--accent);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
 
-        .case-study-frame-dots .dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          background: var(--border-strong);
-        }
-
-        .case-study-frame-url {
+        .project-card-zoom-hint {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
           font-family: var(--font-mono);
           font-size: 10px;
           color: var(--text-secondary);
-          letter-spacing: 0.04em;
+          font-weight: 600;
         }
 
-        .case-study-frame-tag {
-          font-family: var(--font-mono);
-          font-size: 9px;
-          color: var(--accent);
-          letter-spacing: 0.08em;
-          font-weight: 700;
-        }
-
-        .case-study-image-wrapper {
-          position: relative;
+        .project-card-img-wrap {
           width: 100%;
-          aspect-ratio: 16 / 10;
+          aspect-ratio: 16 / 9;
           overflow: hidden;
-          background: var(--bg-0);
+          background: var(--bg-secondary);
         }
 
-        .case-study-actual-image {
+        .project-card-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: top;
           display: block;
-          transition: transform 0.35s ease;
+          transition: transform 0.3s ease;
         }
 
-        .case-study-frame:hover .case-study-actual-image {
-          transform: scale(1.025);
+        .project-compact-card:hover .project-card-img {
+          transform: scale(1.02);
         }
 
-        .case-study-zoom-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(36, 39, 32, 0.45);
-          opacity: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          color: #FFFFFF;
-          font-family: var(--font-mono);
-          font-size: 11px;
-          letter-spacing: 0.08em;
-          font-weight: 600;
-          transition: opacity 0.2s ease;
-        }
-
-        .case-study-frame:hover .case-study-zoom-overlay {
-          opacity: 1;
-        }
-
-        /* Content Column */
-        .case-study-content-col {
+        /* Body */
+        .project-card-body {
+          padding: clamp(16px, 2.2vw, 22px);
           display: flex;
           flex-direction: column;
+          flex: 1;
+          gap: 12px;
         }
 
-        .case-study-meta-line {
+        .project-card-title-group {
           display: flex;
-          align-items: baseline;
-          gap: 8px;
-          font-family: var(--font-mono);
-          font-size: 11px;
-          letter-spacing: 0.08em;
-          color: var(--text-secondary);
-          margin-bottom: 8px;
-          flex-wrap: wrap;
+          flex-direction: column;
+          gap: 2px;
         }
 
-        .case-study-num {
-          color: var(--accent); /* Olive */
-          font-weight: 700;
-          font-size: 13px;
-        }
-
-        .case-study-meta-divider {
-          color: var(--border-strong);
-        }
-
-        .case-study-category {
-          color: var(--text-primary);
-          font-weight: 600;
-          text-transform: uppercase;
-        }
-
-        .case-study-year {
-          color: var(--text-muted);
-        }
-
-        /* Growing Accent Line */
-        .case-study-accent-line {
-          width: 28px;
-          height: 2px;
-          background: var(--accent);
-          margin-bottom: 12px;
-          transition: width 0.25s ease;
-        }
-
-        .featured-case-study:hover .case-study-accent-line {
-          width: 48px;
-        }
-
-        .case-study-title {
+        .project-card-title {
           font-family: var(--font-display);
-          font-size: clamp(1.65rem, 2.5vw, 2.35rem);
+          font-size: clamp(1.2rem, 1.4vw, 1.35rem);
           font-weight: 800;
-          letter-spacing: -0.025em;
           color: var(--text-primary);
-          line-height: 1.15;
-          margin: 0 0 6px;
+          line-height: 1.2;
+          margin: 0;
+          letter-spacing: -0.015em;
         }
 
-        .case-study-subtitle {
+        .project-card-subtitle {
           font-family: var(--font-mono);
-          font-size: 11.5px;
-          color: var(--accent-secondary); /* Muted copper */
-          margin: 0 0 14px;
+          font-size: 11px;
+          color: var(--accent-secondary);
+          margin: 0;
           font-weight: 600;
         }
 
-        .case-study-description {
+        .project-card-desc {
           font-family: var(--font-body);
-          font-size: 14.5px;
-          line-height: 1.65;
+          font-size: 13.5px;
+          line-height: 1.55;
           color: var(--text-secondary);
-          margin: 0 0 18px;
-          max-width: 56ch;
+          margin: 0;
         }
 
-        .case-study-features-box {
+        .project-card-highlights {
           display: flex;
           flex-direction: column;
-          gap: 5px;
-          margin-bottom: 18px;
-          padding: 12px 14px;
-          background: var(--surface);
-          border: 1px solid var(--border);
+          gap: 4px;
+          padding: 8px 10px;
+          background: var(--bg-0);
+          border: 1px solid var(--border-subtle);
           border-radius: var(--radius-xs);
         }
 
-        .case-study-feature-item {
+        .project-card-feat-item {
           display: flex;
           align-items: baseline;
-          gap: 8px;
+          gap: 6px;
           font-family: var(--font-body);
-          font-size: 12.5px;
+          font-size: 12px;
           color: var(--text-primary);
-          line-height: 1.45;
+          line-height: 1.4;
         }
 
-        .case-study-feature-bullet {
+        .project-card-bullet {
           color: var(--accent);
-          font-family: var(--font-mono);
-          font-size: 12px;
           font-weight: 700;
         }
 
-        .case-study-stack-row {
+        /* Tech Section */
+        .project-card-tech-section {
           display: flex;
-          align-items: baseline;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-bottom: 24px;
+          flex-direction: column;
+          gap: 6px;
+          padding-top: 4px;
         }
 
-        .case-study-stack-label {
+        .project-card-tech-label {
           font-family: var(--font-mono);
           font-size: 10px;
           letter-spacing: 0.1em;
@@ -413,59 +319,68 @@ export function ProjectParallelCard({
           font-weight: 700;
         }
 
-        .case-study-stack-pills {
+        .project-card-tech-pills {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
+          gap: 5px;
         }
 
-        .case-study-tech-pill {
+        .project-tech-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
           font-family: var(--font-mono);
           font-size: 11px;
           padding: 3px 8px;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
-          color: var(--text-primary);
           border-radius: var(--radius-xs);
+          color: var(--text-primary);
           font-weight: 500;
+          text-decoration: none;
+          transition: all 0.15s ease;
         }
 
-        .case-study-actions-row {
+        .project-tech-badge.is-link:hover {
+          background: var(--accent-light);
+          border-color: var(--accent);
+          color: var(--text-primary);
+        }
+
+        /* Actions */
+        .project-card-actions {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           flex-wrap: wrap;
+          padding-top: 10px;
+          margin-top: auto;
+          border-top: 1px solid var(--border);
         }
 
-        .case-study-details-link {
+        .btn-sm {
+          padding: 6px 12px !important;
+          font-size: 11px !important;
+        }
+
+        .project-details-btn {
           background: none;
           border: none;
           font-family: var(--font-mono);
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 0.06em;
           color: var(--text-primary);
           cursor: pointer;
-          padding: 8px 10px;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
+          padding: 0;
           text-decoration: underline;
           text-decoration-color: var(--accent);
-          text-underline-offset: 4px;
+          text-underline-offset: 3px;
           transition: color 0.15s ease;
+          margin-left: auto;
         }
 
-        .case-study-details-link:hover {
+        .project-details-btn:hover {
           color: var(--accent);
-        }
-
-        .details-arrow {
-          transition: transform 0.2s ease;
-        }
-
-        .case-study-details-link:hover .details-arrow {
-          transform: translateX(3px);
         }
       `}</style>
     </article>

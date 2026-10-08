@@ -103,16 +103,16 @@ export function Certificates() {
         .certificates-gallery-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(20px, 3vw, 28px);
+          gap: clamp(16px, 2.5vw, 22px);
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
           .certificates-gallery-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
-        @media (min-width: 1040px) {
+        @media (min-width: 1024px) {
           .certificates-gallery-grid {
             grid-template-columns: repeat(3, 1fr);
           }

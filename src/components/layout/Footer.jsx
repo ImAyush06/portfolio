@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Mail } from 'lucide-react';
 import { site } from '@/data/site';
+import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons';
 
 export function Footer() {
   const scrollToTop = () => {
@@ -18,31 +19,37 @@ export function Footer() {
             <span className="footer-role">Computer Science Engineering Student &middot; Full Stack Developer</span>
           </div>
 
-          {/* Simple Text Links */}
-          <div className="footer-links-col">
+          {/* Rounded Social Icon Buttons like previous format */}
+          <div className="footer-social-row">
             <a
               href={site.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="footer-nav-link"
+              className="footer-circle-btn"
+              title="GitHub Profile"
+              aria-label="GitHub Profile"
             >
-              GitHub &rarr;
+              <GithubIcon className="w-4 h-4" />
             </a>
 
             <a
               href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="footer-nav-link"
+              className="footer-circle-btn"
+              title="LinkedIn Profile"
+              aria-label="LinkedIn Profile"
             >
-              LinkedIn &rarr;
+              <LinkedinIcon className="w-4 h-4" />
             </a>
 
             <a
               href={`mailto:${site.email}`}
-              className="footer-nav-link"
+              className="footer-circle-btn"
+              title="Email Ayush"
+              aria-label="Email Ayush"
             >
-              Email &rarr;
+              <Mail className="w-4 h-4" />
             </a>
 
             <button
@@ -51,7 +58,7 @@ export function Footer() {
               className="footer-top-btn"
               aria-label="Scroll to top of page"
             >
-              <span>BACK TO TOP</span>
+              <span>TOP</span>
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -68,7 +75,7 @@ export function Footer() {
         .editorial-footer {
           border-top: 1px solid var(--border);
           background: var(--bg-0);
-          padding: clamp(32px, 4.5vh, 44px) 0 28px;
+          padding: clamp(28px, 4vh, 38px) 0 24px;
           position: relative;
           z-index: 3;
         }
@@ -78,19 +85,19 @@ export function Footer() {
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 18px;
+          gap: 16px;
         }
 
         .footer-brand-col {
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 3px;
         }
 
         .footer-name {
           font-family: var(--font-display);
           font-weight: 800;
-          font-size: 13.5px;
+          font-size: 14px;
           letter-spacing: 0.06em;
           color: var(--text-primary);
           text-transform: uppercase;
@@ -98,52 +105,64 @@ export function Footer() {
 
         .footer-role {
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 12.5px;
           color: var(--text-secondary);
         }
 
-        .footer-links-col {
+        .footer-social-row {
           display: flex;
           align-items: center;
-          gap: 20px;
-          flex-wrap: wrap;
+          gap: 10px;
         }
 
-        .footer-nav-link {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--text-secondary);
+        .footer-circle-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          transition: all 0.2s ease;
           text-decoration: none;
-          transition: color 0.15s ease;
         }
 
-        .footer-nav-link:hover {
-          color: var(--accent);
+        .footer-circle-btn:hover {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #FFFFFF;
+          transform: translateY(-2px);
         }
 
         .footer-top-btn {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          background: none;
-          border: none;
-          padding: 0;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          padding: 6px 12px;
+          border-radius: var(--radius-xs);
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 10.5px;
           letter-spacing: 0.08em;
           font-weight: 700;
           color: var(--text-secondary);
           cursor: pointer;
-          transition: color 0.15s ease;
+          transition: all 0.15s ease;
+          margin-left: 6px;
         }
 
         .footer-top-btn:hover {
           color: var(--text-primary);
+          border-color: var(--accent);
+          background: var(--accent-light);
         }
 
         .footer-copy-col {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 11px;
           color: var(--text-muted);
         }
       `}</style>

@@ -129,16 +129,6 @@ export function MobileMenu({ isOpen, onClose, navItems = [] }) {
                 >
                   <span
                     style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '12px',
-                      color: 'var(--accent)',
-                      fontWeight: 700,
-                    }}
-                  >
-                    0{idx + 1}
-                  </span>
-                  <span
-                    style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: 'clamp(1.75rem, 8vw, 2.5rem)',
                       fontWeight: 700,

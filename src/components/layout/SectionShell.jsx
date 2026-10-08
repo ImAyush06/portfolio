@@ -51,34 +51,30 @@ export function SectionShell({
         <div
           style={{
             display: 'flex',
-            alignItems: 'baseline',
+            alignItems: 'center',
             justifyContent: 'space-between',
-            paddingBottom: '16px',
-            marginBottom: 'clamp(28px, 4vw, 44px)',
+            paddingBottom: '14px',
+            marginBottom: 'clamp(24px, 3.5vw, 36px)',
             borderBottom: '1px solid var(--border)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
-            {number && (
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  color: 'var(--accent)', /* Olive */
-                  letterSpacing: '0.1em',
-                }}
-              >
-                {number}
-              </span>
-            )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span
+              style={{
+                width: '6px',
+                height: '14px',
+                background: 'var(--accent)',
+                borderRadius: '1px',
+                display: 'inline-block',
+              }}
+            />
             <h2
               id={`heading-${id}`}
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(14px, 1.2vw, 16px)',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
+                fontSize: 'clamp(18px, 1.8vw, 24px)',
+                fontWeight: 800,
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
                 margin: 0,

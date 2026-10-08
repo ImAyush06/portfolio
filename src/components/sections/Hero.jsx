@@ -13,28 +13,24 @@ export function Hero() {
 
   const blueprintNodes = [
     {
-      num: '01',
       phase: 'FRONTEND INTERFACES',
       stack: 'React.js · JavaScript · Responsive DOM',
-      sub: 'Fluid client interactions & modular components',
+      sub: 'Fluid client interactions & component design',
     },
     {
-      num: '02',
       phase: 'BACKEND SERVICES',
       stack: 'Java · Spring Boot · REST APIs',
       sub: 'Decoupled services & transactional endpoints',
     },
     {
-      num: '03',
       phase: 'DATA & PERSISTENCE',
       stack: 'MongoDB · Relational DBMS · SQL',
       sub: 'Structured schemas & database queries',
     },
     {
-      num: '04',
       phase: 'SYSTEMS & ALGORITHMS',
-      stack: 'C++ · Data Structures · Complexity Analysis',
-      sub: 'Algorithmic logic & computational foundations',
+      stack: 'C++ · Data Structures · Algorithmic Logic',
+      sub: 'Core fundamentals & computational problem solving',
     },
   ];
 
@@ -57,8 +53,7 @@ export function Hero() {
             {/* Small Top Editorial Label */}
             <div className="hero-kicker-strip">
               <span className="hero-kicker-dot" />
-              <span className="hero-kicker-title">COMPUTER SCIENCE / FULL STACK DEVELOPMENT</span>
-              <span className="hero-kicker-year">2026</span>
+              <span className="hero-kicker-title">COMPUTER SCIENCE &middot; FULL STACK DEVELOPMENT</span>
             </div>
 
             {/* Giant Asymmetric Architectural Typography */}
@@ -83,7 +78,7 @@ export function Hero() {
                 I build practical web applications and software systems using modern frontend, backend, and database technologies.
               </p>
               <p>
-                I enjoy solving problems with code, exploring computer science fundamentals, and turning ideas into usable software products.
+                Focused on writing clean code, applying computer science fundamentals, and turning complex ideas into reliable software products.
               </p>
             </div>
 
@@ -126,26 +121,25 @@ export function Hero() {
                 <div className="blueprint-header-left">
                   <span className="blueprint-header-tag">DEVELOPER WORKSPACE</span>
                   <span className="blueprint-sep">/</span>
-                  <span className="blueprint-id">SPEC // 01</span>
+                  <span className="blueprint-id">SYSTEM SPEC</span>
                 </div>
                 <div className="blueprint-status">
                   <span className="blueprint-status-indicator" />
-                  <span>ACTIVE ENGINEERING</span>
+                  <span>ACTIVE</span>
                 </div>
               </div>
 
               {/* Blueprint Subtitle */}
               <p className="blueprint-caption">
-                Architectural discipline overview across user interfaces, application servers, persistence, and algorithmic foundations.
+                Architectural overview across client interfaces, backend microservices, database schemas, and algorithmic problem-solving.
               </p>
 
               {/* Connected Engineering Blueprint Nodes */}
               <div className="blueprint-nodes-container">
-                {blueprintNodes.map((node, idx) => (
-                  <div key={node.num} className="blueprint-node-item">
+                {blueprintNodes.map((node) => (
+                  <div key={node.phase} className="blueprint-node-item">
                     <div className="blueprint-node-top">
-                      <span className="blueprint-node-num">{node.num}</span>
-                      <span className="blueprint-node-connector" />
+                      <span className="blueprint-node-bullet">&bull;</span>
                       <h4 className="blueprint-node-phase">{node.phase}</h4>
                     </div>
                     <div className="blueprint-node-details">
@@ -154,35 +148,6 @@ export function Hero() {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Blueprint Footer Links */}
-              <div className="blueprint-footer">
-                <a
-                  href={site.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="blueprint-footer-link"
-                >
-                  <span>GITHUB</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
-                <a
-                  href={site.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="blueprint-footer-link"
-                >
-                  <span>LINKEDIN</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="blueprint-footer-link"
-                >
-                  <span>EMAIL</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
               </div>
 
             </div>
@@ -448,22 +413,15 @@ export function Hero() {
           gap: 8px;
         }
 
-        .blueprint-node-num {
-          font-family: var(--font-mono);
-          font-size: 10.5px;
-          font-weight: 700;
+        .blueprint-node-bullet {
           color: var(--accent);
-        }
-
-        .blueprint-node-connector {
-          width: 8px;
-          height: 1px;
-          background: var(--border-strong);
+          font-size: 14px;
+          line-height: 1;
         }
 
         .blueprint-node-phase {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.06em;
           color: var(--text-primary);
@@ -474,20 +432,20 @@ export function Hero() {
         .blueprint-node-details {
           display: flex;
           flex-direction: column;
-          gap: 1px;
-          padding-left: 20px;
+          gap: 2px;
+          padding-left: 16px;
         }
 
         .blueprint-node-stack {
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           color: var(--text-primary);
         }
 
         .blueprint-node-sub {
           font-family: var(--font-body);
-          font-size: 11px;
+          font-size: 12px;
           color: var(--text-secondary);
         }
 

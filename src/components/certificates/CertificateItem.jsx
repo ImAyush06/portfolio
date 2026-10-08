@@ -7,79 +7,70 @@ export function ParallelCertificateCard({ certificate, onOpenCertificate = () =>
   };
 
   return (
-    <article className="cert-gallery-item">
-      {/* IMAGE-FIRST: Actual certificate image with natural aspect framing */}
+    <article className="cert-compact-card">
+      {/* Top Banner: Blended Certificate Graphic */}
       <div
-        className="cert-image-frame"
+        className="cert-card-header"
         onClick={handleClick}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === 'Enter') handleClick(); }}
-        aria-label={`Expand certificate for ${certificate.title}`}
+        aria-label={`View certificate for ${certificate.title}`}
       >
         <img
           src={certificate.image}
           alt={certificate.title}
-          className="cert-image-media"
+          className="cert-card-bg-img"
           loading="lazy"
         />
-        <div className="cert-image-hover-curtain">
-          <Maximize2 className="w-4 h-4" />
-          <span>EXPAND CREDENTIAL</span>
+        {/* Soft gradient blend into card surface */}
+        <div className="cert-card-gradient-blend" />
+        
+        {/* Hover Action Indicator */}
+        <div className="cert-card-zoom-pill">
+          <Maximize2 className="w-3 h-3" />
+          <span>EXPAND</span>
         </div>
       </div>
 
-      {/* Supporting Information Under Certificate */}
-      <div className="cert-meta-container">
+      {/* Main Data Body — Immediately Visible at First Glance */}
+      <div className="cert-card-body">
         
         {/* Issuer & Date Strip */}
         <div className="cert-issuer-strip">
-          <div className="cert-issuer-pill">
-            <span className="cert-issuer-bullet" />
-            <span>{certificate.organization || certificate.provider}</span>
-          </div>
-          <span className="cert-date-caption">{certificate.date || certificate.year}</span>
+          <span className="cert-issuer-name">{certificate.organization || certificate.provider}</span>
+          <span className="cert-issue-date">{certificate.date || certificate.year}</span>
         </div>
 
         {/* Certificate Title */}
-        <h3 className="cert-heading">
+        <h3 className="cert-title">
           {certificate.title}
         </h3>
 
-        {/* Credential Subtitle */}
+        {/* Short to-the-point description */}
         {certificate.subtitle && (
-          <p className="cert-sub-text">
+          <p className="cert-subtitle">
             {certificate.subtitle}
           </p>
         )}
 
-        {/* Description */}
-        {certificate.description && (
-          <p className="cert-description-text">
-            {certificate.description}
-          </p>
-        )}
-
-        {/* Relevant Skills */}
+        {/* Skills Pills */}
         {certificate.skills && certificate.skills.length > 0 && (
-          <div className="cert-skills-wrap">
-            <span className="cert-skills-label">SKILLS:</span>
-            <div className="cert-skills-pills">
-              {certificate.skills.map((skill) => (
-                <span key={skill} className="cert-skill-tag">
-                  {skill}
-                </span>
-              ))}
-            </div>
+          <div className="cert-skills-row">
+            {certificate.skills.map((skill) => (
+              <span key={skill} className="cert-skill-pill">
+                {skill}
+              </span>
+            ))}
           </div>
         )}
 
-        {/* Action Link: View Certificate */}
-        <div className="cert-footer-row">
+        {/* Action Row */}
+        <div className="cert-action-row">
           <button
             type="button"
             onClick={handleClick}
-            className="cert-expand-link"
+            className="cert-view-btn"
           >
             <span>VIEW CERTIFICATE &rarr;</span>
           </button>
@@ -89,8 +80,8 @@ export function ParallelCertificateCard({ certificate, onOpenCertificate = () =>
               href={certificate.verificationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="cert-external-verify"
-              title="Verify credential"
+              className="cert-verify-link"
+              title="Verify credential on official portal"
             >
               <span>VERIFY</span>
               <ExternalLink className="w-3 h-3" />
@@ -101,181 +92,169 @@ export function ParallelCertificateCard({ certificate, onOpenCertificate = () =>
       </div>
 
       <style>{`
-        .cert-gallery-item {
-          background: var(--surface); /* Paper surface #F2EFE7 */
+        .cert-compact-card {
+          background: var(--surface); /* #F2EFE7 */
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          transition: transform 0.2s ease, border-color 0.2s ease;
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
-        .cert-gallery-item:hover {
+        .cert-compact-card:hover {
           transform: translateY(-2px);
-          border-color: var(--border-strong);
+          border-color: var(--accent);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
         }
 
-        /* Image-First Presentation */
-        .cert-image-frame {
+        /* Blended Certificate Header */
+        .cert-card-header {
           position: relative;
           width: 100%;
-          aspect-ratio: 4 / 3;
+          height: 96px;
           background: var(--bg-secondary);
           overflow: hidden;
           cursor: zoom-in;
-          border-bottom: 1px solid var(--border);
+          border-bottom: 1px solid var(--border-subtle);
         }
 
-        .cert-image-media {
+        .cert-card-bg-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: top;
-          display: block;
-          transition: transform 0.3s ease;
+          object-position: top center;
+          opacity: 0.72;
+          filter: contrast(0.96) saturate(0.9);
+          transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .cert-image-frame:hover .cert-image-media {
-          transform: scale(1.03);
+        .cert-compact-card:hover .cert-card-bg-img {
+          transform: scale(1.04);
+          opacity: 0.88;
         }
 
-        .cert-image-hover-curtain {
+        /* Gradient mask blending the certificate into the card background */
+        .cert-card-gradient-blend {
           position: absolute;
           inset: 0;
-          background: rgba(36, 39, 32, 0.45);
-          opacity: 0;
-          display: flex;
+          background: linear-gradient(
+            to bottom,
+            rgba(242, 239, 231, 0.15) 0%,
+            rgba(242, 239, 231, 0.7) 65%,
+            var(--surface) 100%
+          );
+          pointer-events: none;
+        }
+
+        .cert-card-zoom-pill {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
-          gap: 6px;
+          gap: 4px;
+          background: rgba(36, 39, 32, 0.75);
           color: #FFFFFF;
+          padding: 2px 7px;
+          border-radius: var(--radius-xs);
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          letter-spacing: 0.08em;
-          font-weight: 600;
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          opacity: 0.85;
           transition: opacity 0.2s ease;
         }
 
-        .cert-image-frame:hover .cert-image-hover-curtain {
+        .cert-compact-card:hover .cert-card-zoom-pill {
           opacity: 1;
+          background: var(--accent);
         }
 
-        /* Meta Container */
-        .cert-meta-container {
-          padding: clamp(16px, 2.2vw, 22px);
+        /* Body */
+        .cert-card-body {
+          padding: 14px 16px;
           display: flex;
           flex-direction: column;
           flex: 1;
-          justify-content: space-between;
-          gap: 12px;
+          gap: 8px;
         }
 
         .cert-issuer-strip {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 8px;
-          flex-wrap: wrap;
+          gap: 6px;
         }
 
-        .cert-issuer-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
+        .cert-issuer-name {
           font-family: var(--font-mono);
-          font-size: 10px;
-          letter-spacing: 0.08em;
-          color: var(--accent); /* Olive */
+          font-size: 10.5px;
           font-weight: 700;
+          color: var(--accent);
+          letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
-        .cert-issuer-bullet {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: var(--accent);
-        }
-
-        .cert-date-caption {
+        .cert-issue-date {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 11px;
           color: var(--text-muted);
         }
 
-        .cert-heading {
+        .cert-title {
           font-family: var(--font-display);
-          font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-          font-weight: 700;
-          letter-spacing: -0.02em;
+          font-size: 15.5px;
+          font-weight: 800;
           color: var(--text-primary);
           line-height: 1.25;
           margin: 0;
+          letter-spacing: -0.015em;
         }
 
-        .cert-sub-text {
-          font-family: var(--font-mono);
-          font-size: 10.5px;
-          color: var(--text-secondary);
-          margin: -4px 0 0;
-        }
-
-        .cert-description-text {
+        .cert-subtitle {
           font-family: var(--font-body);
           font-size: 12.5px;
-          line-height: 1.55;
           color: var(--text-secondary);
           margin: 0;
+          line-height: 1.4;
         }
 
-        .cert-skills-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .cert-skills-label {
-          font-family: var(--font-mono);
-          font-size: 9.5px;
-          letter-spacing: 0.1em;
-          color: var(--accent);
-          font-weight: 700;
-        }
-
-        .cert-skills-pills {
+        .cert-skills-row {
           display: flex;
           flex-wrap: wrap;
           gap: 5px;
+          margin-top: 2px;
         }
 
-        .cert-skill-tag {
+        .cert-skill-pill {
           font-family: var(--font-mono);
           font-size: 10.5px;
-          padding: 2px 7px;
+          padding: 2px 6px;
           background: var(--bg-0);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
           color: var(--text-primary);
+          font-weight: 500;
         }
 
-        .cert-footer-row {
+        .cert-action-row {
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding-top: 10px;
-          border-top: 1px solid var(--border);
+          margin-top: auto;
+          border-top: 1px solid var(--border-subtle);
         }
 
-        .cert-expand-link {
+        .cert-view-btn {
           background: none;
           border: none;
           padding: 0;
           font-family: var(--font-mono);
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 0.06em;
           color: var(--text-primary);
           cursor: pointer;
           text-decoration: underline;
@@ -284,22 +263,22 @@ export function ParallelCertificateCard({ certificate, onOpenCertificate = () =>
           transition: color 0.15s ease;
         }
 
-        .cert-expand-link:hover {
+        .cert-view-btn:hover {
           color: var(--accent);
         }
 
-        .cert-external-verify {
+        .cert-verify-link {
           display: inline-flex;
           align-items: center;
           gap: 3px;
           font-family: var(--font-mono);
           font-size: 10.5px;
-          color: var(--text-muted);
+          color: var(--text-secondary);
           text-decoration: none;
           transition: color 0.15s ease;
         }
 
-        .cert-external-verify:hover {
+        .cert-verify-link:hover {
           color: var(--accent);
         }
       `}</style>

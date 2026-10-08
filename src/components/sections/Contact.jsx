@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import { site } from '@/data/site';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons';
 import { SectionShell } from '@/components/layout/SectionShell';
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState('idle');
-
-  const handleCopyEmail = (e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(site.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2200);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +35,7 @@ export function Contact() {
         <div className="contact-grid">
           
           {/* =========================================================
-              LEFT COLUMN: Headline, Big Email, Actions & Rounded Social Icons
+              LEFT COLUMN: Headline & ONLY Mail, GitHub, LinkedIn Icons
               ========================================================= */}
           <div className="contact-hero-col">
             <span className="contact-kicker-tag">GET IN TOUCH</span>
@@ -55,44 +47,22 @@ export function Contact() {
             </h3>
 
             <p className="contact-lead-text">
-              I’m open to software engineering internships, full stack opportunities, and technical discussions. Feel free to reach out directly.
+              I’m open to software engineering internships, full stack opportunities, and technical discussions. Feel free to connect directly.
             </p>
 
-            {/* Direct Email Display */}
-            <div className="contact-email-station">
-              <span className="contact-email-tag">DIRECT EMAIL:</span>
-              <a
-                href={`mailto:${site.email}`}
-                className="contact-large-email"
-              >
-                {site.email}
-              </a>
-            </div>
-
-            {/* Primary Action Buttons */}
-            <div className="contact-buttons-row">
-              <a
-                href={`mailto:${site.email}?subject=Hello%20Ayush`}
-                className="btn-editorial-primary"
-              >
-                <Mail className="w-4 h-4" />
-                <span>EMAIL ME</span>
-              </a>
-
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="btn-editorial-secondary"
-              >
-                {copied ? <Check className="w-4 h-4 text-accent" /> : <Copy className="w-4 h-4" />}
-                <span>{copied ? 'EMAIL COPIED' : 'COPY EMAIL'}</span>
-              </button>
-            </div>
-
-            {/* Rounded Social Icons per user request */}
+            {/* ONLY Mail, GitHub, LinkedIn Icons per user request */}
             <div className="contact-social-station">
               <span className="contact-social-label">CONNECT:</span>
               <div className="contact-rounded-icons">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="contact-circle-btn"
+                  title="Direct Email"
+                  aria-label="Direct Email"
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+
                 <a
                   href={site.github}
                   target="_blank"
@@ -113,15 +83,6 @@ export function Contact() {
                   aria-label="LinkedIn Profile"
                 >
                   <LinkedinIcon className="w-5 h-5" />
-                </a>
-
-                <a
-                  href={`mailto:${site.email}`}
-                  className="contact-circle-btn"
-                  title="Direct Email"
-                  aria-label="Direct Email"
-                >
-                  <Mail className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -249,58 +210,16 @@ export function Contact() {
           font-size: clamp(15px, 1.15vw, 16.5px);
           line-height: 1.65;
           color: var(--text-secondary);
-          margin: 0 0 clamp(20px, 3vh, 28px);
+          margin: 0 0 clamp(24px, 3.5vh, 32px);
           max-width: 52ch;
         }
 
-        .contact-email-station {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid var(--border);
-          margin-bottom: 20px;
-        }
-
-        .contact-email-tag {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          letter-spacing: 0.12em;
-          color: var(--accent);
-          font-weight: 700;
-        }
-
-        .contact-large-email {
-          font-family: var(--font-display);
-          font-size: clamp(1.3rem, 2.3vw, 1.9rem);
-          font-weight: 700;
-          color: var(--text-primary);
-          text-decoration: underline;
-          text-decoration-color: var(--border-strong);
-          text-underline-offset: 6px;
-          word-break: break-all;
-          transition: text-decoration-color 0.2s ease, color 0.2s ease;
-        }
-
-        .contact-large-email:hover {
-          color: var(--accent);
-          text-decoration-color: var(--accent);
-        }
-
-        .contact-buttons-row {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          flex-wrap: wrap;
-          margin-bottom: 24px;
-        }
-
-        /* Rounded Social Icons Station */
+        /* ONLY Icons Station */
         .contact-social-station {
           display: flex;
           align-items: center;
           gap: 14px;
-          padding-top: 18px;
+          padding-top: 20px;
           border-top: 1px solid var(--border);
         }
 
@@ -315,12 +234,12 @@ export function Contact() {
         .contact-rounded-icons {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
         }
 
         .contact-circle-btn {
-          width: 42px;
-          height: 42px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           display: inline-flex;
           align-items: center;

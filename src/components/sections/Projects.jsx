@@ -173,6 +173,9 @@ export function Projects({
           flex-direction: column;
           gap: 16px;
           margin-bottom: clamp(20px, 3.5vh, 32px);
+          max-width: 960px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .work-filter-pills {
@@ -266,7 +269,9 @@ export function Projects({
         .work-parallel-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: clamp(20px, 3vw, 28px);
+          gap: clamp(18px, 2.5vw, 24px);
+          max-width: 960px;
+          margin: 0 auto;
         }
 
         @media (min-width: 768px) {

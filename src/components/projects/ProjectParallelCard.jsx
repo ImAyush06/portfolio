@@ -219,6 +219,7 @@ export function ProjectParallelCard({
         .project-card-img-wrap {
           width: 100%;
           aspect-ratio: 16 / 9;
+          max-height: 220px;
           overflow: hidden;
           background: var(--bg-secondary);
         }
@@ -238,11 +239,11 @@ export function ProjectParallelCard({
 
         /* Body */
         .project-card-body {
-          padding: clamp(16px, 2.2vw, 22px);
+          padding: 14px 16px;
           display: flex;
           flex-direction: column;
           flex: 1;
-          gap: 12px;
+          gap: 10px;
         }
 
         .project-card-title-group {
@@ -253,10 +254,10 @@ export function ProjectParallelCard({
 
         .project-card-title {
           font-family: var(--font-display);
-          font-size: clamp(1.2rem, 1.4vw, 1.35rem);
+          font-size: clamp(1.15rem, 1.3vw, 1.25rem);
           font-weight: 800;
           color: var(--text-primary);
-          line-height: 1.2;
+          line-height: 1.25;
           margin: 0;
           letter-spacing: -0.015em;
         }

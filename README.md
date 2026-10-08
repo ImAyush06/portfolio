@@ -2,6 +2,8 @@
 
 A production-quality personal engineering portfolio website for **Ayush Kumar**, Full Stack Web Developer and Computer Science Engineering student at Lovely Professional University.
 
+**Live Site**: [https://ayushk-dev.netlify.app](https://ayushk-dev.netlify.app)
+
 Built with an editorial technical journal aesthetic: strong left-aligned typography, hairline rules, numbered sections, monospace metadata, alternating project plates, and zero template-like card walls.
 
 ---

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
 import { SectionShell } from '@/components/layout/SectionShell';
 import { skillCategories } from '@/data/skills';
 
@@ -91,7 +90,6 @@ export function Skills() {
                           {item.status === 'CORE' && (
                             <span className="skills-core-badge">CORE</span>
                           )}
-                          <ExternalLink className="w-2.5 h-2.5 skills-ext-icon" />
                         </a>
                       ) : (
                         <span
@@ -106,11 +104,6 @@ export function Skills() {
                       );
                     })}
                   </div>
-                </div>
-
-                {/* Subtle Indicator Arrow */}
-                <div className="skills-row-indicator" aria-hidden="true">
-                  <span>&rarr;</span>
                 </div>
               </div>
             );

@@ -98,7 +98,7 @@ export function ProjectParallelCard({
           </div>
         )}
 
-        {/* Tech Stack Pills — Responsive & Links to Official Sites */}
+        {/* Tech Stack Pills — Responsive & Clean */}
         <div className="project-card-tech-section">
           <span className="project-card-tech-label">TECHNOLOGIES:</span>
           <div className="project-card-tech-pills">
@@ -114,7 +114,6 @@ export function ProjectParallelCard({
                   title={`Official website for ${tech}`}
                 >
                   <span>{tech}</span>
-                  <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               ) : (
                 <span key={tech} className="project-tech-badge">

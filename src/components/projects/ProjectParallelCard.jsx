@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Maximize2, Sparkles } from 'lucide-react';
+import { ExternalLink, Sparkles } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/BrandIcons';
 
 // Official Technology Documentation Websites Map
@@ -28,35 +28,16 @@ export function ProjectParallelCard({
   project,
   index,
   onOpenDetails = () => {},
-  onOpenLightbox = () => {},
 }) {
-  const galleryImages = project.gallery && project.gallery.length > 0
-    ? project.gallery
-    : [{ src: project.image, alt: project.imageAlt || project.title, caption: project.title }];
-
-  const handleImageClick = () => {
-    onOpenLightbox(galleryImages, 0, project.title);
-  };
-
   return (
     <article
       id={`project-${project.id}`}
       className="project-compact-card"
     >
-      {/* Top Media: Project Screenshot with Aspect Ratio 16:9 & Zoom Action */}
-      <div
-        className="project-card-media-box"
-        onClick={handleImageClick}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'Enter') handleImageClick(); }}
-        aria-label={`Enlarge screenshot for ${project.title}`}
-      >
+      {/* Top Media: Project Screenshot (Example visual, does not open) */}
+      <div className="project-card-media-box">
         <div className="project-card-media-bar">
           <span className="project-card-category-tag">{project.category.split('/')[0].trim()}</span>
-          <span className="project-card-zoom-hint" title="Click to view full screenshot">
-            <Maximize2 className="w-3.5 h-3.5" />
-          </span>
         </div>
 
         <div className="project-card-img-wrap">
@@ -85,7 +66,7 @@ export function ProjectParallelCard({
           {project.description}
         </p>
 
-        {/* Key Points (Short, To-the-point) */}
+        {/* Key Points */}
         {project.features && project.features.length > 0 && (
           <div className="project-card-highlights">
             {project.features.slice(0, 2).map((feat, fIdx) => (
@@ -183,7 +164,6 @@ export function ProjectParallelCard({
           position: relative;
           background: var(--bg-secondary);
           border-bottom: 1px solid var(--border);
-          cursor: zoom-in;
           overflow: hidden;
         }
 
@@ -191,7 +171,7 @@ export function ProjectParallelCard({
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 8px 12px;
+          padding: 8px 14px;
           background: var(--bg-0);
           border-bottom: 1px solid var(--border);
         }
@@ -205,20 +185,10 @@ export function ProjectParallelCard({
           text-transform: uppercase;
         }
 
-        .project-card-zoom-hint {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-family: var(--font-mono);
-          font-size: 10px;
-          color: var(--text-secondary);
-          font-weight: 600;
-        }
-
         .project-card-img-wrap {
           width: 100%;
           aspect-ratio: 16 / 9;
-          max-height: 220px;
+          max-height: 240px;
           overflow: hidden;
           background: var(--bg-secondary);
         }
@@ -233,16 +203,16 @@ export function ProjectParallelCard({
         }
 
         .project-compact-card:hover .project-card-img {
-          transform: scale(1.02);
+          transform: scale(1.015);
         }
 
         /* Body */
         .project-card-body {
-          padding: 13px 14px;
+          padding: 16px 18px;
           display: flex;
           flex-direction: column;
           flex: 1;
-          gap: 9px;
+          gap: 11px;
         }
 
         .project-card-title-group {
@@ -253,65 +223,48 @@ export function ProjectParallelCard({
 
         .project-card-title {
           font-family: var(--font-display);
-          font-size: clamp(1.05rem, 1.15vw, 1.18rem);
-          font-weight: 700;
+          font-size: clamp(1.18rem, 1.35vw, 1.3rem);
+          font-weight: 800;
           color: var(--text-primary);
           line-height: 1.25;
           margin: 0;
           letter-spacing: -0.015em;
-          min-height: 42px;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
         }
 
         .project-card-subtitle {
           font-family: var(--font-mono);
-          font-size: 10.5px;
+          font-size: 11px;
           color: var(--accent-secondary);
           margin: 0;
           font-weight: 600;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .project-card-desc {
           font-family: var(--font-body);
-          font-size: 12.5px;
-          line-height: 1.5;
+          font-size: 13.5px;
+          line-height: 1.55;
           color: var(--text-secondary);
           margin: 0;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          min-height: 56px;
         }
 
         .project-card-highlights {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          padding: 7px 9px;
+          padding: 8px 12px;
           background: var(--bg-0);
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-xs);
-          min-height: 48px;
         }
 
         .project-card-feat-item {
           display: flex;
           align-items: baseline;
-          gap: 5px;
+          gap: 6px;
           font-family: var(--font-body);
-          font-size: 11.5px;
+          font-size: 12px;
           color: var(--text-primary);
-          line-height: 1.35;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          line-height: 1.4;
         }
 
         .project-card-bullet {
@@ -324,13 +277,13 @@ export function ProjectParallelCard({
         .project-card-tech-section {
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          gap: 6px;
           padding-top: 2px;
         }
 
         .project-card-tech-label {
           font-family: var(--font-mono);
-          font-size: 9.5px;
+          font-size: 10px;
           letter-spacing: 0.1em;
           color: var(--accent);
           font-weight: 700;
@@ -339,16 +292,16 @@ export function ProjectParallelCard({
         .project-card-tech-pills {
           display: flex;
           flex-wrap: wrap;
-          gap: 4px;
+          gap: 5px;
         }
 
         .project-tech-badge {
           display: inline-flex;
           align-items: center;
-          gap: 3px;
+          gap: 4px;
           font-family: var(--font-mono);
-          font-size: 10px;
-          padding: 2px 6px;
+          font-size: 11px;
+          padding: 3px 8px;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
           border-radius: var(--radius-xs);
@@ -368,24 +321,23 @@ export function ProjectParallelCard({
         .project-card-actions {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 10px;
           flex-wrap: wrap;
-          padding-top: 9px;
+          padding-top: 10px;
           margin-top: auto;
           border-top: 1px solid var(--border);
         }
 
         .btn-sm {
-          padding: 5px 9px !important;
-          font-size: 10px !important;
-          gap: 4px !important;
+          padding: 6px 12px !important;
+          font-size: 11px !important;
         }
 
         .project-details-btn {
           background: none;
           border: none;
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 700;
           color: var(--text-primary);
           cursor: pointer;

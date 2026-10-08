@@ -134,7 +134,7 @@ export function Projects({
 
         </div>
 
-        {/* Parallel Compact Project Cards Grid */}
+        {/* Parallel Project Cards Grid (2-column natural breadth, blends across section) */}
         <div className="work-parallel-grid">
           {filteredProjects.map((project, idx) => (
             <ProjectParallelCard
@@ -143,7 +143,6 @@ export function Projects({
               index={idx}
               activeHoveredSkill={activeHoveredSkill}
               onOpenDetails={(p) => setSelectedDrawerProject(p)}
-              onOpenLightbox={openLightbox}
             />
           ))}
         </div>
@@ -156,17 +155,6 @@ export function Projects({
         onClose={() => setSelectedDrawerProject(null)}
       />
 
-      {/* Lightbox */}
-      <Lightbox
-        isOpen={lightboxState.isOpen}
-        images={lightboxState.images}
-        currentIndex={lightboxState.currentIndex}
-        title={lightboxState.title}
-        onClose={closeLightbox}
-        onNext={handleNextLightbox}
-        onPrev={handlePrevLightbox}
-      />
-
       <style>{`
         .work-controls-wrapper {
           display: flex;
@@ -174,7 +162,7 @@ export function Projects({
           justify-content: space-between;
           flex-wrap: wrap;
           gap: 14px;
-          margin-bottom: clamp(20px, 3vh, 28px);
+          margin-bottom: clamp(20px, 3.5vh, 32px);
           width: 100%;
         }
 
@@ -264,24 +252,17 @@ export function Projects({
           background: var(--bg-secondary);
         }
 
-        /* All projects in a single line from left to right on desktop */
+        /* 2-column natural breadth layout, blending with the page */
         .work-parallel-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 16px;
+          gap: clamp(20px, 3vw, 28px);
           width: 100%;
-          align-items: stretch;
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 768px) {
           .work-parallel-grid {
             grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (min-width: 1040px) {
-          .work-parallel-grid {
-            grid-template-columns: repeat(4, 1fr);
           }
         }
       `}</style>

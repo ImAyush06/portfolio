@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   School, 
   Globe, 
   Eye, 
-  Copy, 
-  Check, 
-  Search, 
   CheckCircle2, 
   Award,
   Sparkles
@@ -14,19 +11,9 @@ import { SectionShell } from '@/components/layout/SectionShell';
 import { experience } from '@/data/experience';
 
 export function Experience() {
-  const [copied, setCopied] = useState(false);
-
   if (!experience || experience.length === 0) return null;
 
   const item = experience[0]; // Summer Training 2026
-
-  const handleCopyId = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText("Certificate No. 492323 · Reg: 12405905");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <SectionShell
@@ -169,52 +156,6 @@ export function Experience() {
                   {item.department} &middot; {item.school}
                 </p>
 
-                {/* 1-Click Search ID Strip */}
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    background: 'rgba(56, 189, 248, 0.05)',
-                    border: '1px solid rgba(56, 189, 248, 0.2)',
-                    borderRadius: 'var(--radius-xs)',
-                    padding: '7px 12px',
-                    marginBottom: '18px',
-                    gap: '8px',
-                    maxWidth: '480px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Search className="w-3.5 h-3.5" style={{ color: '#38BDF8' }} />
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#FFFFFF' }}>
-                      SEARCH ID: Certificate No. 492323 &middot; Reg: 12405905
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={handleCopyId}
-                    title="Copy Certificate and Reg ID"
-                    style={{
-                      background: copied ? '#FFFFFF' : 'rgba(255, 255, 255, 0.08)',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                      color: copied ? '#080D1A' : '#FFFFFF',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '9px',
-                      fontWeight: 700,
-                      padding: '3px 8px',
-                      borderRadius: 'var(--radius-xs)',
-                      cursor: 'pointer',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '3px',
-                      flexShrink: 0,
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    {copied ? <Check className="w-2.5 h-2.5" /> : <Copy className="w-2.5 h-2.5" />}
-                    <span>{copied ? 'COPIED' : 'COPY'}</span>
-                  </button>
-                </div>
 
                 {/* Seamlessly Integrated Curriculum Highlights */}
                 <div style={{ marginBottom: '20px' }}>

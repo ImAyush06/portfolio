@@ -110,7 +110,6 @@ export function Experience() {
                   />
                   <div className="training-cert-hover-layer">
                     <Maximize2 className="w-5 h-5" />
-                    <span>VIEW DOCUMENT</span>
                   </div>
                 </div>
 
@@ -121,22 +120,14 @@ export function Experience() {
                     Issued by Lovely Professional University &middot; Certificate No. {item.certificateNo}
                   </p>
                   <div className="training-cert-dock-links">
-                    <button
-                      type="button"
-                      onClick={handleOpenCertificate}
-                      className="btn-editorial-primary btn-sm"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>VIEW FULL DOCUMENT</span>
-                    </button>
                     <a
                       href={item.verificationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="training-cert-verify-link"
                     >
-                      <span>LPU.IN</span>
-                      <ExternalLink className="w-3 h-3" />
+                      <span>VERIFY AT LPU.IN</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 </div>
